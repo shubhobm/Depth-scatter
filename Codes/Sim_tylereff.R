@@ -45,7 +45,7 @@ TylerSigma = function(X, tol=1e-5, maxit=100, depth=F){
 ## setup 1: Sigma = diag(1,1)
 set.seed(02032015)
 
-n = 1000
+n = 50
 Sig = diag(c(2,1))
 simiter = 100
 err = matrix(0, nrow=simiter, ncol=2)
