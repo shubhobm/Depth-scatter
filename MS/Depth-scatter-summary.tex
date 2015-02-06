@@ -50,9 +50,11 @@ The sign transformation is rotation equivariant, in the sense that $ \bfS(P \bfx
 &=& \Gamma \Lambda^{1/2} \tilde D_{\bfZ}(\bfz) \bfS(\bfz) \frac{\| \bfz \|}{\|\Lambda^{1/2} \bfz\|}
 \end{eqnarray*}
 
-Because of affine (thus rotational) invariance of a depth function, the depth (htped) value at $\bfz$ does not depend on the direction of $\bfz$, i.e. $\tilde D_{\bfZ}(\bfz)$ and $\bfS(\bfz)$ are independent. Furthermore,
-$$ Cov \left(\bfS (\bfz), \frac{\| \bfz \|}{\|\Lambda^{1/2} \bfz\|} \right) = E \left(\bfS (\bfz). \frac{\| \bfz \|}{\|\Lambda^{1/2} \bfz\|} \right) - E \bfS (\bfz) E \left(\frac{\| \bfz \|}{\|\Lambda^{1/2} \bfz\|} \right) = E \left( \frac{\bfz}{\|\Lambda^{1/2} \bfz\|} \right) = \bf0$$
-both $\bfS (\bfz)$ and $\bfz / \| \Lambda^{1/2}\bfz \|$ are odd functions of $\bfz$, which has a circularly symmetric distribution, hence each of them has expectation $\bf0$. Consequently, we obtain an expression for the covariance matrix of $\tilde \bfX$:
+%Because of affine (thus rotational) invariance of a depth function, the depth (htped) value at $\bfz$ does not depend on the direction of $\bfz$, i.e. $\tilde D_{\bfZ}(\bfz)$ and $\bfS(\bfz)$ are independent. Furthermore,
+%$$ Cov \left(\bfS (\bfz), \frac{\| \bfz \|}{\|\Lambda^{1/2} \bfz\|} \right) = E \left(\bfS (\bfz). \frac{\| \bfz \|}{\|\Lambda^{1/2} \bfz\|} \right) - E \bfS (\bfz) E \left(\frac{\| \bfz \|}{\|\Lambda^{1/2} \bfz\|} \right) = E \left( \frac{\bfz}{\|\Lambda^{1/2} \bfz\|} \right) = \bf0$$
+%both $\bfS (\bfz)$ and $\bfz / \| \Lambda^{1/2}\bfz \|$ are odd functions of $\bfz$, which has a circularly symmetric distribution, hence each of them has expectation $\bf0$. Consequently, we obtain an expression for the covariance matrix of $\tilde \bfX$:
+
+$\tilde D_\bfZ(\bfz)$ is an odd function in $\bfz$ because of affine invariance, as is $\| \bfz \| / \|\Lambda^{1/2} \bfz \|$. Since $\bfS(\bfz)$ is odd in $\bfz$ for circularly symmetric $\bfz$, it follows that $E(\tilde \bfX) = \bf0$, and consequently we obtain an expression for the covariance matrix of $\tilde \bfX$:
 
 \begin{Theorem} \label{Theorem:covform}
 Let the random variable $\bfX \in \mathbb{R}^p$ follow an elliptical distribution with center $\bfmu$ and covariance matrix $\Sigma = \Gamma\Lambda\Gamma^T$, its spectral decomposition. Then, given a depth function $D_\bfX(.)$ the covariance matrix of the transformed random variable $\tilde\bfX$ is
@@ -73,8 +75,18 @@ The matrix of eigenvectors of the covariance matrix, $\Gamma$, remains unchanged
 \item Calculate the next iterate
 $$ \Lambda^{*(k+1)} = \left[ E\left( \frac{(\tilde D_\bfZ(\bfz))^2 \bfz \bfz^T}{\bfz^T \Lambda^{*(k)} \bfz} \right) \right]^{-1} \Lambda_{D,S} $$
 
+and standardize its eigenvalues:
+$$ \Lambda^{*(k+1)} = \frac{\Lambda^{*(k+1)}}{det(\Lambda^{*(k+1)})^{1/p}} $$
+
 \item Stop if convergence criterion is satisfied. Otherwise set $k \rightarrow k+1$ ad go to step 2.
 \end{enumerate}
+
+Unlike sign covariance matrices and symmetrized sign covariance matrices \citep{dumbgen98}, however, attempting to derive an affine equivariant counterpart (as opposed to only orthogonal equivariance) of the DCM through an iterative approach analogous to \cite{tyler87} will not result in anything new. This is because Tyler's scatter matrix $\Sigma_T$ is defined as the implicit solution to the following equation:
+\begin{equation} \label{equation:tylerEq}
+\Sigma_T = \frac{\bfx \bfx^T}{\bfx^T \Sigma_T^{-1} \bfx}
+\end{equation}
+
+and simply replacing $\bfx$ by its multivariate rank counterpart $\tilde\bfx$ will not change the estimate $\Sigma_T$ as $\bfx$ and $\tilde \bfx$ have the same directions. Instead we consider a depth-weighted version of Tyler's scatter matrix (i.e. weights $(\tilde D_\bfX(\bfx))^2$ in right side of (\ref{equation:tylerEq})) in the simulations in Section \ref{section:simSection}. The simulations show that it has slightly better finite-sample efficiency than $\Sigma_T$ but has same asymptotic performance. We conjecture that its concentration properties can be obtained by taking an approach similar to \cite{soloveychik14}.
 
 \section{Asymptotic results}
 \subsection{The sample DCM}
@@ -86,7 +98,7 @@ Consider a random variable $\bfX \in \mathbb{R}^p$ having a continuous and symme
 $$ \sqrt n \left[
 \frac{1}{n} \sum_{i=1}^n (\tilde D^n_\bfX (\bfx_i))^2 SS(\bfx_i; \hat\bfmu_n) -
 \frac{1}{n} \sum_{i=1}^n (\tilde D_\bfX (\bfx_i))^2 SS(\bfx_i; \bfmu) \right]
-\stackrel{P}{\rightarrow} 0$$
+\stackrel{P}{\rightarrow} 0 $$
 \end{Lemma}
 
 Given this lemma, we can now state the result for consistency of the sample DCM:
@@ -132,8 +144,8 @@ ACov(l_i, l_j) &=& E \left[ \frac{(\tilde D_\bfZ (\bfz))^4 \lambda_i \lambda_j z
 
 \end{Corollary}
 
-\section{Robustness and efficiency properties}
-In this section, we first obtain the efficiency functions of the DCM as well as its eigenvectors and eigenvalues, which are essential to understand how much influence a sample point, especially an infitesimal contamination, has on any functional on the distribution \citep{hampel}. We shall also derive the asymptotic efficiencies of individual principal components with respect to those of the original covariance matrix and sign covariance matrix. Unlike affine equivariant estimators of shape, the ARE of eigenvectors (with respect to any other affine equivariant estimator) can not be simplified as a ratio of two scalar quantities dependent on only the distribution of $\| \bfz \|$ (e.g. \cite{taskinen12,ollilia03}), but actually depend on the (standardized) eigenvalues. Finite sample efficiency of the DCM estimates with respect to infitesimal contaminations and heavy-tailed distributions shall also be shown by a simulation study.
+\section{Robustness and efficiency properties} \label{section:simSection}
+In this section, we first obtain the influence functions of the DCM as well as its eigenvectors and eigenvalues, which are essential to understand how much influence a sample point, especially an infitesimal contamination, has on any functional on the distribution \citep{hampel}. We shall also derive the asymptotic efficiencies of individual principal components with respect to those of the original covariance matrix and sign covariance matrix. Unlike affine equivariant estimators of shape, the ARE of eigenvectors (with respect to any other affine equivariant estimator) can not be simplified as a ratio of two scalar quantities dependent on only the distribution of $\| \bfz \|$ (e.g. \cite{taskinen12,ollilia03}), but actually depend on the (standardized) eigenvalues. Finite sample efficiency of the DCM estimates with respect to infitesimal contamination and heavy-tailed distributions shall also be demonstrated by a simulation study.
 
 \subsection{Influence functions}
 Given any probability distribution $F$, the influence function of any point $\bfx_0$ in the sample space $\mathcal{X}$ for some functional $T(F)$ on the distribution is defined as

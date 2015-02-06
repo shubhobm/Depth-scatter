@@ -1,4 +1,4 @@
-\begin{thebibliography}{12}
+\begin{thebibliography}{15}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -20,6 +20,11 @@ C.~Croux and G.~Haesbroeck.
 \newblock Principal component analysis based on robust estimators of the
   covariance or correlation matrix: influence functions and efficiencies.
 \newblock \emph{Biometrika}, 87:\penalty0 603--618, 2000.
+
+\bibitem[D\"{u}mbgen(1998)]{dumbgen98}
+L.~D\"{u}mbgen.
+\newblock On {T}yler's {M}-functional of scatter in high dimension.
+\newblock \emph{Ann. Inst. Statist. Math.}, 50:\penalty0 471--491, 1998.
 
 \bibitem[D\"{u}rre et~al.(2014)D\"{u}rre, Vogel, and Tyler]{durre14}
 A.~D\"{u}rre, D.~Vogel, and D.E. Tyler.
@@ -60,14 +65,24 @@ R.~Serfling.
 \newblock In \emph{DIMACS {S}eries in {D}iscrete {M}athematics and
   {T}heoretical {C}omputer {S}cience}, volume~72, pages 1--16, 2006.
 
+\bibitem[Soloveychik and Wiesel(2014)]{soloveychik14}
+I.~Soloveychik and A.~Wiesel.
+\newblock Performance {A}nalysis of {T}yler's {C}ovariance {E}stimator.
+\newblock \emph{IEEE Trans. Sig. Process.}, 63-2:\penalty0 418--426, 2014.
+
 \bibitem[Taskinen et~al.(2012)Taskinen, Koch, and Oja]{taskinen12}
 S.~Taskinen, I.~Koch, and H.~Oja.
 \newblock Robustifying principal component analysis with spatial sign vectors.
 \newblock \emph{Statist. and Prob. Lett.}, 82:\penalty0 765--774, 2012.
 
+\bibitem[Tyler(1987)]{tyler87}
+D.E. Tyler.
+\newblock A distribution-free {M}-estimator of multivariate scatter.
+\newblock \emph{Ann. Statist.}, 15:\penalty0 234--251, 1987.
+
 \bibitem[Zuo(2003)]{zuo03}
 Y.~Zuo.
 \newblock Projection-based depth functions and associated medians.
-\newblock \emph{Ann. of Statist.}, 31:\penalty0 1460--1490, 2003.
+\newblock \emph{Ann. Statist.}, 31:\penalty0 1460--1490, 2003.
 
 \end{thebibliography}
