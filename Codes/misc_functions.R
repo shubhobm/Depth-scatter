@@ -20,7 +20,7 @@ ones = function(m,n){
   matrix(1, nrow=m, ncol=n)
 }
 
-## function to calculate weighted projection quantile depth
+## calculate weighted projection quantile depth
 EPQD = function(X, grid, nu=1e3){
   
   p = ncol(X)
@@ -42,4 +42,38 @@ EPQD = function(X, grid, nu=1e3){
   
   return(cbind(grid,EPQD.vec))
   
+}
+
+# compute Tyler's shape matrix, optionally with depth weights
+TylerSigma = function(X, tol=1e-5, maxit=100, depth=F){
+  n = nrow(X); p = ncol(X)
+  iSig = diag(rep(1,p))
+  
+  # whether to use depth weights
+  if(depth){
+    mult = EPQD(X,X)[,p+1]
+    mult = max(mult) - mult
+  }
+  else{
+    mult = rep(1,n)
+  }
+  
+  for(i in 1:maxit){
+    iiSig = matrix(0,p,p)
+    inv.iSig = solve(iSig)
+    for(j in 1:n){
+      xj = as.matrix(X[j,])
+      iiSig = iiSig + mult[j]^2 * (xj %*% t(xj))/ as.numeric(t(xj) %*% inv.iSig %*% xj)
+    }
+    
+    iiSig = iiSig/det(iiSig)^(1/p)
+    if(norm(iSig - iiSig, type="F") < tol){
+      break
+    }
+    else{
+      iSig = iiSig
+    }
+  }
+  
+  iSig
 }

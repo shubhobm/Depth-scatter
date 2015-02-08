@@ -23,6 +23,14 @@ ycoord = rep(pts, lengrid)
 xygrid = cbind(xcoord,ycoord)
 rm(xcoord,ycoord)
 
+# Sample covariance matrix
+r = sqrt(rowSums(xygrid^2))
+Ugrid = xygrid / r
+IFnorm.S = r^2*abs(Ugrid[,1] * Ugrid[,2] * sqrt(lam[1]*lam[2])/(lam[1] - lam[2]))
+persp(pts, pts, matrix(IFnorm.S, nrow=lengrid, byrow=T),
+      xlab="x1", ylab="x2", zlab="IF(x0)", ticktype="detailed",
+      theta=45, phi=45)
+
 # Influence fn plot for DCM
 # get eigenvalues of DCM
 lam.Zsq = (Z * Z) %*% Sig
@@ -45,9 +53,9 @@ persp(pts, pts, matrix(IFnorm, nrow=lengrid, byrow=T),
       xlab="x1", ylab="x2", zlab="IF(x0)", ticktype="detailed",
       theta=45, phi=45)
 
-# Influence fn plots for Tyler's scatter matrix
+# Influence fn plot for Tyler's scatter matrix
 Ugrid = xygrid / sqrt(rowSums(xygrid^2))
-IFnorm.tyler = Dgrid^2*sqrt(abs(Ugrid[,1] * Ugrid[,2] * sqrt(lam[1]*lam[2])/(lam[1] - lam[2])))
+IFnorm.tyler = 4*sqrt(abs(Ugrid[,1] * Ugrid[,2] * sqrt(lam[1]*lam[2])/(lam[1] - lam[2])))
 persp(pts, pts, matrix(IFnorm.tyler, nrow=lengrid, byrow=T),
       xlab="x1", ylab="x2", zlab="IF(x0)", ticktype="detailed",
       theta=45, phi=45)

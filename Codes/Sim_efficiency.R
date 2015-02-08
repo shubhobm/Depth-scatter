@@ -26,7 +26,7 @@ ones = function(m,n){
 }
 
 ## function to calculate weighted projection quantile depth
-EPQD1 = function(X, grid, nu=1e3){
+EPQD = function(X, grid, nu=1e3){
   
   p = ncol(X)
   b = apply(X, 2, median)
@@ -50,19 +50,22 @@ EPQD1 = function(X, grid, nu=1e3){
 }
 
 
-## setup 1: Sigma = diag(1,2)
+## setup 1: Sigma = diag(2,1)
+require(mvtnorm)
 set.seed(12182014)
-v = c(0,1)
-lam = 1:2
+v = c(1,0)
+lam = c(2,1)
 Sigma = diag(lam)
 n = c(20,50,100,300)
-iter = 1e2
+iter = 1e3
 
-loopfun = function(i){  
+loopfun = function(i){
+  require(mvtnorm)
   iv = rep(0,3)
   
   # get sample and construct sign matrix
-  iX = my.mvrnorm(n[3], mu=c(0,0), Sig=Sigma)
+  #iX = my.mvrnorm(n[3], mu=c(0,0), Sig=Sigma)
+  iX = rmvt(n[2], sigma=Sigma, df=5)
   iXnorm = sqrt(iX^2 %*% rep(1,2))
   iS = iX / (iXnorm %*% rep(1,2))
   
@@ -83,6 +86,7 @@ loopfun = function(i){
   iv
 }
 
+set.seed(12182014)
 cl = makeCluster(detectCores())
 registerDoSNOW(cl)
 system.time(eff.v <- foreach(i=1:iter) %dopar% loopfun(i))
@@ -90,4 +94,4 @@ stopCluster(cl)
 
 eff.v = matrix(unlist(eff.v), ncol=3, byrow=T)
 (MSE.vec = apply(eff.v, 2, function(x) mean(acos(x)^2)))
-(eff.vec = MSE.vec[2:3]/MSE.vec[1])
+(eff.vec = MSE.vec[1]/MSE.vec[2:3])
