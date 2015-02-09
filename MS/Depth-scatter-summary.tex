@@ -8,7 +8,7 @@
 \addtolength{\textheight}{0.9in}
 \addtolength{\topmargin}{-.4in}
 
-\usepackage{hyperref} % for linking references
+\usepackage{hyperref} % for linking references 
 \usepackage{setspace}
 \doublespacing
 
@@ -163,7 +163,7 @@ IF(\bfx_0; \hat\bfgamma_{D,i}, F) &=& \sum_{k=1; k \neq i}^p \frac{1}{\lambda_{D
 &=& \sum_{k=1; k \neq i}^p \frac{\sqrt{\lambda_i \lambda_k} z_{0i} z_{0k}}{\lambda_{D,S,i} - \lambda_{D,S,k}}. \frac{(\tilde D_\bfZ(\bfz_0))^2 }{\bfz_0^T \Lambda \bfz_0} \bfgamma_k
 \end{eqnarray*}
 
-where $\Gamma^T \Lambda^{-1/2} (\bfx_0 - \bfmu) = \bfz_0 = (z_{01},...,z_{0p})^T$.
+where $\Gamma^T \Lambda^{-1/2} (\bfx_0 - \bfmu) = \bfz_0 = (z_{01},...,z_{0p})^T$. Clearly this influence function will be bounded, which indicates good robustness properties of principal components. Moreover, since the htped function takes small values for points close to the center of the distribution, it does not suffer from the inlier effect that is typical of the SCM and Tyler's shape matrix.
 
 \subsection{Asymptotic and finite-sample efficiencies}
 Suppose $\hat\Sigma$ is a $\sqrt n$-consistent estimator of the population covariance matrix $\Sigma$, which permits a spectral decomposition $ \hat\Sigma = \hat\Gamma \hat\Lambda \hat\Gamma^T $, where $\hat\Gamma = (\hat\bfgamma_1,...,\hat\bfgamma_p)$. Then the asymptotic variance of the eigenvectors are (see Theorem 13.5.1 in \cite{anderson})
@@ -176,6 +176,13 @@ the asymptotic relative efficiencies of eigenvectors from the sample DCM with re
 ARE(\hat\bfgamma^D_i, \hat\bfgamma_i; F) &=& \frac{Trace( AVar(\sqrt n\hat \bfgamma^D_i))}{Trace( AVar(\sqrt n\hat \bfgamma_i))}\\
 &=& \left[\sum_{k=1; k \neq i}^p \frac{\lambda_i \lambda_k}{(\lambda_i - \lambda_k)^2} \right]^{-1} \left[ \sum_{k=1; k \neq i}^p \frac{\lambda_i \lambda_k }{(\lambda_{D,s,i} - \lambda_{D,S,k})^2} E \left( \frac{(\tilde D_\bfZ (\bfz))^4 z_i^2 z_k^2}{(\bfz^T \Lambda \bfz)^2} \right) \right]
 \end{eqnarray*}
+
+For 2 dimensions, this expression can be somewhat simplified. Suppose the two eigenvalues are $\lambda$ and $\rho\lambda$. In that case the eigenvalues of the DCM are
+$$ \lambda_{D,S,1} = E \left( \frac{(D_\bfZ(\bfz))^2 z_1^2}{z_1^2 + \rho z_2^2} \right), \quad
+\lambda_{D,S,2} = E \left( \frac{(D_\bfZ(\bfz))^2 \rho z_2^2}{z_1^2 + \rho z_2^2} \right) $$
+
+and by simple algebra we get
+$$ ARE(\hat\bfgamma^D_1, \hat\bfgamma_1; F) = ARE(\hat\bfgamma^D_2, \hat\bfgamma_2; F) = (1-\rho)^2 \frac{E \left( \frac{(D_\bfZ(\bfz))^4 z_1^2z_2^2}{(z_1^2 + \rho z_2^2)^2}\right)}{E^2 \left( \frac{(D_\bfZ(\bfz))^2 (z_1^2 - \rho z_2^2)}{(z_1^2 + \rho z_2^2)} \right)} $$
 
 \section*{Appendix A: \textbf{Form of $V_{D,S}(F)$}}
 First observe that for $F$ having covariance matrix $\Sigma = \Gamma\Lambda\Gamma^T$,

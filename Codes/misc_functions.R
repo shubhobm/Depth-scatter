@@ -38,14 +38,15 @@ EPQD = function(X, grid, nu=1e3){
     uecdf = ecdf(X0%*%u)
     Fuxu.mat[,iu] = uecdf(grid0%*%u)
   }
-  EPQD.vec = 1/(1+apply(abs(Fuxu.mat-.5), 1, max))
+  #EPQD.vec = 1/(1+apply(abs(Fuxu.mat-.5), 1, max))
+  EPQD.vec = apply(1-Fuxu.mat, 1, min)
   
   return(cbind(grid,EPQD.vec))
   
 }
 
 # compute Tyler's shape matrix, optionally with depth weights
-TylerSigma = function(X, tol=1e-5, maxit=100, depth=F){
+TylerSig = function(X, tol=1e-5, maxit=100, depth=F){
   n = nrow(X); p = ncol(X)
   iSig = diag(rep(1,p))
   
