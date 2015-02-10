@@ -1,5 +1,5 @@
 \documentclass[fleqn,12pt]{article}
-\usepackage{mycommands,amssymb,amsmath,amsthm,color,pagesize,outlines,cite}
+\usepackage{mycommands,amssymb,amsmath,amsthm,color,pagesize,outlines,cite,caption}
 \usepackage[pdftex]{graphicx}
 \usepackage[round]{natbib}
 \addtolength{\evensidemargin}{-.5in}
@@ -42,7 +42,17 @@ Consider a vector-valued random variable $\bfX \in \mathbb{R}^p$ that follows an
 $$ \bfS(\bfx) = \begin{cases} \bfx\| \bfx \|^{-1} \quad \mbox{if }\bfx \neq \bf0\\
 \bf0 \quad \mbox{if }\bfx = \bf0 \end{cases} $$
 
-The sign transformation is rotation equivariant, in the sense that $ \bfS(P \bfx) = P\bfx/\| P \bfx \| = P\bfx/\| \bfx \| = P \bfS(\bfx)$ for any orthogonal matrix $P$. The transformed random variable $\tilde \bfX$ can be seen as the multivariate rank corresponding to $\bfX$ (e.g. \cite{serfling2006}). Now, consider the spectral decomposition of the covariance matrix: $\Sigma = \Gamma\Lambda\Gamma^T$, $\Gamma$ being orthogonal and $\Lambda$ diagonal with positive diagonal elements. Also normalize the original random variable as $\bfz = \Gamma^T\Lambda^{-1/2} (\bfx - \bfmu)$. In this setup, we can represent the transformed random variable as
+The sign transformation is rotation equivariant, in the sense that $ \bfS(P \bfx) = P\bfx/\| P \bfx \| = P\bfx/\| \bfx \| = P \bfS(\bfx)$ for any orthogonal matrix $P$. The transformed random variable $\tilde \bfX$ can be seen as the multivariate rank corresponding to $\bfX$ (e.g. \cite{serfling2006}).
+
+\begin{figure}[t]
+	\captionsetup{singlelinecheck=off}
+	\centering
+		\includegraphics[height=5cm]{../Codes/rankplot.png}
+	\caption{(Left) 1000 points randomly drawn from $\mathcal N_2\left((0,0)^T, \left(\protect\begin{smallmatrix} 5 & -4 \\ -4 & 5 \protect\end{smallmatrix}\right)\right) $ and (Right) their multivariate ranks based on halfspace depth}
+	\label{fig:rankplot}
+\end{figure}
+
+Now, consider the spectral decomposition of the covariance matrix: $\Sigma = \Gamma\Lambda\Gamma^T$, $\Gamma$ being orthogonal and $\Lambda$ diagonal with positive diagonal elements. Also normalize the original random variable as $\bfz = \Gamma^T\Lambda^{-1/2} (\bfx - \bfmu)$. In this setup, we can represent the transformed random variable as
 \begin{eqnarray*}
 \tilde \bfx &=& \tilde D_{\bfX} (\bfx) \bfS(\bfX - \bfmu)\\
 &=& \tilde D_{\Gamma\Lambda^{1/2}\bfZ + \bfmu} (\Gamma\Lambda^{1/2} \bfz + \bfmu). \bfS(\Gamma\Lambda^{1/2} \bfz)\\
@@ -145,7 +155,7 @@ ACov(l_i, l_j) &=& E \left[ \frac{(\tilde D_\bfZ (\bfz))^4 \lambda_i \lambda_j z
 \end{Corollary}
 
 \section{Robustness and efficiency properties} \label{section:simSection}
-In this section, we first obtain the influence functions of the DCM as well as its eigenvectors and eigenvalues, which are essential to understand how much influence a sample point, especially an infitesimal contamination, has on any functional on the distribution \citep{hampel}. We shall also derive the asymptotic efficiencies of individual principal components with respect to those of the original covariance matrix and sign covariance matrix. Unlike affine equivariant estimators of shape, the ARE of eigenvectors (with respect to any other affine equivariant estimator) can not be simplified as a ratio of two scalar quantities dependent on only the distribution of $\| \bfz \|$ (e.g. \cite{taskinen12,ollilia03}), but actually depend on the (standardized) eigenvalues. Finite sample efficiency of the DCM estimates with respect to infitesimal contamination and heavy-tailed distributions shall also be demonstrated by a simulation study.
+In this section, we first obtain the influence functions of the DCM as well as its eigenvectors and eigenvalues, which are essential to understand how much influence a sample point, especially an infitesimal contamination, has on any functional on the distribution \citep{hampel}. We shall also derive the asymptotic efficiencies of individual principal components with respect to those of the original covariance matrix and sign covariance matrix. Unlike affine equivariant estimators of shape, the ARE of eigenvectors (with respect to any other affine equivariant estimator) can not be simplified as a ratio of two scalar quantities dependent on only the distribution of $\| \bfz \|$ (e.g. \cite{taskinen12,ollilia03}). Finite sample efficiency of the DCM estimates with respect to infitesimal contamination and heavy-tailed distributions shall also be demonstrated by a simulation study.
 
 \subsection{Influence functions}
 Given any probability distribution $F$, the influence function of any point $\bfx_0$ in the sample space $\mathcal{X}$ for some functional $T(F)$ on the distribution is defined as
@@ -157,13 +167,26 @@ where $F_\epsilon$ is $F$ with an additional mass of $\epsilon$ at $\bfx_0$, i.e
 $$ IF(\bfx_0; Cov(\tilde \bfX), F) = (\tilde D_\bfX(\bfx_0))^2 SS(\bfx_0; \bfmu) - Cov(\tilde \bfX) $$
 
 Following \cite{croux00}, we now get the influence function of the $i^\text{th}$ column of $\hat\Gamma_D = (\hat\bfgamma_{D,1},...,\hat\bfgamma_{D,p}); i = 1,...,p$:
-\begin{eqnarray*}
-IF(\bfx_0; \hat\bfgamma_{D,i}, F) &=& \sum_{k=1; k \neq i}^p \frac{1}{\lambda_{D,S,i} - \lambda_{D,S,k}} \left\{ \bfgamma^T_k IF(\bfx_0; Cov(\tilde \bfX), \bfgamma_i) \right\} \bfgamma_k\\
-&=& \sum_{k=1; k \neq i}^p \frac{1}{\lambda_{D,S,i} - \lambda_{D,S,k}} \left\{ \bfgamma^T_k (\tilde D_\bfX(\bfx_0))^2 SS(\bfx_0; \bfmu)\bfgamma_i - \lambda_{D,S,i}\bfgamma_k^T\bfgamma_i \right\} \bfgamma_k\\
+\begin{eqnarray}
+IF(\bfx_0; \hat\bfgamma_{D,i}, F) &=& \sum_{k=1; k \neq i}^p \frac{1}{\lambda_{D,S,i} - \lambda_{D,S,k}} \left\{ \bfgamma^T_k IF(\bfx_0; Cov(\tilde \bfX), \bfgamma_i) \right\} \bfgamma_k \notag \\
+&=& \sum_{k=1; k \neq i}^p \frac{1}{\lambda_{D,S,i} - \lambda_{D,S,k}} \left\{ \bfgamma^T_k (\tilde D_\bfX(\bfx_0))^2 SS(\bfx_0; \bfmu)\bfgamma_i - \lambda_{D,S,i}\bfgamma_k^T\bfgamma_i \right\} \bfgamma_k \notag \\
 &=& \sum_{k=1; k \neq i}^p \frac{\sqrt{\lambda_i \lambda_k} z_{0i} z_{0k}}{\lambda_{D,S,i} - \lambda_{D,S,k}}. \frac{(\tilde D_\bfZ(\bfz_0))^2 }{\bfz_0^T \Lambda \bfz_0} \bfgamma_k
+\end{eqnarray}
+
+where $\Gamma^T \Lambda^{-1/2} (\bfx_0 - \bfmu) = \bfz_0 = (z_{01},...,z_{0p})^T$. Clearly this influence function will be bounded, which indicates good robustness properties of principal components. Moreover, since the htped function takes small values for points close to the center of the distribution, it does not suffer from the inlier effect that is typical of the SCM and Tyler's shape matrix. The influence function for the $i^\text{th}$ eigenvector estimates of these two matrices (say $\hat\bfgamma_{S,i}$ and $\hat\bfgamma_{T,i}$, respectively) are as follows:
+\begin{eqnarray*}
+\quad IF(\bfx_0; \hat \bfgamma_{S,i}, F) &=& \sum_{k=1; k \neq i}^p \frac{\sqrt{\lambda_i \lambda_k}}{\lambda_{S,i} - \lambda_{S,k}}. \frac{z_{0i} z_{0k}}{\bfz_0^T \bfz_0} \bfgamma_k, \text{ with } \lambda_{S,i} = E_\bfZ \left( \frac{\lambda_i z_i^2}{\sum_{j=1}^p \lambda_j z_j^2} \right) \quad \\
+IF(\bfx_0; \hat \bfgamma_{T,i}, F) &=& (p+2) \sum_{k=1; k \neq i}^p \frac{\sqrt{\lambda_i \lambda_k}}{\lambda_i - \lambda_k}. \frac{z_{0i} z_{0k}}{\bfz_0^T \bfz_0} \bfgamma_k \quad 
 \end{eqnarray*}
 
-where $\Gamma^T \Lambda^{-1/2} (\bfx_0 - \bfmu) = \bfz_0 = (z_{01},...,z_{0p})^T$. Clearly this influence function will be bounded, which indicates good robustness properties of principal components. Moreover, since the htped function takes small values for points close to the center of the distribution, it does not suffer from the inlier effect that is typical of the SCM and Tyler's shape matrix.
+for $i = 1,2$. In Figure \ref{fig:IFnorm} we consider first eigenvectors of different scatter estimates for the $\mathcal{N}_2((0,0)^T, diag(2,1))$ and plot norms of these influence functions for different values of $\bfx_0$. The plots for SCM and Tyler's shape matrix demonstrate the 'inlier effect', i.e. points close to symmetry center and the center itself having high influence. The influence function for the sample covariance matrix is obtained by replacing $(p+2)$ by $\| \bfz_0 \|^2$ in the expression of $IF(\bfx_0; \hat \bfgamma_{T,i}, F)$ above, hence is unbounded and the corresponding eigenvector estimators are not robust. In comparison, the DCM with respect to Tukey's halfspace depth has a bounded influence function as well as small values of the influence function at 'deep' points.
+
+\begin{figure}[t]
+	\centering
+		\includegraphics[height=12cm]{../Codes/IFnorm.png}
+	\caption{Plot of the norm of influence function for first eigenvector of (a) sample covariance matrix, (b) SCM, (c) Tyler's scatter matrix and (d) Halfspace-DCM, for a bivariate normal distribution with $\bfmu = {\bf 0}, \Sigma = diag(2,1)$}
+	\label{fig:IFnorm}
+\end{figure}
 
 \subsection{Asymptotic and finite-sample efficiencies}
 Suppose $\hat\Sigma$ is a $\sqrt n$-consistent estimator of the population covariance matrix $\Sigma$, which permits a spectral decomposition $ \hat\Sigma = \hat\Gamma \hat\Lambda \hat\Gamma^T $, where $\hat\Gamma = (\hat\bfgamma_1,...,\hat\bfgamma_p)$. Then the asymptotic variance of the eigenvectors are (see Theorem 13.5.1 in \cite{anderson})
@@ -242,7 +265,7 @@ We now construct a sequence of positive definite matrices $\{A_k (B_k+C_k) : k \
 $$ A_k = \frac{1+M}{k}, \quad B_k = \sqrt N_k \left[ \frac{1}{N_k} \sum_{i=1}^{N_k} \left\{ SS(\bfx_i; \hat\bfmu_{N_k}) - SS(\bfx_i; \bfmu) \right\} \right] $$
 $$ \quad C_k = \sqrt N_k \left[ \frac{1}{N_k} \sum_{i=1}^{N_k} SS(\bfx_i; \bfmu) \right] $$
 
-where $N_k \in \mathbb N$ gives the relation (\ref{equation:lemma1eq}) in place of $N$ when we take $\epsilon = \delta  =1/k$. Under conditions $ E\|\bfx - \bfmu\|^{-3/2} < \infty $ and $\sqrt n (\hat\bfmu_n - \bfmu) = O_P(1)$, the sample sign covariance matrix converges in probability to its population version \citep{durre14}, hence $B_k \stackrel{P}{\rightarrow} 0$. Now by Slutsky's theorem, $A_k (B_k+C_k) \stackrel{P}{\rightarrow} 0$. Finally, for any $\epsilon_1 > 0$, $ P(S_{N_k} > \epsilon_1) < P(A_k B_k > \epsilon_1)$, hence the subsequence $\{S_{N_k}\} \stackrel{P}{\rightarrow} 0$. Since the main sequence $\{S_k\}$ is bounded below by 0, we have the needed.
+where $N_k \in \mathbb N$ gives the relation (\ref{equation:lemma1eq}) in place of $N$ when we take $\epsilon = \delta  =1/k$. Under conditions $ E\|\bfx - \bfmu\|^{-3/2} < \infty $ and $\sqrt n (\hat\bfmu_n - \bfmu) = O_P(1)$, the sample sign covariance matrix with unknown location parameter $\hat\bfmu_n$ has the same asymptotic distribution as the same with known location $\bfmu$ \citep{durre14}, hence $B_k \stackrel{P}{\rightarrow} 0$. Now by Slutsky's theorem, $A_k (B_k+C_k) \stackrel{P}{\rightarrow} 0$. Finally, for any $\epsilon_1 > 0$, $ P(S_{N_k} > \epsilon_1) < P(A_k B_k > \epsilon_1)$, hence the subsequence $\{S_{N_k}\} \stackrel{P}{\rightarrow} 0$. Since the main sequence $\{S_k\}$ is bounded below by 0, we have the needed.
 \end{proof}
 
 \begin{proof}[\textbf{Proof of Theorem \ref{Theorem:rootn}}]
