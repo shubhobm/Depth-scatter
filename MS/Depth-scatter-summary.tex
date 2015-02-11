@@ -26,7 +26,7 @@
 \maketitle
 
 Abstract:
-Analyzing principal components for multivariate data from its spatial sign covariance matrix (SCM) has been proposed as a computationally simple and robust alternative to normal PCA, but it suffers from poor efficiency properties and is actually inadmissible with respect to the maximum likelihood estimator. Here we use data depth-based spatial ranks in place of spatial signs to obtain the orthogonally equivariant Depth Covariance Matrix (DCM) and use its eigenvector estimates for PCA. We derive asymptotic properties of the sample DCM and influence functions of its eigenvectors. The shape of these influence functions indicate good efficiency properties compared to the SCM. Finite sample simulation studies show that principal components of the sample DCM are robust with respect to deviations from normality and infinitesimal contamination, as well as are more efficient than the SCM.
+Analyzing principal components for multivariate data from its spatial sign covariance matrix (SCM) has been proposed as a computationally simple and robust alternative to normal PCA, but it suffers from poor efficiency properties and is actually inadmissible with respect to the maximum likelihood estimator. Here we use data depth-based spatial ranks in place of spatial signs to obtain the orthogonally equivariant Depth Covariance Matrix (DCM) and use its eigenvector estimates for PCA. We derive asymptotic properties of the sample DCM and influence functions of its eigenvectors. The shape of these influence functions indicate good efficiency properties compared to the SCM. Finite sample simulation studies show that principal components of the sample DCM are robust with respect to deviations from normality and infinitesimal contamination, as well as are more efficient than the SCM and its affine equivariant version, Tyler's shape matrix.
 
 Keywords:
 Data depth; Principal components analysis; Robustness; Sign covariance matrix; Multivariate ranking
@@ -42,7 +42,7 @@ Consider a vector-valued random variable $\bfX \in \mathbb{R}^p$ that follows an
 $$ \bfS(\bfx) = \begin{cases} \bfx\| \bfx \|^{-1} \quad \mbox{if }\bfx \neq \bf0\\
 \bf0 \quad \mbox{if }\bfx = \bf0 \end{cases} $$
 
-The sign transformation is rotation equivariant, in the sense that $ \bfS(P \bfx) = P\bfx/\| P \bfx \| = P\bfx/\| \bfx \| = P \bfS(\bfx)$ for any orthogonal matrix $P$. The transformed random variable $\tilde \bfX$ can be seen as the multivariate rank corresponding to $\bfX$ (e.g. \cite{serfling2006}).
+The sign transformation is rotation equivariant, in the sense that $ \bfS(P \bfx) = P\bfx/\| P \bfx \| = P\bfx/\| \bfx \| = P \bfS(\bfx)$ for any orthogonal matrix $P$. The transformed random variable $\tilde \bfX$ can be seen as the multivariate rank corresponding to $\bfX$ (e.g. \cite{serfling2006}). Figure \ref{fig:rankplot} gives an idea of how $\tilde \bfX$ is distributed when $\bfX$ has a bivariate normal distribution. Compared to the spatial sign, which are distributed on the surface of $p$-dimensional unit ball centered at $\bfmu$, these spatial ranks have the same direction as original data and reside \textit{inside} the $p$-dimensional ball around $\bfmu$ that has radius $M_D(F)$ (which, for the case of halfspace depth, equals 0.5).
 
 \begin{figure}[t]
 	\captionsetup{singlelinecheck=off}
@@ -52,7 +52,7 @@ The sign transformation is rotation equivariant, in the sense that $ \bfS(P \bfx
 	\label{fig:rankplot}
 \end{figure}
 
-Now, consider the spectral decomposition of the covariance matrix: $\Sigma = \Gamma\Lambda\Gamma^T$, $\Gamma$ being orthogonal and $\Lambda$ diagonal with positive diagonal elements. Also normalize the original random variable as $\bfz = \Gamma^T\Lambda^{-1/2} (\bfx - \bfmu)$. In this setup, we can represent the transformed random variable as
+Now consider the spectral decomposition for the covariance matrix of $F$: $\Sigma = \Gamma\Lambda\Gamma^T$, $\Gamma$ being orthogonal and $\Lambda$ diagonal with positive diagonal elements. Also normalize the original random variable as $\bfz = \Gamma^T\Lambda^{-1/2} (\bfx - \bfmu)$. In this setup, we can represent the transformed random variable as
 \begin{eqnarray*}
 \tilde \bfx &=& \tilde D_{\bfX} (\bfx) \bfS(\bfX - \bfmu)\\
 &=& \tilde D_{\Gamma\Lambda^{1/2}\bfZ + \bfmu} (\Gamma\Lambda^{1/2} \bfz + \bfmu). \bfS(\Gamma\Lambda^{1/2} \bfz)\\
@@ -175,16 +175,16 @@ IF(\bfx_0; \hat\bfgamma_{D,i}, F) &=& \sum_{k=1; k \neq i}^p \frac{1}{\lambda_{D
 
 where $\Gamma^T \Lambda^{-1/2} (\bfx_0 - \bfmu) = \bfz_0 = (z_{01},...,z_{0p})^T$. Clearly this influence function will be bounded, which indicates good robustness properties of principal components. Moreover, since the htped function takes small values for points close to the center of the distribution, it does not suffer from the inlier effect that is typical of the SCM and Tyler's shape matrix. The influence function for the $i^\text{th}$ eigenvector estimates of these two matrices (say $\hat\bfgamma_{S,i}$ and $\hat\bfgamma_{T,i}$, respectively) are as follows:
 \begin{eqnarray*}
-\quad IF(\bfx_0; \hat \bfgamma_{S,i}, F) &=& \sum_{k=1; k \neq i}^p \frac{\sqrt{\lambda_i \lambda_k}}{\lambda_{S,i} - \lambda_{S,k}}. \frac{z_{0i} z_{0k}}{\bfz_0^T \bfz_0} \bfgamma_k, \text{ with } \lambda_{S,i} = E_\bfZ \left( \frac{\lambda_i z_i^2}{\sum_{j=1}^p \lambda_j z_j^2} \right) \quad \\
+\quad IF(\bfx_0; \hat \bfgamma_{S,i}, F) &=& \sum_{k=1; k \neq i}^p \frac{\sqrt{\lambda_i \lambda_k}}{\lambda_{S,i} - \lambda_{S,k}}. \frac{z_{0i} z_{0k}}{\bfz_0^T \Lambda \bfz_0} \bfgamma_k, \text{ with } \lambda_{S,i} = E_\bfZ \left( \frac{\lambda_i z_i^2}{\sum_{j=1}^p \lambda_j z_j^2} \right) \quad \\
 IF(\bfx_0; \hat \bfgamma_{T,i}, F) &=& (p+2) \sum_{k=1; k \neq i}^p \frac{\sqrt{\lambda_i \lambda_k}}{\lambda_i - \lambda_k}. \frac{z_{0i} z_{0k}}{\bfz_0^T \bfz_0} \bfgamma_k \quad 
 \end{eqnarray*}
 
-for $i = 1,2$. In Figure \ref{fig:IFnorm} we consider first eigenvectors of different scatter estimates for the $\mathcal{N}_2((0,0)^T, diag(2,1))$ and plot norms of these influence functions for different values of $\bfx_0$. The plots for SCM and Tyler's shape matrix demonstrate the 'inlier effect', i.e. points close to symmetry center and the center itself having high influence. The influence function for the sample covariance matrix is obtained by replacing $(p+2)$ by $\| \bfz_0 \|^2$ in the expression of $IF(\bfx_0; \hat \bfgamma_{T,i}, F)$ above, hence is unbounded and the corresponding eigenvector estimators are not robust. In comparison, the DCM with respect to Tukey's halfspace depth has a bounded influence function as well as small values of the influence function at 'deep' points.
+for $i = 1,2$. In Figure \ref{fig:IFnorm} we consider first eigenvectors of different scatter estimates for the $\mathcal{N}_2((0,0)^T, diag(2,1))$ and plot norms of these influence functions for different values of $\bfx_0$. The plots for SCM and Tyler's shape matrix demonstrate the 'inlier effect', i.e. points close to symmetry center and the center itself having high influence. The influence function for the sample covariance matrix is obtained by replacing $(p+2)$ by $\| \bfz_0 \|^2$ in the expression of $IF(\bfx_0; \hat \bfgamma_{T,i}, F)$ above, hence is unbounded and the corresponding eigenvector estimators are not robust. In comparison, all three DCMs considered here have a bounded influence function as well as small values of the influence function at 'deep' points.
 
-\begin{figure}[t]
+\begin{figure}[]
 	\centering
-		\includegraphics[height=12cm]{../Codes/IFnorm.png}
-	\caption{Plot of the norm of influence function for first eigenvector of (a) sample covariance matrix, (b) SCM, (c) Tyler's scatter matrix and (d) Halfspace-DCM, for a bivariate normal distribution with $\bfmu = {\bf 0}, \Sigma = diag(2,1)$}
+		\includegraphics[width=12cm]{../Codes/IFnorm.png}
+	\caption{Plot of the norm of influence function for first eigenvector of (a) sample covariance matrix, (b) SCM, (c) Tyler's scatter matrix and DCMs for (d) Halfspace depth, (e) Mahalanobis depth, (f) Projection depth for a bivariate normal distribution with $\bfmu = {\bf 0}, \Sigma = diag(2,1)$}
 	\label{fig:IFnorm}
 \end{figure}
 
@@ -196,16 +196,16 @@ AVar(\sqrt n\hat \bfgamma_i) = \sum_{k=1; k \neq i}^p \frac{\lambda_i \lambda_k}
 
 the asymptotic relative efficiencies of eigenvectors from the sample DCM with respect to the sample covariance matrix can now be derived using (\ref{equation:covevEq}) above and (\ref{equation:DevEq}) from Corollary \ref{Corollary:eigendist}:
 \begin{eqnarray*}
-ARE(\hat\bfgamma^D_i, \hat\bfgamma_i; F) &=& \frac{Trace( AVar(\sqrt n\hat \bfgamma^D_i))}{Trace( AVar(\sqrt n\hat \bfgamma_i))}\\
-&=& \left[\sum_{k=1; k \neq i}^p \frac{\lambda_i \lambda_k}{(\lambda_i - \lambda_k)^2} \right]^{-1} \left[ \sum_{k=1; k \neq i}^p \frac{\lambda_i \lambda_k }{(\lambda_{D,s,i} - \lambda_{D,S,k})^2} E \left( \frac{(\tilde D_\bfZ (\bfz))^4 z_i^2 z_k^2}{(\bfz^T \Lambda \bfz)^2} \right) \right]
+ARE(\hat\bfgamma^D_i, \hat\bfgamma_i; F) &=& \frac{Trace( AVar(\sqrt n\hat \bfgamma_i))}{Trace( AVar(\sqrt n\hat \bfgamma^D_i))}\\
+&=& \left[\sum_{k=1; k \neq i}^p \frac{\lambda_i \lambda_k}{(\lambda_i - \lambda_k)^2} \right] \left[ \sum_{k=1; k \neq i}^p \frac{\lambda_i \lambda_k }{(\lambda_{D,s,i} - \lambda_{D,S,k})^2} E \left( \frac{(\tilde D_\bfZ (\bfz))^4 z_i^2 z_k^2}{(\bfz^T \Lambda \bfz)^2} \right) \right]^{-1}
 \end{eqnarray*}
 
 For 2 dimensions, this expression can be somewhat simplified. Suppose the two eigenvalues are $\lambda$ and $\rho\lambda$. In that case the eigenvalues of the DCM are
-$$ \lambda_{D,S,1} = E \left( \frac{(D_\bfZ(\bfz))^2 z_1^2}{z_1^2 + \rho z_2^2} \right), \quad
-\lambda_{D,S,2} = E \left( \frac{(D_\bfZ(\bfz))^2 \rho z_2^2}{z_1^2 + \rho z_2^2} \right) $$
+$$ \lambda_{D,S,1} = E \left( \frac{(\tilde D_\bfZ(\bfz))^2 z_1^2}{z_1^2 + \rho z_2^2} \right), \quad
+\lambda_{D,S,2} = E \left( \frac{(\tilde D_\bfZ(\bfz))^2 \rho z_2^2}{z_1^2 + \rho z_2^2} \right) $$
 
 and by simple algebra we get
-$$ ARE(\hat\bfgamma^D_1, \hat\bfgamma_1; F) = ARE(\hat\bfgamma^D_2, \hat\bfgamma_2; F) = (1-\rho)^2 \frac{E \left( \frac{(D_\bfZ(\bfz))^4 z_1^2z_2^2}{(z_1^2 + \rho z_2^2)^2}\right)}{E^2 \left( \frac{(D_\bfZ(\bfz))^2 (z_1^2 - \rho z_2^2)}{(z_1^2 + \rho z_2^2)} \right)} $$
+$$ ARE(\hat\bfgamma^D_1, \hat\bfgamma_1; F) = ARE(\hat\bfgamma^D_2, \hat\bfgamma_2; F) = \frac{1}{(1-\rho)^2} \frac{E^2 \left( \frac{(\tilde D_\bfZ(\bfz))^2 (z_1^2 - \rho z_2^2)}{(z_1^2 + \rho z_2^2)} \right)}{E \left( \frac{(\tilde D_\bfZ(\bfz))^4 z_1^2z_2^2}{(z_1^2 + \rho z_2^2)^2}\right)} $$
 
 \section*{Appendix A: \textbf{Form of $V_{D,S}(F)$}}
 First observe that for $F$ having covariance matrix $\Sigma = \Gamma\Lambda\Gamma^T$,

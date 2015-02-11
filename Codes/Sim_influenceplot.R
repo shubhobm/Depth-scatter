@@ -3,8 +3,46 @@
 setwd("C:/Study/My projects/Depth-scatter/Codes")
 rm(list=ls());
 source('misc_functions.R')
-library(parallel)
-library(doSNOW)
+
+## Functions
+# DCM plots for different types of depth
+plot.IFnorm = function(X, grid, depth, ...){
+  require(fda.usc)
+  
+  # get depth values
+  if(depth=='HS'){
+    DX = mdepth.HS(X,X)$dep
+  }
+  else if(depth=='MhD'){
+    DX = mdepth.MhD(X,X)$dep
+  }
+  else {
+    DX = mdepth.RP(X,X)$dep
+  }
+    
+  # get eigenvalues of DCM
+  DX = max(DX) - DX
+  lamDS = colMeans((DX^2/sum.lam.Zsq) * lam.Zsq)
+  
+  # get htped at grid points
+  if(depth=='HS'){
+    Dgrid = mdepth.HS(grid,X)$dep
+  }
+  else if(depth=='MhD'){
+    Dgrid = mdepth.MhD(grid,X)$dep
+  }
+  else {
+    Dgrid = mdepth.RP(grid,X)$dep
+  }
+  Dgrid = max(Dgrid) - Dgrid
+  
+  # get norms of influence fns for eigenvectors
+  mult = sqrt(lam[1]*lam[2])/(lamDS[1] - lamDS[2])
+  IFnorm.D = abs(mult * xygrid[,1] * xygrid[,2] * Dgrid^2 / diag(xygrid %*% Sig %*% t(xygrid)))
+  
+  # plot result
+  persp(pts, pts, matrix(IFnorm.D, nrow=lengrid, byrow=T), ...)
+}
 
 ## Scatterplot of data and D-rank
 n = 1e3
@@ -29,7 +67,7 @@ Z = matrix(rnorm(1e3),ncol=2)
 X = Z %*% sqrt(Sig)
 
 # make grid of points
-pts = seq(-2, 2, by=.1)
+pts = seq(-3, 3, by=.2)
 lengrid = length(pts)
 xcoord = rep(pts, rep(lengrid,lengrid))
 ycoord = rep(pts, lengrid)
@@ -37,7 +75,7 @@ xygrid = cbind(xcoord,ycoord)
 rm(xcoord,ycoord)
 
 default = par()
-par(mfrow=c(2,2), mai=rep(.5,4))
+par(mfrow=c(3,2), mai=rep(.5,4))
 # Sample covariance matrix
 r = sqrt(rowSums(xygrid^2))
 Ugrid = xygrid / r
@@ -73,23 +111,29 @@ persp(pts, pts, matrix(IFnorm.tyler, nrow=lengrid, byrow=T),
       theta=45, phi=45, col=gray(.9), border=gray(.3))
 
 # Influence fn plot for DCM
-# get eigenvalues of DCM
-DZ = EPQD(Z, Z)[,3]
-DZ = max(Z) - Z
-lamDS = colMeans((DZ^2/sum.lam.Zsq) * lam.Zsq)
 
-# get htped at grid points
-Dgrid = EPQD(X, xygrid)[,3]
-Dgrid = max(Dgrid) - Dgrid
+# Tukey's halfspace depth
+plot.IFnorm(X, xygrid, 'HS',
+            main="(d)", xlab="x1", ylab="x2", zlab="IF(x0)",
+            ticktype="detailed", nticks=3,
+            theta=45, phi=45, col=gray(.9), border=gray(.3))
 
-# get norms of influence fns for eigenvectors
-mult = sqrt(lam[1]*lam[2])/(lamDS[1] - lamDS[2])
-IFnorm.D = abs(mult * xygrid[,1] * xygrid[,2] * Dgrid^2 / diag(xygrid %*% Sig %*% t(xygrid)))
+# Mahalanobis depth
+plot.IFnorm(X, xygrid, 'MhD',
+            main="(e)", xlab="x1", ylab="x2", zlab="IF(x0)",
+            ticktype="detailed", nticks=3,
+            theta=45, phi=45, col=gray(.9), border=gray(.3))
 
-# plot result
-persp(pts, pts, matrix(IFnorm.D, nrow=lengrid, byrow=T),
-      main="(d)", xlab="x1", ylab="x2", zlab="IF(x0)",
-      ticktype="detailed", nticks=3,
-      theta=45, phi=45, col=gray(.9), border=gray(.3))
+# Zuo's projection depth
+plot.IFnorm(X, xygrid, 'RP',
+            main="(f)", xlab="x1", ylab="x2", zlab="IF(x0)",
+            ticktype="detailed", nticks=3,
+            theta=45, phi=45, col=gray(.9), border=gray(.3))
 
 par(default)
+
+# persp(pts, pts, matrix(mdepth.HS(xygrid,X)$dep, nrow=lengrid, byrow=T),
+#       main="(a)", xlab="x1", ylab="x2", zlab="IF(x0)",
+#       ticktype="detailed", nticks=3,
+#       theta=45, phi=45, col=gray(.9), border=gray(.3))
+

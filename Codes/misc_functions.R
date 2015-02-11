@@ -46,17 +46,13 @@ EPQD = function(X, grid, nu=1e3){
 }
 
 # compute Tyler's shape matrix, optionally with depth weights
-TylerSig = function(X, tol=1e-5, maxit=100, depth=F){
+TylerSig = function(X, tol=1e-5, maxit=100, weight=NULL){
   n = nrow(X); p = ncol(X)
   iSig = diag(rep(1,p))
   
   # whether to use depth weights
-  if(depth){
-    mult = EPQD(X,X)[,p+1]
-    mult = max(mult) - mult
-  }
-  else{
-    mult = rep(1,n)
+  if(is.null(weight)){
+    weight = rep(1,n)
   }
   
   for(i in 1:maxit){
@@ -64,7 +60,7 @@ TylerSig = function(X, tol=1e-5, maxit=100, depth=F){
     inv.iSig = solve(iSig)
     for(j in 1:n){
       xj = as.matrix(X[j,])
-      iiSig = iiSig + mult[j]^2 * (xj %*% t(xj))/ as.numeric(t(xj) %*% inv.iSig %*% xj)
+      iiSig = iiSig + weight[j]^2 * (xj %*% t(xj))/ as.numeric(t(xj) %*% inv.iSig %*% xj)
     }
     
     iiSig = iiSig/det(iiSig)^(1/p)
