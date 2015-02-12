@@ -20,7 +20,7 @@ ARE.norm = function(rho, depth, ns=1e4){
     DZ = mdepth.RP(Z,Z)$dep
   }
   DZ = mdepth.RP(Z,Z)$dep
-  DZ = (max(DZ) - DZ)
+  DZ = max(DZ) - DZ
   
   
   DZ=1
@@ -36,7 +36,7 @@ ARE.norm = function(rho, depth, ns=1e4){
 }
 
 ARE.norm(.5, 'HS', ns=1e3)
-ARE.norm(.5, 'MhD', ns=1e4)
+ARE.norm(.25, 'MhD', ns=1e4)
 ARE.norm(.5, 'RP', ns=1e4)
 
 # Z = matrix(rnorm(2*1e4), ncol=2)

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.20)  10 FEB 2015 22:06
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.20)  11 FEB 2015 22:32
 entering extended mode
 **Depth-scatter-summary.tex
 ("C:\Study\My projects\Depth-scatter\MS\Depth-scatter-summary.tex"
@@ -402,7 +402,7 @@ n/12 x\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 P\OT1/cmr/bx/n/12 x\OML/cmm/m/it/12
 cmr/m/n/12 =$
  []
 
-<../Codes/rankplot.png, id=49, 553.31718pt x 277.035pt>
+<../Codes/rankplot.png, id=53, 553.31718pt x 277.035pt>
 File: ../Codes/rankplot.png Graphic file (type png)
 
 <use ../Codes/rankplot.png>
@@ -433,7 +433,7 @@ LaTeX Warning: Command \l invalid in math mode on input line 149.
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 184.
 
-<../Codes/IFnorm.png, id=163, 752.8125pt x 1003.75pt>
+<../Codes/IFnorm.png, id=167, 752.8125pt x 1003.75pt>
 File: ../Codes/IFnorm.png Graphic file (type png)
 
 <use ../Codes/IFnorm.png>
@@ -445,64 +445,90 @@ Overfull \hbox (5.31403pt too wide) in alignment at lines 198--201
  []
 
 [10] [11 <C:/Study/My projects/Depth-scatter/Codes/IFnorm.png>]
-Overfull \hbox (26.94261pt too wide) in alignment at lines 214--218
+
+LaTeX Warning: Reference `table:AREtable' on page 12 undefined on input line 21
+0.
+
+[12]
+
+LaTeX Warning: Reference `table:FSEtable3' on page 13 undefined on input line 2
+24.
+
+
+LaTeX Warning: Reference `table:FSEtable5' on page 13 undefined on input line 2
+24.
+
+
+Overfull \hbox (30.55545pt too wide) in paragraph at lines 229--263
+ [] 
+ []
+
+[13] [14]
+Overfull \hbox (26.94261pt too wide) in alignment at lines 275--279
  [][][] []
  []
 
-[12]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 228.
+[15]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 289.
 
  ("C:\Study\LaTeX\MikTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 228.
- [13] [14] [15]
-Overfull \hbox (2.63693pt too wide) in paragraph at lines 309--310
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 289.
+ [16] [17] [18]
+Overfull \hbox (2.63693pt too wide) in paragraph at lines 370--371
  [][] \OT1/cmr/m/n/12 For the on-diagonal el-e-ments of $[](\OML/cmm/m/it/12 F[
 ]\OT1/cmr/m/n/12 )$ The-o-rem []4.3[] gives us $[][](\OML/cmm/m/it/12 F[]\OT1/c
 mr/m/n/12 ) = [][](\OML/cmm/m/it/12 F[]\OT1/cmr/m/n/12 )$
  []
 
-[16] ("C:\Study\My projects\Depth-scatter\MS\Depth-scatter-summary.bbl"
-[17])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 322.
- [18]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 322.
+("C:\Study\My projects\Depth-scatter\MS\Depth-scatter-summary.bbl" [19]
+[20])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 383.
+ [21]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 383.
  ("C:\Study\My projects\Depth-scatter\MS\Depth-scatter-summary.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 322.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 322.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 383.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 383.
 Package rerunfilecheck Info: File `Depth-scatter-summary.out' has not changed.
-(rerunfilecheck)             Checksum: 985C92DABE65F8F4A658AB042832B9F8;595.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 322.
+(rerunfilecheck)             Checksum: 3536E6A35A93CEE18AEEBF4E2CE20806;642.
+
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 383.
  ) 
 Here is how much of TeX's memory you used:
- 7858 strings out of 493921
- 114045 string characters out of 3148084
- 201860 words of memory out of 3000000
- 10980 multiletter control sequences out of 15000+200000
- 17827 words of font info for 66 fonts, out of 3000000 for 9000
+ 7884 strings out of 493921
+ 114344 string characters out of 3148084
+ 211000 words of memory out of 3000000
+ 10996 multiletter control sequences out of 15000+200000
+ 19091 words of font info for 71 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 36i,14n,38p,1176b,438s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,14n,38p,1176b,450s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Stud
 y/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/Study/LaTeX/Mik
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Study/LaTeX/MikTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1
 /public/amsfonts/cm/cmex10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmmi12.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmmi6.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
-C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Study/
-LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb><C:/Study/LaTeX
-/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Study/LaTeX/MikTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmr6.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmr8.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cms
-y10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:
-/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Study/LaT
-eX/MikTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Depth-scatter-summary.pdf (18 pages, 327281 bytes).
+sfonts/cm/cmmi10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmmi12.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb>
+<C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Study/L
+aTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Study/LaTeX/MikT
+eX 2.9/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb><C:/Study/LaTeX/MikTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmr12.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmr17.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmr6.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:
+/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Study/LaTeX
+/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Study/LaTeX/MikTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmti12.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/
+amsfonts/symbols/msbm10.pfb>
+Output written on Depth-scatter-summary.pdf (21 pages, 369191 bytes).
 PDF statistics:
- 316 PDF objects out of 1000 (max. 8388607)
- 70 named destinations out of 1000 (max. 500000)
- 83 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 352 PDF objects out of 1000 (max. 8388607)
+ 76 named destinations out of 1000 (max. 500000)
+ 91 words of extra memory for PDF output out of 10000 (max. 10000000)
 

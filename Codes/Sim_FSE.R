@@ -45,15 +45,15 @@ FSE.norm = function(n, p, iter=1e3, ncores=detectCores()){
       
       # PCA on DCM and depth-weighted tyler's scatter
       # Tukey's depth
-      #idep = mdepth.HS(iX,iX)$dep
+      idep = mdepth.HS(iX,iX)$dep
       #idep = EPQD(iX,iX)[,p+1]
-      #idep = max(idep) - idep
-      idep=1
-      iXd = iS
+      idep = max(idep) - idep
+      #idep=1
+      iXd = iS * idep
       iPdepth = princomp(iXd)
       iv[4] = abs(sum(v * iPdepth$loadings[,1]))
       
-      Td = TylerSig(iX, weight=NULL)
+      Td = TylerSig(iX, weight=idep)
       iv[5] = abs(sum(v * eigen(Td)$vectors[,1]))
       
       # Mahalanobis depth
@@ -180,40 +180,84 @@ FSE.t = function(n, p, df, iter=1e3, ncores=detectCores()){
 }
 
 
-n.vec = c(20,40,60,100,150,200,250,300)
-system.time(norm.table <- FSE.norm(n.vec, 2, 1e3))
+# n.vec = c(20,40,60,100,150,200,250,300)
+# system.time(norm.table <- FSE.norm(n.vec, 2, 1e3))
+# m5 = 1
+# plot(norm.table[,1]~n.vec, type='b', lty=2, ylim=c(0,m5+.1),
+#      xlab="sample size", ylab="Efficiency")
+# lines(norm.table[,2]~n.vec, type='b', lty=1)
+# lines(norm.table[,3]~n.vec, type='b', lty=2, pch=2, col='red')
+# lines(norm.table[,4]~n.vec, type='b', lty=1, pch=2, col='red')
+# lines(norm.table[,5]~n.vec, type='b', lty=2, pch=3, col='blue')
+# lines(norm.table[,6]~n.vec, type='b', lty=1, pch=3, col='blue')
+# lines(norm.table[,7]~n.vec, type='b', lty=2, pch=4, col='darkgreen')
+# lines(norm.table[,8]~n.vec, type='b', lty=1, pch=4, col='darkgreen')
+
+
+# For p=2
+n.vec = c(20,50,100,300,500)
+system.time(norm.table <- FSE.norm(n.vec, 2, 1e3, ncores=6))
 norm.table
 
-system.time(t5.table <- FSE.t(n.vec, 2, df=5, 1e3))
-m5 = 1
-plot(norm.table[,1]~n.vec, type='b', lty=2, ylim=c(0,m5+.1),
-     xlab="sample size", ylab="Efficiency")
-lines(norm.table[,2]~n.vec, type='b', lty=1)
-lines(norm.table[,3]~n.vec, type='b', lty=2, pch=2, col='red')
-lines(norm.table[,4]~n.vec, type='b', lty=1, pch=2, col='red')
-lines(norm.table[,5]~n.vec, type='b', lty=2, pch=3, col='blue')
-lines(norm.table[,6]~n.vec, type='b', lty=1, pch=3, col='blue')
-lines(norm.table[,7]~n.vec, type='b', lty=2, pch=4, col='darkgreen')
-lines(norm.table[,8]~n.vec, type='b', lty=1, pch=4, col='darkgreen')
+system.time(t5.table <- FSE.t(n.vec, 2, df=5, 1e3, ncores=6))
+t5.table
 
-system.time(t6.table <- FSE.t(n.vec, 2, df=6, 1e3))
-m6 = max(t6.table)
-plot(t6.table[,1]~n.vec, type='b', lty=2, ylim=c(0,m6+.1),
-     xlab="sample size", ylab="Efficiency")
-lines(t6.table[,2]~n.vec, type='b', lty=1)
-lines(t6.table[,3]~n.vec, type='b', lty=2, pch=2, col='red')
-lines(t6.table[,4]~n.vec, type='b', lty=1, pch=2, col='red')
-lines(t6.table[,5]~n.vec, type='b', lty=2, pch=3, col='blue')
-lines(t6.table[,6]~n.vec, type='b', lty=1, pch=3, col='blue')
-lines(t6.table[,7]~n.vec, type='b', lty=2, pch=4, col='darkgreen')
-lines(t6.table[,8]~n.vec, type='b', lty=1, pch=4, col='darkgreen')
+system.time(t6.table <- FSE.t(n.vec, 2, df=6, 1e3, ncores=6))
+t6.table
 
-
-system.time(t10.table <- FSE.t(c(20,50,100,300), 2, df=10, 1e3))
+system.time(t10.table <- FSE.t(n.vec, 2, df=10, 1e3, ncores=6))
 t10.table
 
-system.time(t15.table <- FSE.t(c(20,50,100,300), 2, df=15, 1e3))
+system.time(t15.table <- FSE.t(n.vec, 2, df=15, 1e3, ncores=6))
 t15.table
 
-system.time(t25.table <- FSE.t(c(20,50,100,300), 2, df=25, 1e3))
+system.time(t25.table <- FSE.t(n.vec, 2, df=25, 1e3, ncores=6))
 t25.table
+
+# For p=3
+n.vec = c(20,50,100,300,500)
+system.time(norm.table <- FSE.norm(n.vec, 3, 1e3, ncores=6))
+norm.table
+
+system.time(t5.table <- FSE.t(n.vec, 3, df=5, 1e3, ncores=6))
+t5.table
+
+system.time(t6.table <- FSE.t(n.vec, 3, df=6, 1e3, ncores=6))
+t6.table
+
+system.time(t10.table <- FSE.t(n.vec, 3, df=10, 1e3, ncores=6))
+t10.table
+
+system.time(t15.table <- FSE.t(n.vec, 3, df=15, 1e3, ncores=6))
+t15.table
+
+system.time(t25.table <- FSE.t(n.vec, 3, df=25, 1e3, ncores=6))
+t25.table
+
+# For p=5
+n.vec = c(20,50,100,300,500)
+system.time(norm.table <- FSE.norm(n.vec, 5, 1e3, ncores=6))
+norm.table
+
+system.time(t5.table <- FSE.t(n.vec, 5, df=5, 1e3, ncores=6))
+t5.table
+
+system.time(t6.table <- FSE.t(n.vec, 5, df=6, 1e3, ncores=6))
+t6.table
+
+system.time(t10.table <- FSE.t(n.vec, 5, df=10, 1e3, ncores=6))
+t10.table
+
+system.time(t15.table <- FSE.t(n.vec, 5, df=15, 1e3, ncores=6))
+t15.table
+
+system.time(t25.table <- FSE.t(n.vec, 5, df=25, 1e3, ncores=6))
+t25.table
+
+# Large sample efficiencies
+FSE.norm(1e3, 2, 1e3)
+system.time(ARE.t5 <- FSE.t(1e3, 2, df=5, 1e3, ncores=6)); ARE.t5
+system.time(ARE.t6 <- FSE.t(1e3, 2, df=6, 1e3, ncores=6)); ARE.t6
+system.time(ARE.t10 <- FSE.t(1e3, 2, df=10, 1e3, ncores=6)); ARE.t10
+system.time(ARE.t15 <- FSE.t(1e3, 2, df=15, 1e3, ncores=6)); ARE.t15
+system.time(ARE.t25 <- FSE.t(1e3, 2, df=25, 1e3, ncores=6)); ARE.t25
