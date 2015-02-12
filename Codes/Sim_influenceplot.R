@@ -45,13 +45,14 @@ plot.IFnorm = function(X, grid, depth, ...){
 }
 
 ## Scatterplot of data and D-rank
+require(fda.usc)
 n = 1e3
 set.seed(120214)
 Gamma = matrix(c(1,-1,1,1), nrow=2)/sqrt(2)
 sig = Gamma %*% diag(c(9,1)) %*% t(Gamma)
 X = my.mvrnorm(n, mu=c(0,0), Sig=2*sig)
 uX = X / sqrt(rowSums(X^2))
-dX = EPQD(X, X)[,3]
+dX = mdepth.HS(X,X)$dep
 Xrank = uX * (max(dX) - dX)
 
 par(mfrow=c(1,2))
