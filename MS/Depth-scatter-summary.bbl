@@ -1,4 +1,4 @@
-\begin{thebibliography}{16}
+\begin{thebibliography}{17}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -69,6 +69,11 @@ R.~Serfling.
 \newblock Depth {F}unctions in {N}onparametric {M}ultivariate {I}nference.
 \newblock In \emph{DIMACS {S}eries in {D}iscrete {M}athematics and
   {T}heoretical {C}omputer {S}cience}, volume~72, pages 1--16, 2006.
+
+\bibitem[Sirki\"{a} et~al.(2007)Sirki\"{a}, Taskinen, and Oja]{sirkia07}
+S.~Sirki\"{a}, S.~Taskinen, and H.~Oja.
+\newblock Symmetrised {M}-estimators of scatter.
+\newblock \emph{J. Mult. Anal.}, 98:\penalty0 1611--1629, 2007.
 
 \bibitem[Soloveychik and Wiesel(2014)]{soloveychik14}
 I.~Soloveychik and A.~Wiesel.

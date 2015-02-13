@@ -216,43 +216,38 @@ t25.table
 
 # For p=3
 n.vec = c(20,50,100,300,500)
-system.time(norm.table <- FSE.norm(n.vec, 3, 1e3, ncores=6))
-norm.table
-
-system.time(t5.table <- FSE.t(n.vec, 3, df=5, 1e3, ncores=6))
-t5.table
-
-system.time(t6.table <- FSE.t(n.vec, 3, df=6, 1e3, ncores=6))
-t6.table
-
-system.time(t10.table <- FSE.t(n.vec, 3, df=10, 1e3, ncores=6))
-t10.table
-
-system.time(t15.table <- FSE.t(n.vec, 3, df=15, 1e3, ncores=6))
-t15.table
-
+system.time(norm.table <- FSE.norm(n.vec, 3, 1e3, ncores=8))
+system.time(t5.table <- FSE.t(n.vec, 3, df=5, 1e3, ncores=8))
+system.time(t6.table <- FSE.t(n.vec, 3, df=6, 1e3, ncores=8))
+system.time(t10.table <- FSE.t(n.vec, 3, df=10, 1e3, ncores=8))
+system.time(t15.table <- FSE.t(n.vec, 3, df=15, 1e3, ncores=8))
 system.time(t25.table <- FSE.t(n.vec, 3, df=25, 1e3, ncores=6))
-t25.table
+table3 = rbind(t5.table, rep(0,8),
+               t6.table, rep(0,8),
+               t10.table, rep(0,8),
+               t15.table, rep(0,8),
+               t25.table, rep(0,8),
+               norm.table)
+table3 = table3[,c(1,2,3,5,7,4,6,8)]
+write.csv(format(round(table3, 2), nsmall=2), "table3.txt")
 
-# For p=5
+# For p=4
 n.vec = c(20,50,100,300,500)
-system.time(norm.table <- FSE.norm(n.vec, 5, 1e3, ncores=6))
-norm.table
+system.time(norm.table <- FSE.norm(n.vec, 4, 1e3, ncores=6))
+system.time(t5.table <- FSE.t(n.vec, 4, df=5, 1e3, ncores=6))
+system.time(t6.table <- FSE.t(n.vec, 4, df=6, 1e3, ncores=6))
+system.time(t10.table <- FSE.t(n.vec, 4, df=10, 1e3, ncores=6))
+system.time(t15.table <- FSE.t(n.vec, 4, df=15, 1e3, ncores=6))
+system.time(t25.table <- FSE.t(n.vec, 4, df=25, 1e3, ncores=6))
+table4 = rbind(t5.table, rep(0,8),
+               t6.table, rep(0,8), 
+               t10.table, rep(0,8),
+               t15.table, rep(0,8),
+               t25.table, rep(0,8),
+               norm.table)
+table4 = table4[,c(1,2,3,5,7,4,6,8)]
+write.csv(format(round(table4, 2), nsmall=2), "table4.txt")
 
-system.time(t5.table <- FSE.t(n.vec, 5, df=5, 1e3, ncores=6))
-t5.table
-
-system.time(t6.table <- FSE.t(n.vec, 5, df=6, 1e3, ncores=6))
-t6.table
-
-system.time(t10.table <- FSE.t(n.vec, 5, df=10, 1e3, ncores=6))
-t10.table
-
-system.time(t15.table <- FSE.t(n.vec, 5, df=15, 1e3, ncores=6))
-t15.table
-
-system.time(t25.table <- FSE.t(n.vec, 5, df=25, 1e3, ncores=6))
-t25.table
 
 # Large sample efficiencies
 FSE.norm(1e3, 2, 1e3)

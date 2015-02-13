@@ -210,7 +210,7 @@ $$ ARE(\hat\bfgamma^D_1, \hat\bfgamma_1; F) = ARE(\hat\bfgamma^D_2, \hat\bfgamma
 For $\rho=0.5$, table \ref{table:AREtable} below summarizes the ARE for first eigenvector of the SCM, Tyler's scatter matrix and DCM for 3 choices of depth function we consider, for 6 different elliptic distributions. Blah blah blah
 
 
-We now obtain finite sample efficiencies of the three DCMs as well as their depth-weighted affine equivariant counterparts by a simulation study, and compare them with the same from the SCM and Tyler's scatter matrix. We consider the same 6 elliptical distributions considered in ARE calculations above, and from every distribution draw 100 samples each for sample sizes $n = 20, 50, 100, 300, 500$. All distributions are centered at ${\bf 0}_p$, and have covariance matrix $\Sigma = diag(p,p-1,...1)$. We consider 3 choices of $p$: 2, 3 and 5.
+We now obtain finite sample efficiencies of the three DCMs as well as their depth-weighted affine equivariant counterparts by a simulation study, and compare them with the same from the SCM and Tyler's scatter matrix. We consider the same 6 elliptical distributions considered in ARE calculations above, and from every distribution draw 100 samples each for sample sizes $n = 20, 50, 100, 300, 500$. All distributions are centered at ${\bf 0}_p$, and have covariance matrix $\Sigma = diag(p,p-1,...1)$. We consider 3 choices of $p$: 2, 3 and 4.
 
 We use the concept of principal angles \citep{miao92} to find out error estimates for the first eigenvector of a scatter matrix. In our case, the first eigenvector will be
 $$ \bfgamma_1 = (1,\overbrace{0,...,0}^{p-1})^T $$
@@ -221,49 +221,146 @@ $$ MSPA(\hat \bfgamma_1) = \frac{1}{1000} \sum_{m=1}^{1000} \left( \cos^{-1} \le
 Finally, the finite sample efficiency of some eigenvector estimate $\hat\bfgamma^E_1$ relative to that obtained from the sample covariance matrix, say $\hat\bfgamma^{Cov}_1$ is obtained as:
 $$ FSE(\hat\bfgamma^E_1, \hat\bfgamma^{Cov}_1) = \frac{MSPA(\hat\bfgamma^{Cov}_1)}{MSPA(\hat\bfgamma^E_1)} $$
 
-Tables \ref{table:FSEtable2}, \ref{table:FSEtable3} and \ref{table:FSEtable5} give FSE values for $p=2,3,5$, respectively.
+Tables \ref{table:FSEtable2}, \ref{table:FSEtable3} and \ref{table:FSEtable4} give FSE values for $p=2,3,4$, respectively. In general, all the efficiencies increase with the increase in dimension, $p$. DCM-based estimators (columns 3-5 in each table) outperform SCM and Tyler's scatter matrix, and among the 3 depths considered, projection depth seems to give the best results. Its finite sample performances are better than Tyler's and Huber's M-estimate of scatter as well as their symmetrized counterparts (see Table 4 in \cite{sirkia07}, and quite close to the affine equivariant spatial sign covariance matrix (see Table 2 in \cite{ollilia03}) For $p=2$, $n=300, 500$ the first 5 columns of \ref{table:FSEtable2} approximate the asymptotic efficiencies in Table \ref{table:AREtable}. Finally, the depth-weighted iterated versions of these 3 SCMs (columns 6-8 in each table) seem to further better the performance of their corresponding orthogonal equivariant counterparts.
 
 \begin{table}
-\begin{center}
 \begin{footnotesize}
-   \begin{tabular}{l|lllll|lll}
+   \begin{tabular}{c|cc|ccc|ccc}
     \hline
-    $F$ = Bivariate $t_5$  & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
-    $n$=20                 & 0.81 & 0.82  & 0.95   & 0.95   & 0.86  & 1.01    & 0.96    & 0.89   \\
-    $n$=50                 & 0.83 & 0.87  & 1.34   & 1.30   & 1.27  & 1.41    & 1.31    & 1.33   \\
-    $n$=100                & 1.16 & 1.17  & 1.73   & 1.34   & 1.64  & 1.84    & 1.41    & 1.68   \\
-    $n$=300                & 1.17 & 1.23  & 1.76   & 1.45   & 1.76  & 1.88    & 1.49    & 1.87   \\ \hline
-    $F$ = Bivariate $t_6$  & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
-    $n$=20                 & 0.73 & 0.79  & 0.92   & 0.94   & 0.90  & 0.98    & 0.98    & 0.92   \\
-    $n$=50                 & 0.76 & 0.84  & 1.15   & 1.01   & 1.05  & 1.20    & 1.03    & 1.09   \\
-    $n$=100                & 0.86 & 0.89  & 1.31   & 1.14   & 1.37  & 1.39    & 1.19    & 1.46   \\
-    $n$=300                & 0.86 & 0.95  & 1.41   & 1.28   & 1.39  & 1.52    & 1.35    & 1.47   \\ \hline
+    $F$ = Bivariate $t_5$    & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
+    $n$=20                   & 0.84 & 0.85  & 1.03   & 1.01   & 0.97  & 1.06    & 1.03    & 0.99   \\
+    $n$=50                   & 0.86 & 0.91  & 1.22   & 1.04   & 1.11  & 1.27    & 1.05    & 1.14   \\
+    $n$=100                  & 1.08 & 1.12  & 1.62   & 1.27   & 1.61  & 1.79    & 1.35    & 1.77   \\
+    $n$=300                  & 1.12 & 1.15  & 1.84   & 1.35   & 1.73  & 1.94    & 1.38    & 1.77   \\
+    $n$=500                  & 1.31 & 1.33  & 1.89   & 1.50   & 1.90  & 1.99    & 1.56    & 1.98   \\ \hline
+    $F$ = Bivariate $t_6$    & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
+    $n$=20                   & 0.74 & 0.79  & 0.88   & 0.86   & 0.82  & 0.92    & 0.89    & 0.83   \\
+    $n$=50                   & 0.78 & 0.79  & 1.10   & 0.93   & 1.12  & 1.16    & 0.97    & 1.20   \\
+    $n$=100                  & 0.73 & 0.73  & 1.25   & 1.04   & 1.18  & 1.30    & 1.06    & 1.25   \\
+    $n$=300                  & 0.89 & 0.92  & 1.31   & 1.06   & 1.33  & 1.42    & 1.14    & 1.46   \\
+    $n$=500                  & 1.20 & 1.21  & 1.78   & 1.48   & 1.84  & 1.83    & 1.53    & 1.90   \\ \hline
     $F$ = Bivariate $t_{10}$ & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
-    $n$=20                 & 0.74 & 0.77  & 0.86   & 0.83   & 0.81  & 0.90    & 0.85    & 0.82   \\
-    $n$=50                 & 0.62 & 0.69  & 0.86   & 0.81   & 0.87  & 0.88    & 0.84    & 0.93   \\
-    $n$=100                & 0.48 & 0.52  & 0.83   & 0.72   & 0.87  & 0.86    & 0.74    & 0.93   \\
-    $n$=300                & 0.60 & 0.61  & 0.92   & 0.86   & 1.02  & 0.96    & 0.89    & 1.06   \\ \hline
+    $n$=20                   & 0.68 & 0.70  & 0.77   & 0.77   & 0.75  & 0.80    & 0.79    & 0.75   \\
+    $n$=50                   & 0.57 & 0.58  & 0.91   & 0.83   & 0.83  & 0.98    & 0.86    & 0.86   \\
+    $n$=100                  & 0.59 & 0.63  & 0.90   & 0.83   & 0.98  & 0.95    & 0.87    & 1.03   \\
+    $n$=300                  & 0.63 & 0.64  & 0.93   & 0.87   & 1.00  & 0.99    & 0.92    & 1.06   \\
+    $n$=500                  & 0.66 & 0.68  & 0.97   & 0.90   & 1.02  & 1.04    & 0.96    & 1.10   \\ \hline
     $F$ = Bivariate $t_{15}$ & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
-    $n$=20                 & ~    & ~     & ~      & ~      & ~     & ~       & ~       & ~      \\
-    $n$=50                 & ~    & ~     & ~      & ~      & ~     & ~       & ~       & ~      \\
-    $n$=100                & ~    & ~     & ~      & ~      & ~     & ~       & ~       & ~      \\
-    $n$=300                & ~    & ~     & ~      & ~      & ~     & ~       & ~       & ~      \\ \hline
+    $n$=20                   & 0.67 & 0.67  & 0.82   & 0.80   & 0.70  & 0.85    & 0.81    & 0.74   \\
+    $n$=50                   & 0.51 & 0.55  & 0.80   & 0.79   & 0.85  & 0.86    & 0.82    & 0.86   \\
+    $n$=100                  & 0.49 & 0.51  & 0.81   & 0.76   & 0.85  & 0.85    & 0.79    & 0.91   \\
+    $n$=300                  & 0.53 & 0.52  & 0.83   & 0.79   & 0.95  & 0.85    & 0.81    & 0.97   \\
+    $n$=500                  & 0.58 & 0.59  & 0.84   & 0.79   & 0.94  & 0.89    & 0.84    & 1.01   \\ \hline
     $F$ = Bivariate $t_{25}$ & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
-    $n$=20                 & ~    & ~     & ~      & ~      & ~     & ~       & ~       & ~      \\
-    $n$=50                 & ~    & ~     & ~      & ~      & ~     & ~       & ~       & ~      \\
-    $n$=100                & ~    & ~     & ~      & ~      & ~     & ~       & ~       & ~      \\
-    $n$=300                & ~    & ~     & ~      & ~      & ~     & ~       & ~       & ~      \\ \hline
-    $F$ = BVN & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
-    $n$=20                 & ~    & ~     & ~      & ~      & ~     & ~       & ~       & ~      \\
-    $n$=50                 & ~    & ~     & ~      & ~      & ~     & ~       & ~       & ~      \\
-    $n$=100                & ~    & ~     & ~      & ~      & ~     & ~       & ~       & ~      \\
-    $n$=300                & ~    & ~     & ~      & ~      & ~     & ~       & ~       & ~      \\ \hline
+    $n$=20                   & 0.65 & 0.66  & 0.73   & 0.74   & 0.73  & 0.74    & 0.76    & 0.72   \\
+    $n$=50                   & 0.44 & 0.43  & 0.72   & 0.72   & 0.76  & 0.77    & 0.77    & 0.80   \\
+    $n$=100                  & 0.48 & 0.48  & 0.78   & 0.75   & 0.82  & 0.83    & 0.80    & 0.91   \\
+    $n$=300                  & 0.51 & 0.54  & 0.78   & 0.76   & 0.87  & 0.86    & 0.83    & 0.93   \\
+    $n$=500                  & 0.52 & 0.53  & 0.81   & 0.77   & 0.87  & 0.87    & 0.83    & 0.93   \\ \hline
+    $F$ = BVN                & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
+    $n$=20                   & 0.60 & 0.62  & 0.74   & 0.76   & 0.67  & 0.78    & 0.82    & 0.68   \\
+    $n$=50                   & 0.41 & 0.44  & 0.63   & 0.63   & 0.72  & 0.68    & 0.67    & 0.79   \\
+    $n$=100                  & 0.40 & 0.40  & 0.69   & 0.68   & 0.82  & 0.73    & 0.73    & 0.89   \\
+    $n$=300                  & 0.44 & 0.47  & 0.69   & 0.66   & 0.79  & 0.74    & 0.72    & 0.86   \\
+    $n$=500                  & 0.49 & 0.50  & 0.74   & 0.70   & 0.82  & 0.79    & 0.76    & 0.90   \\ \hline
     \end{tabular}
 \end{footnotesize}
-\end{center}
 \caption{Table of Finite sample efficiencies of several scatter matrices: $p=2$}
 \label{table:FSEtable2}
 \end{table}
+
+\begin{table}
+\begin{footnotesize}
+   \begin{tabular}{c|cc|ccc|ccc}
+    \hline
+    3-variate $t_5$    & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
+    $n$=20             & 1.00 & 1.03  & 1.10   & 1.05   & 0.96  & 1.14    & 1.10    & 0.95   \\
+    $n$=50             & 1.03 & 1.07  & 1.31   & 1.21   & 1.13  & 1.30    & 1.21    & 1.12   \\
+    $n$=100            & 1.11 & 1.08  & 1.48   & 1.32   & 1.43  & 1.52    & 1.32    & 1.50   \\
+    $n$=300            & 1.57 & 1.62  & 2.16   & 1.86   & 2.04  & 2.26    & 1.92    & 2.15   \\
+    $n$=500            & 1.62 & 1.69  & 2.20   & 1.94   & 2.23  & 2.30    & 2.03    & 2.33   \\ \hline
+    3-variate $t_6$    & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
+    $n$=20             & 1.00 & 0.99  & 1.06   & 1.02   & 0.98  & 1.06    & 1.05    & 0.96   \\
+    $n$=50             & 1.03 & 1.03  & 1.24   & 1.13   & 1.03  & 1.29    & 1.21    & 1.04   \\
+    $n$=100            & 0.95 & 0.95  & 1.31   & 1.19   & 1.20  & 1.35    & 1.24    & 1.21   \\
+    $n$=300            & 1.10 & 1.13  & 1.55   & 1.31   & 1.62  & 1.61    & 1.37    & 1.64   \\
+    $n$=500            & 1.35 & 1.38  & 1.68   & 1.55   & 1.71  & 1.75    & 1.64    & 1.78   \\ \hline
+    3-variate $t_{10}$ & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
+    $n$=20             & 0.83 & 0.84  & 0.94   & 0.95   & 0.91  & 0.96    & 0.96    & 0.88   \\
+    $n$=50             & 0.84 & 0.84  & 1.04   & 0.99   & 0.96  & 1.06    & 1.01    & 0.96   \\
+    $n$=100            & 0.72 & 0.72  & 0.99   & 0.94   & 0.97  & 1.04    & 0.95    & 1.01   \\
+    $n$=300            & 0.74 & 0.77  & 0.99   & 0.96   & 1.07  & 1.05    & 1.02    & 1.13   \\
+    $n$=500            & 0.83 & 0.85  & 1.15   & 1.10   & 1.22  & 1.16    & 1.12    & 1.23   \\ \hline
+    3-variate $t_{15}$ & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
+    $n$=20             & 0.85 & 0.86  & 0.93   & 0.93   & 0.90  & 0.93    & 0.99    & 0.88   \\
+    $n$=50             & 0.69 & 0.69  & 0.84   & 0.82   & 0.88  & 0.90    & 0.89    & 0.94   \\
+    $n$=100            & 0.69 & 0.71  & 0.88   & 0.85   & 0.91  & 0.95    & 0.91    & 0.97   \\
+    $n$=300            & 0.66 & 0.67  & 0.90   & 0.88   & 0.97  & 0.93    & 0.92    & 1.03   \\
+    $n$=500            & 0.66 & 0.68  & 0.91   & 0.89   & 1.01  & 0.94    & 0.92    & 1.04   \\ \hline
+    3-variate $t_{25}$ & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
+    $n$=20             & 0.86 & 0.83  & 0.92   & 0.90   & 0.88  & 0.91    & 0.93    & 0.86   \\
+    $n$=50             & 0.75 & 0.76  & 0.94   & 0.92   & 0.92  & 1.01    & 0.97    & 0.95   \\
+    $n$=100            & 0.61 & 0.62  & 0.86   & 0.87   & 0.95  & 0.90    & 0.89    & 0.97   \\
+    $n$=300            & 0.63 & 0.64  & 0.83   & 0.80   & 0.91  & 0.86    & 0.83    & 0.96   \\
+    $n$=500            & 0.63 & 0.66  & 0.87   & 0.85   & 0.94  & 0.91    & 0.90    & 0.99   \\ \hline
+    3-variate Normal   & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
+    $n$=20             & 0.75 & 0.74  & 0.83   & 0.85   & 0.83  & 0.83    & 0.89    & 0.81   \\
+    $n$=50             & 0.68 & 0.69  & 0.85   & 0.85   & 0.91  & 0.88    & 0.87    & 0.89   \\
+    $n$=100            & 0.52 & 0.54  & 0.79   & 0.75   & 0.83  & 0.82    & 0.79    & 0.84   \\
+    $n$=300            & 0.53 & 0.55  & 0.76   & 0.76   & 0.86  & 0.81    & 0.81    & 0.91   \\
+    $n$=500            & 0.56 & 0.57  & 0.81   & 0.80   & 0.94  & 0.79    & 0.81    & 0.93   \\ \hline
+    \end{tabular}
+\end{footnotesize}
+\caption{Table of Finite sample efficiencies of several scatter matrices: $p=3$}
+\label{table:FSEtable3}
+\end{table}
+
+\begin{table}
+\begin{footnotesize}
+    \begin{tabular}{c|cc|ccc|ccc}
+    \hline
+    4-variate $t_5$    & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
+    $n$=20             & 1.04 & 1.02  & 1.10   & 1.07   & 1.02  & 1.09    & 1.07    & 0.98   \\
+    $n$=50             & 1.08 & 1.08  & 1.16   & 1.16   & 1.13  & 1.19    & 1.19    & 1.13   \\
+    $n$=100            & 1.31 & 1.31  & 1.42   & 1.38   & 1.36  & 1.46    & 1.44    & 1.36   \\
+    $n$=300            & 1.46 & 1.54  & 1.81   & 1.76   & 1.95  & 1.88    & 1.88    & 1.95   \\
+    $n$=500            & 1.92 & 1.93  & 2.23   & 2.03   & 2.31  & 2.35    & 2.19    & 2.39   \\ \hline
+    4-variate $t_6$    & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
+    $n$=20             & 1.00 & 1.05  & 1.03   & 1.05   & 1.00  & 1.04    & 1.04    & 0.95   \\
+    $n$=50             & 1.03 & 1.01  & 1.13   & 1.12   & 1.11  & 1.19    & 1.17    & 1.10   \\
+    $n$=100            & 1.08 & 1.12  & 1.25   & 1.23   & 1.27  & 1.24    & 1.25    & 1.22   \\
+    $n$=300            & 1.34 & 1.36  & 1.64   & 1.52   & 1.60  & 1.67    & 1.61    & 1.68   \\
+    $n$=500            & 1.26 & 1.34  & 1.55   & 1.49   & 1.60  & 1.65    & 1.61    & 1.69   \\ \hline
+    4-variate $t_{10}$ & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
+    $n$=20             & 0.90 & 0.89  & 0.95   & 0.98   & 0.98  & 0.96    & 1.01    & 0.95   \\
+    $n$=50             & 0.90 & 0.91  & 1.01   & 0.98   & 0.98  & 1.03    & 1.04    & 0.99   \\
+    $n$=100            & 0.87 & 0.87  & 0.93   & 0.95   & 1.01  & 0.99    & 1.01    & 1.05   \\
+    $n$=300            & 0.87 & 0.87  & 1.09   & 1.09   & 1.17  & 1.14    & 1.16    & 1.23   \\
+    $n$=500            & 0.88 & 0.92  & 1.10   & 1.10   & 1.23  & 1.19    & 1.22    & 1.29   \\ \hline
+    4-variate $t_{15}$ & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
+    $n$=20             & 0.92 & 0.90  & 0.94   & 0.94   & 0.96  & 0.95    & 0.97    & 0.89   \\
+    $n$=50             & 0.82 & 0.83  & 0.88   & 0.91   & 0.93  & 0.88    & 0.93    & 0.93   \\
+    $n$=100            & 0.84 & 0.87  & 0.92   & 0.95   & 1.00  & 0.93    & 0.96    & 1.00   \\
+    $n$=300            & 0.73 & 0.75  & 0.96   & 0.99   & 1.10  & 1.00    & 1.06    & 1.12   \\
+    $n$=500            & 0.73 & 0.76  & 0.95   & 0.96   & 1.06  & 0.94    & 0.97    & 1.06   \\ \hline
+    4-variate $t_{25}$ & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
+    $n$=20             & 0.89 & 0.92  & 0.92   & 0.92   & 0.90  & 0.96    & 0.95    & 0.89   \\
+    $n$=50             & 0.82 & 0.84  & 0.89   & 0.90   & 0.91  & 0.93    & 0.96    & 0.92   \\
+    $n$=100            & 0.77 & 0.76  & 0.90   & 0.90   & 0.96  & 0.94    & 0.98    & 1.04   \\
+    $n$=300            & 0.73 & 0.77  & 0.93   & 0.91   & 0.98  & 1.00    & 0.98    & 1.03   \\
+    $n$=500            & 0.67 & 0.71  & 0.83   & 0.83   & 0.96  & 0.88    & 0.90    & 1.00   \\ \hline
+    4-variate Normal   & SCM  & Tyler & HSD-CM & MhD-CM & PD-CM & HSD-wCM & MhD-wCM & PD-wCM \\ \hline
+    $n$=20             & 0.82 & 0.84  & 0.87   & 0.90   & 0.91  & 0.89    & 0.93    & 0.89   \\
+    $n$=50             & 0.80 & 0.81  & 0.87   & 0.88   & 0.88  & 0.88    & 0.92    & 0.88   \\
+    $n$=100            & 0.68 & 0.71  & 0.80   & 0.85   & 0.91  & 0.82    & 0.86    & 0.92   \\
+    $n$=300            & 0.61 & 0.63  & 0.82   & 0.85   & 0.93  & 0.86    & 0.91    & 0.96   \\
+    $n$=500            & 0.60 & 0.64  & 0.77   & 0.80   & 0.90  & 0.82    & 0.86    & 0.96   \\ \hline
+    \end{tabular}
+\end{footnotesize}
+\caption{Table of Finite sample efficiencies of several scatter matrices: $p=4$}
+\label{table:FSEtable4}
+\end{table}
+
 
 \section{Conclusion}
 
