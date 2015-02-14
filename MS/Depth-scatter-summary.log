@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.20)  13 FEB 2015 15:29
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.20)  13 FEB 2015 22:59
 entering extended mode
 **Depth-scatter-summary.tex
 ("C:\Study\My projects\Depth-scatter\MS\Depth-scatter-summary.tex"
@@ -402,7 +402,7 @@ n/12 x\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 P\OT1/cmr/bx/n/12 x\OML/cmm/m/it/12
 cmr/m/n/12 =$
  []
 
-<../Codes/rankplot.png, id=94, 553.31718pt x 277.035pt>
+<../Codes/rankplot.png, id=93, 553.31718pt x 277.035pt>
 File: ../Codes/rankplot.png Graphic file (type png)
 
 <use ../Codes/rankplot.png>
@@ -433,7 +433,7 @@ LaTeX Warning: Command \l invalid in math mode on input line 157.
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 192.
 
-<../Codes/IFnorm.png, id=204, 752.8125pt x 1003.75pt>
+<../Codes/IFnorm.png, id=203, 752.8125pt x 1003.75pt>
 File: ../Codes/IFnorm.png Graphic file (type png)
 
 <use ../Codes/IFnorm.png>
@@ -528,7 +528,7 @@ Here is how much of TeX's memory you used:
  11017 multiletter control sequences out of 15000+200000
  19091 words of font info for 71 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 36i,14n,38p,1176b,465s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,14n,38p,1189b,465s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Stud
 y/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/Study/LaTeX/Mik
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Study/LaTeX/MikTeX 2.9/fon
@@ -548,9 +548,9 @@ cmr6.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:
 9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmti12.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/
 amsfonts/symbols/msbm10.pfb>
-Output written on Depth-scatter-summary.pdf (26 pages, 389619 bytes).
+Output written on Depth-scatter-summary.pdf (26 pages, 389473 bytes).
 PDF statistics:
- 419 PDF objects out of 1000 (max. 8388607)
+ 418 PDF objects out of 1000 (max. 8388607)
  91 named destinations out of 1000 (max. 500000)
  107 words of extra memory for PDF output out of 10000 (max. 10000000)
 
