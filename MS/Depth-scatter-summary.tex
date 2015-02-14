@@ -27,13 +27,21 @@
 
 Abstract:
 Analyzing principal components for multivariate data from its spatial sign covariance matrix (SCM) has been proposed as a computationally simple and robust alternative to normal PCA, but it suffers from poor efficiency properties and is actually inadmissible with respect to the maximum likelihood estimator. Here we use data depth-based spatial ranks in place of spatial signs to obtain the orthogonally equivariant Depth Covariance Matrix (DCM) and use its eigenvector estimates for PCA. We derive asymptotic properties of the sample DCM and influence functions of its eigenvectors. The shape of these influence functions indicate good efficiency properties compared to the SCM. Finite sample simulation studies show that principal components of the sample DCM are robust with respect to deviations from normality and infinitesimal contamination, as well as are more efficient than the SCM and its affine equivariant version, Tyler's shape matrix.
+\vspace{.5cm}
 
 Keywords:
 Data depth; Principal components analysis; Robustness; Sign covariance matrix; Multivariate ranking
 
 \section{Introduction}
+In multivariate analysis, the study of principal components has been important because it provides a small number of uncorrelated variables from analyzing data on a potentially large number of variables, so that these new components explain most of the underlying variability in the original data. In case of multivariate normal distribution, the sample covariance matrix provides the most asymptotically efficient estimates of eigenvectors/ principal components, but it is extremely sensitive to outliers as well as relaxations of the normality assumption. To tackle this several estimators of the sample covariance matrix have been proposed which can be used for PCA. They can be roughly put into these categories: robust, breakdown point estimators that are computation-intensive \citep{rousseeuw85, maronna76}; M-estimators that are calculated by simple iterative algorithms but not necessarily high-breakdown point \citep{huber77, tyler87}; and symmetrised estomators that are highly efficient and robust to deviations from normality, but sensitive to outliers and computationally demanding \citep{dumbgen98, sirkia07}.
+
+When principal components are of interest, one can also estimate the population eigenvectors by analyzing the spatial sign of a multivariate vector: the vector divided by its magnitude, nstead of the original data, and this yields comptationally simple and high-breakdown estimates of principal components \citep{locantore99, visuri00}. Although the resulting Sign Covariance Matrix (SCM) is not affine equivariant, it orthogonal equivariance suffices for the purpose of PCA. However, the resulting estimates are not very efficient, and are in fact asymptotically inadmissible \citep{magyar14}, in the sense that there is an estimator (Tyler's scatter matrix, to be precise) that has a uniformly lower asymptotic risk than the SCM.
 
 \section{Preliminaries}
+\subsection{Spatial signs and sign covariance matrix}
+
+
+\subsection{Data depth}
 
 \section{Depth-based rank covariance matrix}
 
@@ -215,13 +223,13 @@ We now obtain finite sample efficiencies of the three DCMs as well as their dept
 We use the concept of principal angles \citep{miao92} to find out error estimates for the first eigenvector of a scatter matrix. In our case, the first eigenvector will be
 $$ \bfgamma_1 = (1,\overbrace{0,...,0}^{p-1})^T $$
 
-For an estimate of the eigenvector, say $\hat\bfgamma_1$, error in prediction is measured by the smallest angle between the two lines, i.e. $ \cos^{-1} | \bfgamma_1^T \hat\bfgamma_1 | $. A smaller absolute value of this angle is equivalent to better prediction. We repeat this 1000 times and obtain the \textbf{Mean Squared Prediction Angle}:
+For an estimate of the eigenvector, say $\hat\bfgamma_1$, error in prediction is measured by the smallest angle between the two lines, i.e. $ \cos^{-1} | \bfgamma_1^T \hat\bfgamma_1 | $. A smaller absolute value of this angle is equivalent to better prediction. We repeat this 1000 times and calculate the \textbf{Mean Squared Prediction Angle}:
 $$ MSPA(\hat \bfgamma_1) = \frac{1}{1000} \sum_{m=1}^{1000} \left( \cos^{-1} \left|\bfgamma_1^T \hat\bfgamma^{(m)}_1 \right| \right)^2 $$
 
 Finally, the finite sample efficiency of some eigenvector estimate $\hat\bfgamma^E_1$ relative to that obtained from the sample covariance matrix, say $\hat\bfgamma^{Cov}_1$ is obtained as:
 $$ FSE(\hat\bfgamma^E_1, \hat\bfgamma^{Cov}_1) = \frac{MSPA(\hat\bfgamma^{Cov}_1)}{MSPA(\hat\bfgamma^E_1)} $$
 
-Tables \ref{table:FSEtable2}, \ref{table:FSEtable3} and \ref{table:FSEtable4} give FSE values for $p=2,3,4$, respectively. In general, all the efficiencies increase with the increase in dimension, $p$. DCM-based estimators (columns 3-5 in each table) outperform SCM and Tyler's scatter matrix, and among the 3 depths considered, projection depth seems to give the best results. Its finite sample performances are better than Tyler's and Huber's M-estimate of scatter as well as their symmetrized counterparts (see Table 4 in \cite{sirkia07}, and quite close to the affine equivariant spatial sign covariance matrix (see Table 2 in \cite{ollilia03}) For $p=2$, $n=300, 500$ the first 5 columns of \ref{table:FSEtable2} approximate the asymptotic efficiencies in Table \ref{table:AREtable}. Finally, the depth-weighted iterated versions of these 3 SCMs (columns 6-8 in each table) seem to further better the performance of their corresponding orthogonal equivariant counterparts.
+Tables \ref{table:FSEtable2}, \ref{table:FSEtable3} and \ref{table:FSEtable4} give FSE values for $p=2,3,4$, respectively. In general, all the efficiencies increase with the increase in dimension, $p$. DCM-based estimators (HSD-CM, MhD-CM, PD-CM: columns 3-5 in each table) outperform SCM and Tyler's scatter matrix, and among the 3 depths considered, projection depth seems to give the best results. Its finite sample performances are better than Tyler's and Huber's M-estimators of scatter as well as their symmetrized counterparts (see Table 4 in \cite{sirkia07}, and quite close to the affine equivariant spatial sign covariance matrix (see Table 2 in \cite{ollilia03}) For $p=2$, $n=300, 500$ the first 5 columns of Table \ref{table:FSEtable2} approximate the asymptotic efficiencies in Table \ref{table:AREtable}. Finally, the depth-weighted iterated versions of these 3 SCMs ((HSD-wCM, MhD-wCM, PD-wCM: columns 6-8 in each table) seem to further better the performance of their corresponding orthogonal equivariant counterparts.
 
 \begin{table}
 \begin{footnotesize}
@@ -402,6 +410,13 @@ $$ ACov(\sqrt n \hat S^D_{ab} (F_\Lambda), \sqrt n \hat S^D_{cc} (F_\Lambda)) = 
 
 \section*{Appendix B: Proofs}
 \begin{proof}[\textbf{Proof of Theorem  \ref{Theorem:covform}}]
+The proof follows directly from writing out the expression of $Cov ( \tilde \bfX)$:
+\begin{eqnarray*}
+Cov(\tilde\bfX) &=& E(\tilde\bfX \tilde\bfX^T) - E(\tilde\bfX) E(\tilde\bfX)^T\\
+&=& \Gamma . E \left[ (\tilde D_\bfZ(\bfz))^2 \frac{\|\bfz\|^2}{\| \Lambda^{1/2}\bfz\|} \Lambda^{1/2} \bfS(\bfz) \bfS(\bfz)^T \Lambda^{1/2} \right] \Gamma^T - {\bf 0}_p {\bf 0}_p^T\\
+&=& \Gamma .E \left[ (\tilde D_\bfZ(\bfz))^2 \frac{\Lambda^{1/2} \bfz \bfz^T \Lambda^{1/2}}{\bfz^T \Lambda \bfz} \right] \Gamma^T
+\end{eqnarray*}
+
 
 \end{proof}
 

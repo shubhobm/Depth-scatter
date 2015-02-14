@@ -1,4 +1,4 @@
-\begin{thebibliography}{17}
+\begin{thebibliography}{22}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -42,11 +42,29 @@ F.R. Hampel, E.M. Ronchetti, P.J. Rousseeuw, and W.A. Staehl.
   {F}unctions}.
 \newblock Wiley, New York, NY, 1986.
 
+\bibitem[Huber(1977)]{huber77}
+P.J. Huber.
+\newblock \emph{Robust {S}tatistical {P}rcedures}.
+\newblock Society for Industrial and Applied Mathematics, Philadelphia, 1977.
+
+\bibitem[Locantore et~al.(1999)Locantore, Marron, Simpson, Tripoli, Zhang, and
+  Cohen]{locantore99}
+N.~Locantore, J.S. Marron, D.G. Simpson, N.~Tripoli, J.T. Zhang, and K.L.
+  Cohen.
+\newblock Robost principal components of functional data.
+\newblock \emph{TEST}, 8:\penalty0 1--73, 1999.
+
 \bibitem[Magyar and Tyler(2014)]{magyar14}
 A.F. Magyar and D.E. Tyler.
 \newblock The asymptotic inadmissibility of the spatial sign covariance matrix
   for elliptically symmetric distributions.
 \newblock \emph{Biometrika}, 101:\penalty0 673--688, 2014.
+
+\bibitem[Maronna et~al.(1976)Maronna, Staehl, and Yohai]{maronna76}
+R.A. Maronna, W.A. Staehl, and V.Y. Yohai.
+\newblock Bias-{R}obust {E}stimators of {M}ultivariate {S}catter {B}ased on
+  {P}rojections.
+\newblock \emph{J. Mult. Anal.}, 42:\penalty0 141--161, 1976.
 
 \bibitem[Miao and Ben-Israel(1992)]{miao92}
 J.M. Miao and A.~Ben-Israel.
@@ -63,6 +81,13 @@ E.~Ollilia, H.~Oja, and C.~Croux.
 \newblock The affine equivariant sign covariance matrix: asymptotic behavior
   and efficiencies.
 \newblock \emph{J. Mult. Anal.}, 87:\penalty0 328--355, 2003.
+
+\bibitem[Rousseeuw(1985)]{rousseeuw85}
+P.~Rousseeuw.
+\newblock Multivariate estimation with high breakdown point.
+\newblock In \emph{Mathematical Statistics and Applica-tions, Volume B (Proc.
+  4th Pannonian Symp. Math. Statist., Bad Tatzmannsdorf, 1983)}, pages 283--97,
+  Dordrecht, 1985. D. Reidel.
 
 \bibitem[Serfling(2006)]{serfling2006}
 R.~Serfling.
@@ -89,6 +114,11 @@ S.~Taskinen, I.~Koch, and H.~Oja.
 D.E. Tyler.
 \newblock A distribution-free {M}-estimator of multivariate scatter.
 \newblock \emph{Ann. Statist.}, 15:\penalty0 234--251, 1987.
+
+\bibitem[Visuri et~al.(2000)Visuri, Koivunen, and Oja]{visuri00}
+S.~Visuri, V.~Koivunen, and H.~Oja.
+\newblock Sign and rank covariance matrices.
+\newblock \emph{J. Statist. Plan. Inf.}, 91:\penalty0 557--575, 2000.
 
 \bibitem[Zuo(2003)]{zuo03}
 Y.~Zuo.

@@ -60,6 +60,12 @@ plot(X, pch=19, cex=.5)
 plot(Xrank, pch=19, cex=.5)
 par(mfrow=c(1,1))
 
+par(mfrow=c(1,3))
+plot(X, pch=19, cex=.5)
+plot(uX, pch=19, cex=.5)
+plot(Xrank, pch=19, cex=.5)
+par(mfrow=c(1,1))
+
 
 ## Influence function plots
 lam = c(2,1)
