@@ -224,12 +224,12 @@ FSE.t = function(n, p, df, iter=1e3, ncores=detectCores()){
 
 # For p=4
 n.vec = c(20,50,100,300,500)
-system.time(norm.table <- FSE.norm(n.vec, 4, 1e4, ncores=8))
-system.time(t5.table <- FSE.t(n.vec, 4, df=5, 1e4, ncores=8))
-system.time(t6.table <- FSE.t(n.vec, 4, df=6, 1e4, ncores=8))
-system.time(t10.table <- FSE.t(n.vec, 4, df=10, 1e4, ncores=8))
-system.time(t15.table <- FSE.t(n.vec, 4, df=15, 1e4, ncores=8))
-system.time(t25.table <- FSE.t(n.vec, 4, df=25, 1e4, ncores=8))
+system.time(norm.table <- FSE.norm(n.vec, 4, 1e3, ncores=16))
+system.time(t5.table <- FSE.t(n.vec, 4, df=5, 1e3, ncores=16))
+system.time(t6.table <- FSE.t(n.vec, 4, df=6, 1e3, ncores=16))
+system.time(t10.table <- FSE.t(n.vec, 4, df=10, 1e3, ncores=16))
+system.time(t15.table <- FSE.t(n.vec, 4, df=15, 1e3, ncores=16))
+system.time(t25.table <- FSE.t(n.vec, 4, df=25, 1e3, ncores=16))
 table4 = rbind(t5.table, rep(0,8),
                t6.table, rep(0,8), 
                t10.table, rep(0,8),
