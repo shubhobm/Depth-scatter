@@ -189,12 +189,12 @@ FSE.t = function(n, p, df, iter=1e3, ncores=detectCores()){
 
 
 # Large sample efficiencies
-system.time(ARE.t5 <- FSE.t(1e4, 2, df=5, 1e4, ncores=16))
-system.time(ARE.t6 <- FSE.t(1e4, 2, df=6, 1e4, ncores=16))
-system.time(ARE.t10 <- FSE.t(1e4, 2, df=10, 1e4, ncores=16))
-system.time(ARE.t15 <- FSE.t(1e4, 2, df=15, 1e4, ncores=16))
-system.time(ARE.t25 <- FSE.t(1e4, 2, df=25, 1e4, ncores=16))
-system.time(ARE.norm <- FSE.norm(1e4, 2, 1e4, ncores=16))
+system.time(ARE.t5 <- FSE.t(1e3, 2, df=5, 1e4, ncores=16))
+system.time(ARE.t6 <- FSE.t(1e3, 2, df=6, 1e4, ncores=16))
+system.time(ARE.t10 <- FSE.t(1e3, 2, df=10, 1e4, ncores=16))
+system.time(ARE.t15 <- FSE.t(1e3, 2, df=15, 1e4, ncores=16))
+system.time(ARE.t25 <- FSE.t(1e3, 2, df=25, 1e4, ncores=16))
+system.time(ARE.norm <- FSE.norm(1e3, 2, 1e4, ncores=16))
 ARE.table = rbind(ARE.t5, ARE.t6, ARE.t10, ARE.t15, ARE.t25, ARE.norm)
 ARE.table  =ARE.table[,c(1,2,3,5,7,4,6,8)]
 write.csv(format(round(ARE.table, 2), nsmall=2), "tableARE.txt")
