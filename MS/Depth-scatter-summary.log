@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.20)  17 FEB 2015 19:02
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.20)  17 FEB 2015 23:58
 entering extended mode
 **Depth-scatter-summary.tex
 ("C:\Study\My projects\Depth-scatter\MS\Depth-scatter-summary.tex"
@@ -394,7 +394,16 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/Users/Subho/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3]
-Overfull \hbox (0.68515pt too wide) in paragraph at lines 57--58
+Overfull \hbox (4.62714pt too wide) in paragraph at lines 50--51
+[]\OT1/cmr/m/n/12 When $\OT1/cmr/bx/n/12 x$ \OT1/cmr/m/n/12 is a ran-dom vec-to
+r that fol-lows an el-lip-tic dis-tri-bu-tion $\OMS/cmsy/m/n/12 j\OT1/cmr/m/n/1
+2 \OMS/cmsy/m/n/12 j[]\OML/cmm/m/it/12 f\OT1/cmr/m/n/12 ((\OT1/cmr/bx/n/12 x \
+OMS/cmsy/m/n/12   []\OT1/cmr/m/n/12 )[][](\OT1/cmr/bx/n/12 x \OMS/cmsy/m/n/12 
+ $
+ []
+
+
+Overfull \hbox (0.68515pt too wide) in paragraph at lines 58--59
 []\OT1/cmr/m/n/12 The sign trans-for-ma-tion is ro-ta-tion equiv-ari-ant, in th
 e sense that $\OT1/cmr/bx/n/12 S\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 P\OT1/cmr/bx/
 n/12 x\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 P\OT1/cmr/bx/n/12 x\OML/cmm/m/it/12 
@@ -402,103 +411,102 @@ n/12 x\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 P\OT1/cmr/bx/n/12 x\OML/cmm/m/it/12
 cmr/m/n/12 =$
  []
 
-<../Codes/rankplot.png, id=122, 553.31718pt x 277.035pt>
+<../Codes/rankplot.png, id=126, 553.31718pt x 277.035pt>
 File: ../Codes/rankplot.png Graphic file (type png)
 
 <use ../Codes/rankplot.png>
-Package pdftex.def Info: ../Codes/rankplot.png used on input line 62.
+Package pdftex.def Info: ../Codes/rankplot.png used on input line 63.
 (pdftex.def)             Requested size: 284.13834pt x 142.26378pt.
  [4] [5 <C:/Study/My projects/Depth-scatter/Codes/rankplot.png>] [6]
-Overfull \hbox (37.28702pt too wide) in paragraph at lines 115--116
+Overfull \hbox (37.28702pt too wide) in paragraph at lines 116--117
 \OT1/cmr/m/n/12 tion and known lo-ca-tion cen-ter $[]$, one can show that the s
 am-ple DCM $[][]([](\OT1/cmr/bx/n/12 x[]\OT1/cmr/m/n/12 ))[]\OML/cmm/m/it/12 SS
 \OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 x[]\OT1/cmr/m/n/12 ; [])\OML/cmm/m/it/12 =n$
  []
 
 [7]
-Overfull \hbox (15.52992pt too wide) detected at line 133
+Overfull \hbox (15.52992pt too wide) detected at line 134
 [] [] [] \OML/cmm/m/it/12 N[]\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 0\OML/cmm/m/it/1
 2 ; V[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 F\OT1/cmr/m/n/12 ))
  []
 
 [8] [9]
 
-LaTeX Warning: Command \l invalid in math mode on input line 161.
+LaTeX Warning: Command \l invalid in math mode on input line 162.
 
 
-LaTeX Warning: Command \l invalid in math mode on input line 161.
+LaTeX Warning: Command \l invalid in math mode on input line 162.
 
 [10] [11]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 196.
+               Default added (so using `tbp') on input line 197.
 
-<../Codes/IFnorm.png, id=231, 752.8125pt x 1003.75pt>
+<../Codes/IFnorm.png, id=236, 752.8125pt x 1003.75pt>
 File: ../Codes/IFnorm.png Graphic file (type png)
 
 <use ../Codes/IFnorm.png>
-Package pdftex.def Info: ../Codes/IFnorm.png used on input line 198.
+Package pdftex.def Info: ../Codes/IFnorm.png used on input line 199.
 (pdftex.def)             Requested size: 341.43306pt x 455.25195pt.
-
-Overfull \hbox (5.31403pt too wide) in alignment at lines 210--213
+ [12] [13 <C:/Study/My projects/Depth-scatter/Codes/IFnorm.png>]
+Overfull \hbox (5.31403pt too wide) in alignment at lines 211--214
  [][][] []
  []
 
-[12] [13 <C:/Study/My projects/Depth-scatter/Codes/IFnorm.png>]
 
 LaTeX Warning: Reference `table:AREtable' on page 14 undefined on input line 22
-2.
+3.
 
 [14]
 
 LaTeX Warning: Reference `table:AREtable' on page 15 undefined on input line 23
-6.
+7.
 
 
-Overfull \hbox (30.55531pt too wide) in paragraph at lines 240--280
+Overfull \hbox (30.55531pt too wide) in paragraph at lines 241--281
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 240--280
+Underfull \hbox (badness 10000) in paragraph at lines 241--281
 
  []
 
-
-Overfull \hbox (27.20808pt too wide) in paragraph at lines 286--326
+[15]
+Overfull \hbox (27.20808pt too wide) in paragraph at lines 287--327
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 286--326
+Underfull \hbox (badness 10000) in paragraph at lines 287--327
 
  []
 
 
-Overfull \hbox (27.20808pt too wide) in paragraph at lines 332--372
+Overfull \hbox (27.20808pt too wide) in paragraph at lines 333--373
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--372
+Underfull \hbox (badness 10000) in paragraph at lines 333--373
 
  []
 
-[15] [16] [17] [18] [19]
-Overfull \hbox (26.94261pt too wide) in alignment at lines 384--388
+[16] [17] [18] [19]
+Overfull \hbox (26.94261pt too wide) in alignment at lines 385--389
  [][][] []
  []
 
 [20]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 398.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 399.
 
  ("C:\Study\LaTeX\MikTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 398.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 399.
  [21] [22] [23]
-Overfull \hbox (2.63693pt too wide) in paragraph at lines 486--487
+Overfull \hbox (2.63693pt too wide) in paragraph at lines 487--488
  [][] \OT1/cmr/m/n/12 For the on-diagonal el-e-ments of $[](\OML/cmm/m/it/12 F[
 ]\OT1/cmr/m/n/12 )$ The-o-rem []4.3[] gives us $[][](\OML/cmm/m/it/12 F[]\OT1/c
 mr/m/n/12 ) = [][](\OML/cmm/m/it/12 F[]\OT1/cmr/m/n/12 )$
@@ -506,25 +514,25 @@ mr/m/n/12 ) = [][](\OML/cmm/m/it/12 F[]\OT1/cmr/m/n/12 )$
 
 [24] ("C:\Study\My projects\Depth-scatter\MS\Depth-scatter-summary.bbl"
 [25] [26] [27])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 499.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 500.
  [28]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 499.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 500.
 
 ("C:\Study\My projects\Depth-scatter\MS\Depth-scatter-summary.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 499.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 499.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 500.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 500.
 Package rerunfilecheck Info: File `Depth-scatter-summary.out' has not changed.
 (rerunfilecheck)             Checksum: 1EC950B6A7E5CA47E78BBE5502ADE341;794.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 499.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 500.
  ) 
 Here is how much of TeX's memory you used:
  7954 strings out of 493921
  115363 string characters out of 3148084
- 246829 words of memory out of 3000000
+ 242829 words of memory out of 3000000
  11041 multiletter control sequences out of 15000+200000
  19091 words of font info for 71 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -548,9 +556,9 @@ cmr6.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:
 9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmti12.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/
 amsfonts/symbols/msbm10.pfb>
-Output written on Depth-scatter-summary.pdf (28 pages, 397545 bytes).
+Output written on Depth-scatter-summary.pdf (28 pages, 398916 bytes).
 PDF statistics:
- 451 PDF objects out of 1000 (max. 8388607)
+ 456 PDF objects out of 1000 (max. 8388607)
  101 named destinations out of 1000 (max. 500000)
  107 words of extra memory for PDF output out of 10000 (max. 10000000)
 

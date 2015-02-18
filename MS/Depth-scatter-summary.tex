@@ -43,16 +43,17 @@ The paper is arranged in the following fashion. Section 2 provides with the prel
 
 \section{Preliminaries}
 \subsection{Spatial signs and sign covariance matrix}
+Given a vector $\bfx \in \mathbb{R}^p$, its spatial sign is defined as the vector valued function \citep{locantore99}:
+$$ \bfS(\bfx) = \begin{cases} \bfx\| \bfx \|^{-1} \quad \mbox{if }\bfx \neq \bf0\\
+\bf0 \quad \mbox{if }\bfx = \bf0 \end{cases} $$
 
+When $\bfx$ is a random vector that follows an elliptic distribution $|\Sigma|^{-1/2} f((\bfx - \bfmu)^T \Sigma^{-1} (\bfx - \bfmu))$, with a mean vector $\bfmu$ and covariance matrix $\Sigma$, the sign vectors $\bfS(\bfx - \bfmu)$ reside on the surface of a $p$-dimensional unit ball centered at $\bfmu$. \cite{taskinen12} show that in this process
 
 \subsection{Data depth}
 
 \section{Depth-based rank covariance matrix}
 
-Consider a vector-valued random variable $\bfX \in \mathbb{R}^p$ that follows an elliptic distribution $|\Sigma|^{-1/2} f((\bfx - \bfmu)^T \Sigma^{-1} (\bfx - \bfmu))$, with a mean vector $\bfmu$ and covariance matrix $\Sigma$. Now, given a depth function $D_{\bfX}(\bfx)$ (equivalently, an htped function $\tilde D_\bfX(\bfx)$), transform the original random variable as: $\tilde \bfx = \tilde D_\bfX(\bfx) \bfS(\bfx - \bfmu)$, $\bfS(.)$ being the spatial sign functional:
-
-$$ \bfS(\bfx) = \begin{cases} \bfx\| \bfx \|^{-1} \quad \mbox{if }\bfx \neq \bf0\\
-\bf0 \quad \mbox{if }\bfx = \bf0 \end{cases} $$
+Consider a vector-valued random variable $\bfX \in \mathbb{R}^p$ . Now, given a depth function $D_{\bfX}(\bfx)$ (equivalently, an htped function $\tilde D_\bfX(\bfx)$), transform the original random variable as: $\tilde \bfx = \tilde D_\bfX(\bfx) \bfS(\bfx - \bfmu)$, $\bfS(.)$ being the spatial sign functional.
 
 The sign transformation is rotation equivariant, in the sense that $ \bfS(P \bfx) = P\bfx/\| P \bfx \| = P\bfx/\| \bfx \| = P \bfS(\bfx)$ for any orthogonal matrix $P$. The transformed random variable $\tilde \bfX$ can be seen as the multivariate rank corresponding to $\bfX$ (e.g. \cite{serfling2006}). Figure \ref{fig:rankplot} gives an idea of how $\tilde \bfX$ is distributed when $\bfX$ has a bivariate normal distribution. Compared to the spatial sign, which are distributed on the surface of $p$-dimensional unit ball centered at $\bfmu$, these spatial ranks have the same direction as original data and reside \textit{inside} the $p$-dimensional ball around $\bfmu$ that has radius $M_D(F)$ (which, for the case of halfspace depth, equals 0.5).
 
