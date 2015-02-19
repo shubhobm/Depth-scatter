@@ -1,4 +1,4 @@
-\begin{thebibliography}{30}
+\begin{thebibliography}{31}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -61,6 +61,11 @@ P.J. Huber.
 R.~Jornsten.
 \newblock Clustering and classification based on the $l_1$ depth.
 \newblock \emph{J. Mult. Anal.}, 90-1:\penalty0 67--89, 2004.
+
+\bibitem[Liu(1990)]{liu90}
+R.Y. Liu.
+\newblock On a notion of data depth based on random simplices.
+\newblock \emph{Ann. of Statist.}, 18:\penalty0 405--414, 1990.
 
 \bibitem[Locantore et~al.(1999)Locantore, Marron, Simpson, Tripoli, Zhang, and
   Cohen]{locantore99}
