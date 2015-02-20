@@ -19,6 +19,7 @@
 \newtheorem{Theorem}{Theorem}[section]
 \newtheorem{Lemma}[Theorem]{Lemma}
 \newtheorem{Corollary}[Theorem]{Corollary}
+\theoremstyle{definition} \newtheorem{Definition}[Theorem]{Definition}
 
 \title{Robust estimation of principal components from depth-based multivariate rank covariance matrix}
 \date{}
@@ -54,7 +55,7 @@ $$ \hat \Sigma_T(\bfX) = \frac{p}{n} \sum_{i=1}^n \frac{(\bfx - \bfmu)(\bfx - \b
 
 which turns out to be Tyler's M-estimator of scatter \citep{tyler87}. In this context, one should note that for scatter matrices, affine equivariance will mean any affine transformation on the original random variable $\bfX \mapsto \bfX^* = A\bfX + \bfb$ ($A$ non-singular, $\bfb \in \mathbb{R}^p$) being carried over to the covariance matrix estimate upto a scalar multiple: $\hat\Sigma_T(\bfX^*) = k. A \hat\Sigma_T(\bfX) A^T$ for some $k>0$.
 
-\subsection{Data depth}
+\subsection{Data depth and outlyingness}
 For any multivariate distribution $F = F_\bfX$, the depth of a point $\bfx \in \mathbb{R}^p$, say $D(\bfx, F_\bfX)$ is any real-valued function that provides a 'center outward ordering' of $\bfx$ with respect to $F$ \citep{zuo00}. \cite{liu90} outlines the desirable properties of a statistical depth function:
 
 \noindent
@@ -64,6 +65,12 @@ For any multivariate distribution $F = F_\bfX$, the depth of a point $\bfx \in \
 (P4) Vanishing at infinity: $D(\bfx; F_\bfX) \rightarrow \bf0$ as $\|\bfx\| \rightarrow \infty $.
 
 In (P2) the types of symmetry considered can be central symmetry, angular symmetry and halfspace symmetry. Also for multimodal probability distributions, properties (P2) and (P3) are actually restrictive towards the formulation of a reasonable depth function. In our derivations that follow, we replace this by a slightly weaker condition: (P2*) The \textit{existence} of a maximal point, i.e. $ \sup_{\bfx\in \mathbb{R}^p} D(\bfx, F_\bfX) < \infty $. We denote this point by $M_D(F)$.
+
+A real-valued function measuring the outlyingness of a point with respect to the data cloud can be seen as the opposite of what data depth does. Indeed, such functions have been used to define several depth functions, for example simplicial volume depth, projection depth and $L^p$-depth. Here we give a general definition of such functions as a transformation on any depth function:
+
+\begin{Definition}
+Given a random variable $\bfX$ following a probability distribution $P$, and a depth function $D(.,.)$, we define an Htped of a point $\bfx: H(\bfx, F) = h(d_\bfx)$ as any function of the data depth so that $h(d_\bfx)$ is monotonically decreasing in $d_\bfx$ and $E_F (H(\bfx, F))^4 < \infty$.
+\end{Definition}
 
 \section{Depth-based rank covariance matrix} \label{section:dcmSection}
 
