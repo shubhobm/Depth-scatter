@@ -1,4 +1,4 @@
-\begin{thebibliography}{31}
+\begin{thebibliography}{32}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -66,6 +66,12 @@ R.~Jornsten.
 R.Y. Liu.
 \newblock On a notion of data depth based on random simplices.
 \newblock \emph{Ann. of Statist.}, 18:\penalty0 405--414, 1990.
+
+\bibitem[Liu et~al.(1999)Liu, Parelius, and Singh]{LiuPareliusSingh99}
+R.Y. Liu, J.M. Parelius, and K.~Singh.
+\newblock Multivariate analysis by data depth: {D}escriptive statistics,
+  graphics and inference (with discussion).
+\newblock \emph{Ann. of Statist.}, 27:\penalty0 783--858, 1999.
 
 \bibitem[Locantore et~al.(1999)Locantore, Marron, Simpson, Tripoli, Zhang, and
   Cohen]{locantore99}
@@ -168,7 +174,7 @@ Y.~Zuo and R.~Serfling.
 
 \bibitem[Zuo et~al.(2004)Zuo, Cui, and He]{ZuoCuiHe04}
 Y.~Zuo, M.~Cui, and X.~He.
-\newblock On the {S}taehl-{D}onoho estimator and depth-weighted meanas of
+\newblock On the {S}taehl-{D}onoho estimator and depth-weighted means of
   multivariate data.
 \newblock \emph{Ann. Statist.}, 32-1:\penalty0 167--188, 2004.
 
