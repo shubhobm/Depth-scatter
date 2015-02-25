@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.20)  24 FEB 2015 22:04
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.20)  24 FEB 2015 21:50
 entering extended mode
 **Depth-scatter-summary.tex
-("C:\Study\My projects\Depth-scatter\MS\Depth-scatter-summary.tex"
+("C:\Study\My projects\Depth-scatter\MS\arXiv\Depth-scatter-summary.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -34,7 +34,7 @@ File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen103
 )
-("C:\Study\My projects\Depth-scatter\MS\mycommands.sty")
+("C:\Study\My projects\Depth-scatter\MS\arXiv\mycommands.sty")
 ("C:\Study\LaTeX\MikTeX 2.9\tex\latex\amsfonts\amssymb.sty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
@@ -323,7 +323,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 ("C:\Study\LaTeX\MikTeX 2.9\tex\latex\setspace\setspace.sty"
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
-("C:\Study\My projects\Depth-scatter\MS\Depth-scatter-summary.aux")
+("C:\Study\My projects\Depth-scatter\MS\arXiv\Depth-scatter-summary.aux")
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
@@ -370,8 +370,8 @@ LaTeX Info: Redefining \ref on input line 19.
 LaTeX Info: Redefining \pageref on input line 19.
 LaTeX Info: Redefining \nameref on input line 19.
 
-("C:\Study\My projects\Depth-scatter\MS\Depth-scatter-summary.out")
-("C:\Study\My projects\Depth-scatter\MS\Depth-scatter-summary.out")
+("C:\Study\My projects\Depth-scatter\MS\arXiv\Depth-scatter-summary.out")
+("C:\Study\My projects\Depth-scatter\MS\arXiv\Depth-scatter-summary.out")
 \@outlinefile=\write3
 \c@Theorem=\count119
 LaTeX Font Info:    Try loading font information for U+msa on input line 30.
@@ -385,7 +385,84 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 30.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{C:/Users/Subho/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3]
+{C:/Users/Subho/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+
+Package natbib Warning: Citation `rousseeuw85' on page 2 undefined on input lin
+e 40.
+
+
+Package natbib Warning: Citation `maronna76' on page 2 undefined on input line 
+40.
+
+
+Package natbib Warning: Citation `huber77' on page 2 undefined on input line 40
+.
+
+
+Package natbib Warning: Citation `tyler87' on page 2 undefined on input line 40
+.
+
+
+Package natbib Warning: Citation `dumbgen98' on page 2 undefined on input line 
+40.
+
+
+Package natbib Warning: Citation `sirkia07' on page 2 undefined on input line 4
+0.
+
+
+Package natbib Warning: Citation `locantore99' on page 2 undefined on input lin
+e 42.
+
+
+Package natbib Warning: Citation `visuri00' on page 2 undefined on input line 4
+2.
+
+
+Package natbib Warning: Citation `magyar14' on page 2 undefined on input line 4
+2.
+
+
+Package natbib Warning: Citation `tukey75' on page 2 undefined on input line 44
+.
+
+
+Package natbib Warning: Citation `zuo00' on page 2 undefined on input line 44.
+
+
+Package natbib Warning: Citation `jornsten04' on page 2 undefined on input line
+ 44.
+
+
+Package natbib Warning: Citation `ghosh05' on page 2 undefined on input line 44
+.
+
+
+Package natbib Warning: Citation `dutta12' on page 2 undefined on input line 44
+.
+
+
+Package natbib Warning: Citation `sguera14' on page 2 undefined on input line 4
+4.
+
+
+Package natbib Warning: Citation `ZuoCuiHe04' on page 2 undefined on input line
+ 44.
+
+
+Package natbib Warning: Citation `ZuoCui05' on page 2 undefined on input line 4
+4.
+
+[2]
+
+Package natbib Warning: Citation `locantore99' on page 3 undefined on input lin
+e 50.
+
+
+Package natbib Warning: Citation `taskinen12' on page 3 undefined on input line
+ 55.
+
+
 Overfull \hbox (5.89153pt too wide) in paragraph at lines 55--56
 []\OT1/cmr/m/n/10.95 When $\OT1/cmr/bx/n/10.95 x$ \OT1/cmr/m/n/10.95 is a ran-d
 om vec-tor that fol-lows an el-lip-tic dis-tri-bu-tion $\OMS/cmsy/m/n/10.95 j\O
@@ -394,21 +471,85 @@ T1/cmr/m/n/10.95 \OMS/cmsy/m/n/10.95 j[]\OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.9
 1/cmr/bx/n/10.95 x \OMS/cmsy/m/n/10.95  $
  []
 
-[4] [5]
+[3]
+
+Package natbib Warning: Citation `tyler87' on page 4 undefined on input line 61
+.
+
+
+Package natbib Warning: Citation `zuo00' on page 4 undefined on input line 64.
+
+
+Package natbib Warning: Citation `liu90' on page 4 undefined on input line 64.
+
+[4]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 85.
  ("C:\Study\LaTeX\MikTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 85.
- [6]
-<../Codes/rankplot.png, id=173, 553.31718pt x 277.035pt>
-File: ../Codes/rankplot.png Graphic file (type png)
 
-<use ../Codes/rankplot.png>
-Package pdftex.def Info: ../Codes/rankplot.png used on input line 111.
+
+Package natbib Warning: Citation `tukey75' on page 5 undefined on input line 85
+.
+
+
+Package natbib Warning: Citation `LiuPareliusSingh99' on page 5 undefined on in
+put line 89.
+
+[5]
+
+Package natbib Warning: Citation `zuo03' on page 6 undefined on input line 95.
+
+
+Package natbib Warning: Citation `rainerArxiv' on page 6 undefined on input lin
+e 102.
+
+
+Package natbib Warning: Citation `serfling2006' on page 6 undefined on input li
+ne 106.
+
+[6] <rankplot.png, id=95, 553.31718pt x 277.035pt>
+File: rankplot.png Graphic file (type png)
+ <use rankplot.png>
+Package pdftex.def Info: rankplot.png used on input line 111.
 (pdftex.def)             Requested size: 284.13834pt x 142.26378pt.
- [7 <C:/Study/My projects/Depth-scatter/Codes/rankplot.png>] [8]
+ [7 <C:/Study/My projects/Depth-scatter/MS/arXiv/rankplot.png>]
+
+Package natbib Warning: Citation `taskinen12' on page 8 undefined on input line
+ 143.
+
+[8]
+
+Package natbib Warning: Citation `dumbgen98' on page 9 undefined on input line 
+159.
+
+
+Package natbib Warning: Citation `tyler87' on page 9 undefined on input line 15
+9.
+
+
+Package natbib Warning: Citation `soloveychik14' on page 9 undefined on input l
+ine 164.
+
+
+Package natbib Warning: Citation `haldane48' on page 9 undefined on input line 
+168.
+
+
+Package natbib Warning: Citation `brown83' on page 9 undefined on input line 16
+8.
+
+
+Package natbib Warning: Citation `oja83' on page 9 undefined on input line 168.
+
+
+
+Package natbib Warning: Citation `zuo03' on page 9 undefined on input line 168.
+
+
+
 Overfull \hbox (14.13644pt too wide) in paragraph at lines 168--169
 \OT1/cmr/m/n/10.95 and known lo-ca-tion cen-ter $[]$, one can show that the sam
 -ple DCM $[][]([](\OT1/cmr/bx/n/10.95 x[]\OT1/cmr/m/n/10.95 ))[]\OML/cmm/m/it/1
@@ -423,30 +564,68 @@ mm/m/it/10.95 ; V[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 F\OT1/cmr/m/n/10.95
 ))
  []
 
-[10] [11]
+
+Package natbib Warning: Citation `magyar14' on page 10 undefined on input line 
+192.
+
+[10]
+
+Package natbib Warning: Citation `taskinen12' on page 11 undefined on input lin
+e 196.
+
+[11]
 
 LaTeX Warning: Command \l invalid in math mode on input line 214.
 
 
 LaTeX Warning: Command \l invalid in math mode on input line 214.
 
-[12] [13]
+
+Package natbib Warning: Citation `hampel' on page 12 undefined on input line 22
+3.
+
+
+Package natbib Warning: Citation `taskinen12' on page 12 undefined on input lin
+e 223.
+
+
+Package natbib Warning: Citation `ollilia03' on page 12 undefined on input line
+ 223.
+
+[12]
+
+Package natbib Warning: Citation `croux00' on page 13 undefined on input line 2
+34.
+
+
+Overfull \hbox (20.4914pt too wide) in paragraph at lines 234--235
+[]\OT1/cmr/m/n/10.95 Following \OT1/cmr/bx/n/10.95 ?\OT1/cmr/m/n/10.95 , we now
+ get the in-flu-ence func-tion of the $\OML/cmm/m/it/10.95 i[]$ \OT1/cmr/m/n/10
+.95 col-umn of $[] = ([][]\OML/cmm/m/it/10.95 ; :::; [][]\OT1/cmr/m/n/10.95 ); 
+\OML/cmm/m/it/10.95 i \OT1/cmr/m/n/10.95 =$
+ []
+
+[13]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 249.
 
-<../Codes/IFnorm.png, id=268, 752.8125pt x 1003.75pt>
-File: ../Codes/IFnorm.png Graphic file (type png)
-
-<use ../Codes/IFnorm.png>
-Package pdftex.def Info: ../Codes/IFnorm.png used on input line 251.
+<IFnorm.png, id=152, 752.8125pt x 1003.75pt>
+File: IFnorm.png Graphic file (type png)
+ <use IFnorm.png>
+Package pdftex.def Info: IFnorm.png used on input line 251.
 (pdftex.def)             Requested size: 341.43306pt x 455.25195pt.
+
+
+Package natbib Warning: Citation `anderson' on page 14 undefined on input line 
+257.
+
 
 Overfull \hbox (18.5976pt too wide) in alignment at lines 263--266
  [][][] []
  []
 
-[14] [15 <C:/Study/My projects/Depth-scatter/Codes/IFnorm.png>]
+[14] [15 <C:/Study/My projects/Depth-scatter/MS/arXiv/IFnorm.png>]
 Overfull \hbox (11.61044pt too wide) in paragraph at lines 281--292
 [][]
  []
@@ -456,7 +635,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 281--292
 
  []
 
-[16] [17]
+[16]
+
+Package natbib Warning: Citation `miao92' on page 17 undefined on input line 29
+8.
+
+
+Package natbib Warning: Citation `sirkia07' on page 17 undefined on input line 
+310.
+
+
+Package natbib Warning: Citation `ollilia03' on page 17 undefined on input line
+ 310.
+
+[17]
 Overfull \hbox (32.16238pt too wide) in paragraph at lines 314--354
 [][]
  []
@@ -491,20 +683,46 @@ Overfull \hbox (34.18604pt too wide) in alignment at lines 466--470
  [][][] []
  []
 
-[22] [23] [24] [25]
+
+Package natbib Warning: Citation `magyar14' on page 22 undefined on input line 
+472.
+
+[22] [23] [24]
+
+Package natbib Warning: Citation `durre14' on page 25 undefined on input line 5
+38.
+
+
+Package natbib Warning: Citation `taskinen12' on page 25 undefined on input lin
+e 552.
+
+
+Package natbib Warning: Citation `anderson' on page 25 undefined on input line 
+556.
+
+
+Package natbib Warning: Citation `taskinen12' on page 25 undefined on input lin
+e 556.
+
+[25]
 Overfull \hbox (4.5438pt too wide) in paragraph at lines 581--582
  [][] \OT1/cmr/m/n/10.95 For the on-diagonal el-e-ments of $[](\OML/cmm/m/it/10
 .95 F[]\OT1/cmr/m/n/10.95 )$ The-o-rem []4.3[] gives us $[][](\OML/cmm/m/it/10.
 95 F[]\OT1/cmr/m/n/10.95 ) = [][](\OML/cmm/m/it/10.95 F[]\OT1/cmr/m/n/10.95 )$
  []
 
-[26] ("C:\Study\My projects\Depth-scatter\MS\Depth-scatter-summary.bbl"
-[27] [28] [29])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 595.
- [30]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 595.
+[26] ("C:\Study\My projects\Depth-scatter\MS\arXiv\Depth-scatter-summary.bbl"
 
-("C:\Study\My projects\Depth-scatter\MS\Depth-scatter-summary.aux")
+Package natbib Warning: Empty `thebibliography' environment on input line 8.
+
+)
+
+Package natbib Warning: There were undefined citations.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 595.
+[27]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 595.
+ ("C:\Study\My projects\Depth-scatter\MS\arXiv\Depth-scatter-summary.aux")
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 595.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 595.
 Package rerunfilecheck Info: File `Depth-scatter-summary.out' has not changed.
@@ -512,13 +730,13 @@ Package rerunfilecheck Info: File `Depth-scatter-summary.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 595.
  ) 
 Here is how much of TeX's memory you used:
- 7948 strings out of 493921
- 115648 string characters out of 3148084
- 246815 words of memory out of 3000000
- 11021 multiletter control sequences out of 15000+200000
+ 7844 strings out of 493921
+ 113903 string characters out of 3148084
+ 245457 words of memory out of 3000000
+ 10954 multiletter control sequences out of 15000+200000
  21114 words of font info for 79 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 36i,14n,38p,1230b,486s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,14n,38p,1230b,438s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Stud
 y/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Study/LaTeX/Mi
 kTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/Study/LaTeX/MikTeX 2.9/fo
@@ -540,9 +758,9 @@ e1/public/amsfonts/cm/cmsy10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/
 amsfonts/cm/cmsy8.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmti10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pf
 b><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Depth-scatter-summary.pdf (30 pages, 463599 bytes).
+Output written on Depth-scatter-summary.pdf (27 pages, 425435 bytes).
 PDF statistics:
- 506 PDF objects out of 1000 (max. 8388607)
- 109 named destinations out of 1000 (max. 500000)
+ 347 PDF objects out of 1000 (max. 8388607)
+ 73 named destinations out of 1000 (max. 500000)
  107 words of extra memory for PDF output out of 10000 (max. 10000000)
 
