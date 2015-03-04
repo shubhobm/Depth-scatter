@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.20)  24 FEB 2015 22:04
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.20)  3 MAR 2015 15:01
 entering extended mode
 **Depth-scatter-summary.tex
 ("C:\Study\My projects\Depth-scatter\MS\Depth-scatter-summary.tex"
@@ -514,7 +514,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 595.
 Here is how much of TeX's memory you used:
  7948 strings out of 493921
  115648 string characters out of 3148084
- 246815 words of memory out of 3000000
+ 247815 words of memory out of 3000000
  11021 multiletter control sequences out of 15000+200000
  21114 words of font info for 79 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -540,7 +540,7 @@ e1/public/amsfonts/cm/cmsy10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/
 amsfonts/cm/cmsy8.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmti10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pf
 b><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Depth-scatter-summary.pdf (30 pages, 463599 bytes).
+Output written on Depth-scatter-summary.pdf (30 pages, 463655 bytes).
 PDF statistics:
  506 PDF objects out of 1000 (max. 8388607)
  109 named destinations out of 1000 (max. 500000)
