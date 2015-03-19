@@ -37,13 +37,13 @@ Data depth; Principal components analysis; Robustness; Sign covariance matrix; M
 
 \newpage
 \section{Introduction}
-In multivariate analysis, the study of principal components has been important because it provides a small number of uncorrelated variables from analyzing data on a potentially large number of variables, so that these new components explain most of the underlying variability in the original data. In case of multivariate normal distribution, the sample covariance matrix provides the most asymptotically efficient estimates of eigenvectors/ principal components, but it is extremely sensitive to outliers as well as relaxations of the normality assumption. To tackle this, several estimators of the population covariance or correlation matrix have been proposed which can be used for PCA. They can be roughly put into these categories: robust, breakdown point estimators that are computation-intensive \citep{rousseeuw85, maronna76}; M-estimators that are calculated by simple iterative algorithms but not necessarily high-breakdown point \citep{huber77, tyler87}; and symmetrised estomators that are highly efficient and robust to deviations from normality, but sensitive to outliers and computationally demanding \citep{dumbgen98, sirkia07}.
+In multivariate analysis, the study of principal components is important since it provides a small number of uncorrelated variables from a potentially larger number of variables, so that these new components explain most of the underlying variability in the original data. In case of multivariate normal distribution, the sample covariance matrix provides the most asymptotically efficient estimates of eigenvectors/ principal components, but it is extremely sensitive to outliers as well as relaxations of the normality assumption. To address this issue, several robust estimators of the population covariance or correlation matrix have been proposed which can be used for Principal Components Analysis (PCA). They can be roughly put into these categories: robust, breakdown point estimators that are computation-intensive \citep{rousseeuw85, maronna76}; M-estimators that are calculated by simple iterative algorithms but do not necessarily possess high-breakdown point \citep{huber77, tyler87}; and symmetrised estomators that are highly efficient and robust to deviations from normality, but sensitive to outliers and computationally demanding \citep{dumbgen98, sirkia07}.
 
-When principal components are of interest, one can also estimate the population eigenvectors by analyzing the spatial sign of a multivariate vector: the vector divided by its magnitude, instead of the original data, and this yields comptationally simple and high-breakdown estimates of principal components \citep{locantore99, visuri00}. Although the resulting Sign Covariance Matrix (SCM) is not affine equivariant, its orthogonal equivariance suffices for the purpose of PCA. However, the resulting estimates are not very efficient, and are in fact asymptotically inadmissible \citep{magyar14}, in the sense that there is an estimator (Tyler's M-estimate of scatter, to be precise) that has uniformly lower asymptotic risk than the SCM.
+When principal components are of interest, one can also estimate the population eigenvectors by analyzing the spatial sign of a multivariate vector: the vector divided by its magnitude, instead of the original data. The covariance matrix of these sign vectors, namely Sign Covariance Matrix (SCM) has the same set of eigenvectors as the covariance matrix of the original population, thus the multivariate sign transformation yields comptationally simple and high-breakdown estimates of principal components \citep{locantore99, visuri00}. Although the SCM is not affine equivariant, its orthogonal equivariance suffices for the purpose of PCA. However, the resulting estimates are not very efficient, and are in fact asymptotically inadmissible \citep{magyar14}, in the sense that there is an estimator (Tyler's M-estimate of scatter, to be precise) that has uniformly lower asymptotic risk than the SCM.
 
 In this paper we study the covariance matrix, paying special attention to its eigenvectors, of the multivariate rank vector that is obtained from the data-depth of a point and its spatial sign. The nonparametric concept of data-depth had first been proposed by \cite{tukey75} when he introduced the halfspace depth. Given a dataset, the depth of a given point in the sample space measures how far inside the data cloud the point exists. An overview of statistical depth functions can be found in \citep{zuo00}. Depth-based methods have recently been popular for robust nonparametric classification \citep{jornsten04, ghosh05, dutta12, sguera14}. In parametric estimation, depth-weighted means \citep{ZuoCuiHe04} and covariance matrices \citep{ZuoCui05} provide high-breakdown point as well as efficient estimators, although they do involve choice of a suitable weight function and tuning parameters.
 
-The paper is arranged in the following fashion. Section 2 provides with the preliminary theoretical concepts required for developments in the subsequent chapters. Section 3 introduces the Depth Covariance Matrix (DCM) and states some basic results relating to this. Section 4 provides asymptotic results regarding the sample DCM, calculated using data depths with respect to the empirical distribution function, as well as its eigenvectors and eigenvalues. Section 5 focuses solely on principal component estimation using the sample DCM. We obtain influence functions and asymptotic efficiencies for eigenvectors of the DCM. We also compare their finite sample efficiencies for several multinormal and multivariate $t$-distributions with those of the SCM, Tyler's scatter matrix and its depth-weighted version through a simulation study. Finally, we wrap up our discussion in Section 6 by giving a summary of our findings and providing some potential future areas of research.
+The paper is arranged in the following fashion. Section 2 provides with the preliminary theoretical concepts required for developments in the subsequent sections. Section 3 introduces the Depth Covariance Matrix (DCM) and states some basic results relating to this. Section 4 provides asymptotic results regarding the sample DCM, calculated using data depths with respect to the empirical distribution function, as well as its eigenvectors and eigenvalues. Section 5 focuses solely on principal component estimation using the sample DCM. We obtain influence functions and asymptotic efficiencies for eigenvectors of the DCM. We also compare their finite sample efficiencies for several multinormal and multivariate $t$-distributions with those of the SCM, Tyler's scatter matrix and its depth-weighted version through a simulation study. Finally, we wrap up our discussion in Section 6 by giving a summary of our findings and providing some potential future areas of research.
 
 \section{Preliminaries}
 \subsection{Spatial signs and sign covariance matrix}
@@ -57,7 +57,6 @@ When $\bfx$ is a random vector that follows an elliptic distribution $|\Sigma|^{
 The sign transformation is rotation equivariant, i.e. $ \bfS(P (\bfx - \bfmu)) = P(\bfx - \bfmu)/\| P (\bfx - \bfmu)\| = P(\bfx - \bfmu)/\|\bfx - \bfmu\| = P \bfS(\bfx - \bfmu)$ for any orthogonal matrix $P$, and as a result the SCM is rotation equivariant too, in the sense that $\Sigma_S(P\bfX) = P \Sigma_S(\bfX) P^T$. But this does not hold for any general non-singular matrix. An affine equivariant version of the sample SCM is obtained as the solution $\hat \Sigma_T$ of the following equation:
 
 $$ \hat \Sigma_T(\bfX) = \frac{p}{n} \sum_{i=1}^n \frac{(\bfx - \bfmu)(\bfx - \bfmu)^T}{(\bfx - \bfmu)^T \hat\Sigma_T(\bfX)^{-1} (\bfx - \bfmu)} $$
-
 which turns out to be Tyler's M-estimator of scatter \citep{tyler87}. In this context, one should note that for scatter matrices, affine equivariance will mean any affine transformation on the original random variable $\bfX \mapsto \bfX^* = A\bfX + \bfb$ ($A$ non-singular, $\bfb \in \mathbb{R}^p$) being carried over to the covariance matrix estimate upto a scalar multiple: $\hat\Sigma_T(\bfX^*) = k. A \hat\Sigma_T(\bfX) A^T$ for some $k>0$.
 
 \subsection{Data depth and outlyingness}
@@ -134,7 +133,6 @@ Let the random variable $\bfX \in \mathbb{R}^p$ follow an elliptical distributio
 \begin{equation} \label{equation:covformEq1}
 Cov(\tilde \bfX) = \Gamma \Lambda_{D,S} \Gamma^T,\quad\mbox{with}\quad \Lambda_{D,S} = E \left[ (\tilde D_\bfZ(\bfz))^2 \frac{\Lambda^{1/2} \bfz \bfz^T \Lambda^{1/2}}{\bfz^T \Lambda \bfz} \right]
 \end{equation}
-
 where $\bfz = (z_1,...,z_p)^T \sim N({\bf 0}, I_p)$ and $\Lambda_{D,S}$ a diagonal matrix with diagonal entries
 
 $$ \lambda_{D,S,i} = E_\bfZ \left[ \frac{(\tilde D_\bfZ(\bfz))^2 \lambda_i z_i^2}{\sum_{j=1}^p \lambda_j z_j^2} \right] $$
@@ -148,7 +146,6 @@ The matrix of eigenvectors of the covariance matrix, $\Gamma$, remains unchanged
 \item Calculate the next iterate
 
 $$ \Lambda^{*(k+1)} = \left[ E\left( \frac{(\tilde D_\bfZ(\bfz))^2 \bfz \bfz^T}{\bfz^T \Lambda^{*(k)} \bfz} \right) \right]^{-1} \Lambda_{D,S} $$
-
 and standardize its eigenvalues:
 
 $$ \Lambda^{*(k+1)} = \frac{\Lambda^{*(k+1)}}{det(\Lambda^{*(k+1)})^{1/p}} $$
@@ -160,7 +157,6 @@ Unlike sign covariance matrices and symmetrized sign covariance matrices \citep{
 \begin{equation} \label{equation:tylerEq}
 \Sigma_T = E \left[ \frac{\bfx \bfx^T}{\bfx^T \Sigma_T^{-1} \bfx} \right]
 \end{equation}
-
 and simply replacing $\bfx$ by its multivariate rank counterpart $\tilde\bfx$ will not change the estimate $\Sigma_T$ as $\bfx$ and $\tilde \bfx$ have the same directions. Instead we consider a depth-weighted version of Tyler's scatter matrix (i.e. weights $(\tilde D_\bfX(\bfx))^2$ in right side of (\ref{equation:tylerEq})) in the simulations in Section \ref{section:simSection}. The simulations show that it has slightly better finite-sample efficiency than $\Sigma_T$ but has same asymptotic performance. We conjecture that its concentration properties can be obtained by taking an approach similar to \cite{soloveychik14}.
 
 \section{Asymptotic results}
@@ -210,7 +206,6 @@ AVar(\bfg_i) = \sum_{k=1; k \neq i}^p \frac{1}{(\lambda_{D,s,k} - \lambda_{D,S,i
 \begin{equation}
 ACov(\bfg_i, \bfg_j) = - \frac{1}{(\lambda_{D,s,i} - \lambda_{D,S,j})^2} E \left[ \frac{(\tilde D_\bfZ (\bfz))^4 \lambda_i \lambda_j z_i^2 z_j^2}{(\bfz^T \Lambda \bfz)^2} \right] \bfgamma_j \bfgamma_i^T; \quad i \neq j
 \end{equation}
-
 where $\Gamma = (\bfgamma_1,...,\bfgamma_p)$. The vector consisting of diagonal elements of $L$, say $\bfl = (\l_1,...,\l_p)^T$ asymptotically has a $p$-variate normal distribution with mean ${\bf 0}_p$ and variance-covariance elements:
 \begin{eqnarray}
 AVar(l_i) &=& E \left[ \frac{(\tilde D_\bfZ (\bfz))^4 \lambda_i^2 z_i^4}{(\bfz^T \Lambda \bfz)^2} \right] - \lambda_{D,S,i}^2\\
@@ -226,7 +221,6 @@ In this section, we first obtain the influence functions of the DCM as well as i
 Given any probability distribution $F$, the influence function of any point $\bfx_0$ in the sample space $\mathcal{X}$ for some functional $T(F)$ on the distribution is defined as
 
 $$ IF(\bfx_0; T,F) = \lim_{\epsilon \rightarrow 0} \frac{1}{\epsilon} (T(F_\epsilon) - T(F)) $$
-
 where $F_\epsilon$ is $F$ with an additional mass of $\epsilon$ at $\bfx_0$, i.e. $F_\epsilon = (1-\epsilon)F + \epsilon \Delta_{\bfx_0}$; $\Delta_{\bfx_0}$ being the distribution with point mass at $\bfx_0$. When $T(F) = E_F g$ for some $F$-integrable function $g$, $IF(\bfx_0; T,F) = g(\bfx_0) - T(F)$. It now follows that for the DCM,
 
 $$ IF(\bfx_0; Cov(\tilde \bfX), F) = (\tilde D_\bfX(\bfx_0))^2 SS(\bfx_0; \bfmu) - Cov(\tilde \bfX) $$
@@ -237,13 +231,11 @@ IF(\bfx_0; \hat\bfgamma_{D,i}, F) &=& \sum_{k=1; k \neq i}^p \frac{1}{\lambda_{D
 &=& \sum_{k=1; k \neq i}^p \frac{1}{\lambda_{D,S,i} - \lambda_{D,S,k}} \left\{ \bfgamma^T_k (\tilde D_\bfX(\bfx_0))^2 SS(\bfx_0; \bfmu)\bfgamma_i - \lambda_{D,S,i}\bfgamma_k^T\bfgamma_i \right\} \bfgamma_k \notag \\
 &=& \sum_{k=1; k \neq i}^p \frac{\sqrt{\lambda_i \lambda_k} z_{0i} z_{0k}}{\lambda_{D,S,i} - \lambda_{D,S,k}}. \frac{(\tilde D_\bfZ(\bfz_0))^2 }{\bfz_0^T \Lambda \bfz_0} \bfgamma_k
 \end{eqnarray}
-
 where $\Gamma^T \Lambda^{-1/2} (\bfx_0 - \bfmu) = \bfz_0 = (z_{01},...,z_{0p})^T$. Clearly this influence function will be bounded, which indicates good robustness properties of principal components. Moreover, since the htped function takes small values for points close to the center of the distribution, it does not suffer from the inlier effect that is typical of the SCM and Tyler's shape matrix. The influence function for the $i^\text{th}$ eigenvector estimates of these two matrices (say $\hat\bfgamma_{S,i}$ and $\hat\bfgamma_{T,i}$, respectively) are as follows:
 \begin{eqnarray*}
 \quad IF(\bfx_0; \hat \bfgamma_{S,i}, F) &=& \sum_{k=1; k \neq i}^p \frac{\sqrt{\lambda_i \lambda_k}}{\lambda_{S,i} - \lambda_{S,k}}. \frac{z_{0i} z_{0k}}{\bfz_0^T \Lambda \bfz_0} \bfgamma_k, \text{ with } \lambda_{S,i} = E_\bfZ \left( \frac{\lambda_i z_i^2}{\sum_{j=1}^p \lambda_j z_j^2} \right) \quad \\
 IF(\bfx_0; \hat \bfgamma_{T,i}, F) &=& (p+2) \sum_{k=1; k \neq i}^p \frac{\sqrt{\lambda_i \lambda_k}}{\lambda_i - \lambda_k}. \frac{z_{0i} z_{0k}}{\bfz_0^T \bfz_0} \bfgamma_k \quad 
 \end{eqnarray*}
-
 for $i = 1,2$. In Figure \ref{fig:IFnorm} we consider first eigenvectors of different scatter estimates for the $\mathcal{N}_2((0,0)^T, \diag(2,1))$ and plot norms of these influence functions for different values of $\bfx_0$. The plots for SCM and Tyler's shape matrix demonstrate the 'inlier effect', i.e. points close to symmetry center and the center itself having high influence. The influence function for the sample covariance matrix is obtained by replacing $(p+2)$ by $\| \bfz_0 \|^2$ in the expression of $IF(\bfx_0; \hat \bfgamma_{T,i}, F)$ above, hence is unbounded and the corresponding eigenvector estimators are not robust. In comparison, all three DCMs considered here have a bounded influence function as well as small values of the influence function at 'deep' points.
 
 \begin{figure}[]
@@ -258,7 +250,6 @@ Suppose $\hat\Sigma$ is a $\sqrt n$-consistent estimator of the population covar
 \begin{equation} \label{equation:covevEq}
 AVar(\sqrt n\hat \bfgamma_i) = \sum_{k=1; k \neq i}^p \frac{\lambda_i \lambda_k}{(\lambda_i - \lambda_k)^2} \bfgamma_k \bfgamma_k^T
 \end{equation}
-
 the asymptotic relative efficiencies of eigenvectors from the sample DCM with respect to the sample covariance matrix can now be derived using (\ref{equation:covevEq}) above and (\ref{equation:DevEq}) from Corollary \ref{Corollary:eigendist}:
 \begin{eqnarray*}
 ARE(\hat\bfgamma^D_i, \hat\bfgamma_i; F) &=& \frac{\Tr( AVar(\sqrt n\hat \bfgamma_i))}{\Tr( AVar(\sqrt n\hat \bfgamma^D_i))}\\
@@ -269,7 +260,6 @@ For 2 dimensions, this expression can be somewhat simplified. Suppose the two ei
 
 $$ \lambda_{D,S,1} = E \left( \frac{(\tilde D_\bfZ(\bfz))^2 z_1^2}{z_1^2 + \rho z_2^2} \right), \quad
 \lambda_{D,S,2} = E \left( \frac{(\tilde D_\bfZ(\bfz))^2 \rho z_2^2}{z_1^2 + \rho z_2^2} \right) $$
-
 and by simple algebra we get
 
 $$ ARE(\hat\bfgamma^D_1, \hat\bfgamma_1; F) = ARE(\hat\bfgamma^D_2, \hat\bfgamma_2; F) = \frac{1}{(1-\rho)^2} \frac{E^2 \left( \frac{(\tilde D_\bfZ(\bfz))^2 (z_1^2 - \rho z_2^2)}{(z_1^2 + \rho z_2^2)} \right)}{E \left( \frac{(\tilde D_\bfZ(\bfz))^4 z_1^2z_2^2}{(z_1^2 + \rho z_2^2)^2}\right)} $$
@@ -454,15 +444,13 @@ In the above sections we introduce a covariance matrix based on depth-based mult
 An immediate extension of this would be to study the depth-weighted iterated scatter matrices, i.e. matrices $\Sigma_{Dw}$ that are solution to the following type of equations:
 
 $$ \Sigma_{Dw} = E \left[ \frac{(\tilde D_\bfX(\bfx))^2 \bfx \bfx^T}{\bfx^T \Sigma_{Dw}^{-1} \bfx} \right] $$
-
 as their eigenvector estimates seem to have better efficiency than those obtained from the corresponding DCMs. Unlike the DCM, these matrices will possess the affine equivariance property. It is possible to develop tests for central and elliptic symmetry based on the decomposition of the multivariate rank vector in equation \ref{equation:rankdecomp}. The result in Theorem \ref{Theorem:covform} is based on the fact that $E(\tilde \bfX) = \bf0$, and it holds for any centrally symmetric underlying distribution. Moreover, the depth of a point in the standardized scale (i.e. $\bfz$-scale) does not depend on the direction of $\bfz$. This is not possible without circular symmetry of $\bfz$, so any test of independence between $D_\bfZ (\bfz)$ and $\bfS (\bfz)$ can be seen as a test of ellipticity for the original random variable $\bfX$. Finally the applicability of this procedure in high-dimensional and functional data remains to be explored.
 
 \section*{Appendix A: \textbf{Form of $V_{D,S}(F)$}}
 First observe that for $F$ having covariance matrix $\Sigma = \Gamma\Lambda\Gamma^T$,
 
 $$ V_{D,S}(F)  = (\Gamma \otimes \Gamma) V_{D,S}(F_\Lambda) (\Gamma \otimes \Gamma)^T$$
-
-Where $F_\Lambda$ has the same elliptic distribution as $F$, but with covariance matrix $\Lambda$. Now,
+where $F_\Lambda$ has the same elliptic distribution as $F$, but with covariance matrix $\Lambda$. Now,
 \begin{eqnarray*}
 V_{D,S} (F_\Lambda) &=& E \left[ vec \left\{ \frac{(\tilde D_\bfZ (\bfz))^2 \Lambda^{1/2} \bfz\bfz^T \Lambda^{1/2}}{\bfz^T\Lambda\bfz} - \Lambda_{D,S} \right\} vec^T \left\{ \frac{(\tilde D_\bfZ (\bfz))^2 \Lambda^{1/2} \bfz\bfz^T \Lambda^{1/2}}{\bfz^T\Lambda\bfz} - \Lambda_{D,S} \right\} \right]\\
 &=& E \left[ vec \left\{ (\tilde D_\bfZ (\bfz))^2 SS(\Lambda^{1/2}\bfz; \bf0) \right\} vec^T \left\{ (\tilde D_\bfZ (\bfz))^2 SS(\Lambda^{1/2}\bfz; \bf0) \right\} \right]\\
@@ -472,7 +460,6 @@ V_{D,S} (F_\Lambda) &=& E \left[ vec \left\{ \frac{(\tilde D_\bfZ (\bfz))^2 \Lam
 The matrix $vec(\Lambda_{D,S}) vec^T(\Lambda_{D,S})$ consists of elements $\lambda_i\lambda_j$ at $(i,j)^\text{th}$ position of the $(i,j)^\text{th}$ block, and 0 otherwise. These positions correspond to variance and covariance components of on-diagonal elements. For the expectation matrix, all its elements are of the form $E[\sqrt{\lambda_a \lambda_b \lambda_c \lambda_d} z_a z_b z_c z_d . (\tilde D_\bfZ (\bfz))^4 / (\bfz^T \Lambda \bfz)^2]$, with $1 \leq a,b,c,d \leq p$. Since $(\tilde D_\bfZ (\bfz))^4 / (\bfz^T \Lambda \bfz)^2$ is even in $\bfz$, which has a circularly symmetric distribution, all such expectations will be 0 unless $a=b=c=d$, or they are pairwise equal. Following a similar derivation for spatial sign covariance matrices in \cite{magyar14}, we collect the non-zero elements and write the matrix of expectations:
 
 $$ (I_{p^2} + K_{p,p}) \left\{ \sum_{a=1}^p \sum_{b=1}^p \gamma^D_{ab} (\bfe_a \bfe_a^T \otimes  \bfe_b \bfe_b^T) - \sum_{a=1}^p \gamma^D_{aa} (\bfe_a \bfe_a^T \otimes  \bfe_a \bfe_a^T) \right\} + \sum_{a=1}^p \sum_{b=1}^p \gamma^D_{ab} (\bfe_a \bfe_b^T \otimes  \bfe_a \bfe_b^T) $$
-
 where $I_k = (\bfe_1,...,\bfe_k), K_{m,n} = \sum_{i=1}^m \sum_{j=1}^n J_{ij} \otimes J_{ij}^T$ with $J_{ij}$ the $m \times n$ matrix having 1 as $(i,j)^\text{th}$ element and 0 elsewhere, and $\gamma^D_{mn} = E[ \lambda_m \lambda_n z_m^2 z_n ^2 . (\tilde D_\bfZ (\bfz))^4 / (\bfz^T \Lambda \bfz)^2]; 1 \leq m,n \leq p$.
 
 \paragraph{}Putting everything together, denote $\hat S^D(F_\Lambda) = \sum_{i=1}^n (\tilde D^n_\bfZ (\bfz_i))^2 SS(\Lambda^{1/2}\bfz_i; \hat \bfmu_n)/n $. Then the different types of elements in the matrix $V_{D,S}(F_\Lambda)$ are as given below ($1 \leq a,b,c,d \leq p$):
@@ -501,7 +488,7 @@ $$ ACov(\sqrt n \hat S^D_{ab} (F_\Lambda), \sqrt n \hat S^D_{cc} (F_\Lambda)) = 
 \end{itemize}
 
 \section*{Appendix B: Proofs}
-\begin{proof}[\textbf{Proof of Theorem  \ref{Theorem:covform}}]
+\begin{proof}[Proof of Theorem  \ref{Theorem:covform}]
 The proof follows directly from writing out the expression of $Cov ( \tilde \bfX)$:
 \begin{eqnarray*}
 Cov(\tilde\bfX) &=& E(\tilde\bfX \tilde\bfX^T) - E(\tilde\bfX) E(\tilde\bfX)^T\\
@@ -512,7 +499,7 @@ Cov(\tilde\bfX) &=& E(\tilde\bfX \tilde\bfX^T) - E(\tilde\bfX) E(\tilde\bfX)^T\\
 
 \end{proof}
 
-\begin{proof}[\textbf{Proof of Lemma \ref{Lemma:lemma1}}]
+\begin{proof}[Proof of Lemma \ref{Lemma:lemma1}]
 For two positive definite matrices $A,B$, we denote by $A>B$ that $A-B$ is positive definite. Also, denote
 
 $$ S_n = \sqrt n \left[ \frac{1}{n} \sum_{i=1}^n \left| (\tilde D^{n} _\bfX (\bfx_i))^2  - (\tilde D_\bfX (\bfx_i))^2 \right| SS(\bfx_i; \hat\bfmu_n) \right] $$
@@ -524,7 +511,6 @@ Now, convergence in probability of $D^n_\bfX(.)$ to $D_\bfX(.)$ (hence $(\tilde 
 &<& \epsilon(1-\delta) + M\delta \\
 &<& \epsilon + M\delta
 \end{eqnarray}
-
 for all $n_1 \geq N$, where $M$ is the largest value the square of a depth function can take. Consequently for all such $n_1$,
 
 $$ S_{n_1} \quad < \quad
@@ -534,7 +520,6 @@ We now construct a sequence of positive definite matrices $\{A_k (B_k+C_k) : k \
 
 $$ A_k = \frac{1+M}{k}, \quad B_k = \sqrt N_k \left[ \frac{1}{N_k} \sum_{i=1}^{N_k} \left\{ SS(\bfx_i; \hat\bfmu_{N_k}) - SS(\bfx_i; \bfmu) \right\} \right] $$
 $$ \quad C_k = \sqrt N_k \left[ \frac{1}{N_k} \sum_{i=1}^{N_k} SS(\bfx_i; \bfmu) \right] $$
-
 where $N_k \in \mathbb N$ gives the relation (\ref{equation:lemma1eq}) in place of $N$ when we take $\epsilon = \delta  =1/k$. Under conditions $ E\|\bfx - \bfmu\|^{-3/2} < \infty $ and $\sqrt n (\hat\bfmu_n - \bfmu) = O_P(1)$, the sample sign covariance matrix with unknown location parameter $\hat\bfmu_n$ has the same asymptotic distribution as the same with known location $\bfmu$ \citep{durre14}, hence $B_k \stackrel{P}{\rightarrow} 0$. Now by Slutsky's theorem, $A_k (B_k+C_k) \stackrel{P}{\rightarrow} 0$. Finally, for any $\epsilon_1 > 0$, $ P(S_{N_k} > \epsilon_1) < P(A_k (B_k + C_k) > \epsilon_1)$, hence the subsequence $\{S_{N_k}\} \stackrel{P}{\rightarrow} 0$. Since the main sequence $\{S_k\}$ is bounded below by 0, we have the needed.
 \end{proof}
 
