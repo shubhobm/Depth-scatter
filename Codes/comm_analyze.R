@@ -21,7 +21,7 @@ commdata.X = commdata.X[complete.cases(commdata.X),]
 pcamod = princomp(commdata.X)
 plot(pcamod)
 scores = pcamod$scores
-pairs(scores[,1:5], pch=19, cex=.5)
+pairs(scores[,1:3], pch=19, cex=.5)
 
 # PC-regression
 X.PC = as.matrix(commdata.X) %*% pcamod$loadings[,1:5]
@@ -42,7 +42,7 @@ signs = commdata.X / (norms %*% rep(1,p))
 
 # calculate depth
 require(fda.usc)
-depths = mdepth.MhD(commdata.X, commdata.X)$dep
+depths = mdepth.RP(commdata.X, commdata.X)$dep
 depths = max(depths) - depths
 commdata.rank = signs * depths
 
@@ -50,7 +50,7 @@ pca.rank = princomp(commdata.rank)
 plot(pca.rank)
 
 scores.rank = pca.rank$scores
-pairs(scores.rank[,1:5], pch=19, cex=.5)
+pairs(scores.rank[,1:3], pch=19, cex=.5)
 
 # PC-regression
 X.PCrank = as.matrix(commdata.rank) %*% pca.rank$loadings[,1:5]
