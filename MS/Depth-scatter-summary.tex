@@ -437,6 +437,11 @@ Tables \ref{table:FSEtable2}, \ref{table:FSEtable3} and \ref{table:FSEtable4} gi
 \label{table:FSEtable4}
 \end{table}
 
+\section{Examples in real data analysis}
+\subsection{Communities and crime data}
+This data is from the UCI machine learning repository [], and consists information on 101 demographic and socio-economic variables (like population, racial percentages, percentage of people living in urbal areas etc.)  in 1994 community areas in the United States. We shall attept to build a principal component-based linear regression models to predict one of the variables, the total number of violent crimes per 100K population from others. Specifically, we will be building linear models on increasing numbers of PCs from both normal PCA and depth-based PCA done on the predictors, and will compare the change of $R^2$ values for each group of models. We do this since boxcox transformations on all of the models we consider suggest optimal power transformations of values close to -3.
+
+We keep all the predictors unchanged, while go for an inverse cubic transformation on the response variable. While doing the depth-based PCA, we use projection depth. Both of the methods seem to explain same amounts of variances in all leading PCs (Figure ).
 
 \section{Conclusion}
 In the above sections we introduce a covariance matrix based on depth-based multivariate ranks that keeps the eigenvectors of the actual population unchanged for elliptical distributions. We provide asymptotic results for the sample DCM, its eigenvalues and eigenvectors. Bounded influence functions as well as simulation studies suggest that the eigenvector estimates obtained from the DCM are highly robust, yet do not lose much in terms of efficiency. Thus it provides a plausible alternative to existing approaches of robust PCA that are based on estimation of covariance matrices (for example SCM, Tyler's scatter matrix, D\"{u}mbgen's symmetrized shape matrix).

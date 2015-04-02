@@ -76,8 +76,7 @@ distanceplot = function(data.X, npc, ...){
     text(SDrank[which.ind], ODrank[which.ind], indices[which.ind], pos=1)
   }
   
-  par(mfrow=c(1,1))
-  
+  par(mfrow=c(1,1))  
 }
 
 scoreplot = function(data.X, npc){

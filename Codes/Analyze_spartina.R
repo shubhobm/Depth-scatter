@@ -1,19 +1,12 @@
 ## Comm_analyze: analysis of communities data
 rm(list=ls())
 setwd("C:/Study/My projects/Depth-scatter/Codes")
-commdata = read.csv("../Data/communities.data.txt", header=F)
-NAcols = c(102:118, 122:125, 127) # columns with most NA entries
-commdata.X = commdata[,-c(1:5, NAcols)]
+commdata = read.table("../Data/spartina.txt", header=T)
+NAcols = c(7,8) # columns with most NA entries
+commdata.X = commdata[,-NAcols]
 
-# convert all columns into numeric
-for(i in 1:ncol(commdata.X)){
-  if(class(commdata.X[,i]) != "numeric"){
-    commdata.X[,i] = as.numeric(paste(commdata.X[,i]))
-  }
-}
-
-Y = commdata.X[,101]+1
-commdata.X = data.frame(scale(commdata.X[,-101]))
+Y = commdata.X[,1]
+commdata.X = data.frame(scale(commdata.X[,-1]))
 Y = Y[complete.cases(commdata.X)]
 commdata.X = commdata.X[complete.cases(commdata.X),]
 
@@ -40,18 +33,13 @@ commdata.rank = scale(signs * depths)
 pca.rank = princomp(commdata.rank)
 scores.rank = pca.rank$scores
 
-par(mfrow=c(1,2))
-plot(pcamod, ylim=c(0,30), main="Normal PCA")
-plot(pca.rank, ylim=c(0,30), main="(Projection-) Depth PCA")
-par(mfrow=c(1,1))
-
 rsq.mat = matrix(0, nrow=p, ncol=2)
 for(npc in 1:p){
   # PC regression on vanilla PCA scores
-  lm.PC = lm(1/Y^3~scores[,1:npc]) # inverse cube transformation chosen by boxcox
+  lm.PC = lm(sqrt(Y)~scores[,1:npc]) # inverse cube transformation chosen by boxcox
   
   # PC-regression on rank PCA scores
-  lm.PCrank = lm(1/Y^3~scores.rank[,1:npc])
+  lm.PCrank = lm(sqrt(Y)~scores.rank[,1:npc])
   
   rsq.mat[npc,] = c(summary(lm.PC)$r.squared, summary(lm.PCrank)$r.squared)
 }

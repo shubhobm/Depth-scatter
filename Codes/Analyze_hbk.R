@@ -4,15 +4,12 @@ setwd("C:/Study/My projects/Depth-scatter/Codes")
 
 ## Octane data
 library(ellipse)
-library(cepp)
-# data(Colon)
-# data.X = scale(Colon$X[which(Colon$Y==2),])
+crime2 = read.table("../Data/spartina.txt", header=T)
 
-library(robustbase)
-hbk.X = hbk[,-4]
-data.X = scale(stack.x)
+data.X = scale(crime2[,-c(7,8)])
 n = nrow(data.X)
 p = ncol(data.X)
+
 
 distanceplot = function(data.X, npc, ...){
   svd.oct = svd(data.X)
@@ -118,4 +115,4 @@ scoreplot = function(data.X, npc, ...){
 
 
 distanceplot(data.X, 2, pch=19, col="blue")
-scoreplot(data.X, 2, pch=19, cex=.7, col="blue")
+scoreplot(data.X, 2, xlim=c(-10,10), ylim=c(-5,5), pch=19, cex=.7, col="blue")
