@@ -439,9 +439,27 @@ Tables \ref{table:FSEtable2}, \ref{table:FSEtable3} and \ref{table:FSEtable4} gi
 
 \section{Examples in real data analysis}
 \subsection{Communities and crime data}
-This data is from the UCI machine learning repository [], and consists information on 101 demographic and socio-economic variables (like population, racial percentages, percentage of people living in urbal areas etc.)  in 1994 community areas in the United States. We shall attept to build a principal component-based linear regression models to predict one of the variables, the total number of violent crimes per 100K population from others. Specifically, we will be building linear models on increasing numbers of PCs from both normal PCA and depth-based PCA done on the predictors, and will compare the change of $R^2$ values for each group of models. We do this since boxcox transformations on all of the models we consider suggest optimal power transformations of values close to -3.
+This data is from the UCI machine learning repository [], and consists information on 101 demographic and socio-economic variables (like population, racial percentages, percentage of people living in urbal areas etc.)  in 1994 community areas in the United States. The dataset is a combination of data from the 1990 US Census, 1990 US Law Enforcement Management and Administrative Statistics survey and 1995 FBI Uniform Crime Reporting data.
 
-We keep all the predictors unchanged, while go for an inverse cubic transformation on the response variable. While doing the depth-based PCA, we use projection depth. Both of the methods seem to explain same amounts of variances in all leading PCs (Figure ).
+With the goal of building a model for the total number of violent crimes per 100K population from others, we initially do normal and depth-based PCA on the other variables. While doing the depth-based PCA, we use projection depth as our chosen depth function. After obtaining the PCA models, we take the first $k$ PCs in each case and build linear models for both the methods. This is repeated for $k = 1,2,...,100$ and the $R^2$ values on principal components regression models of the two types are plotted in Figure \ref{fig:rsqplot}. For building linear regression models, we keep all the predictors unchanged, while go for an inverse cubic transformation on the response variable. We do this since boxcox transformations on all of the models we consider suggest optimal power transformations of values close to -3.
+
+From the screeplots in \ref{fig:screeplot} we see that both the methods explain similar amounts of variances in the leading few PCs. 
+
+\begin{figure}[t]
+	\captionsetup{singlelinecheck=off}
+	\centering
+		\includegraphics[height=5cm]{../Codes/crime_screeplots.png}
+	\caption{(Left) Screeplots for two types of PCA on communities data}
+	\label{fig:screeplot}
+\end{figure}
+
+\begin{figure}[t]
+	\captionsetup{singlelinecheck=off}
+	\centering
+		\includegraphics[height=7cm]{../Codes/crime_Rsq_plot.png}
+	\caption{(Left) Change of $R^2$ values for normal and depth-based principal components regression models on communities data}
+	\label{fig:rsqplot}
+\end{figure}
 
 \section{Conclusion}
 In the above sections we introduce a covariance matrix based on depth-based multivariate ranks that keeps the eigenvectors of the actual population unchanged for elliptical distributions. We provide asymptotic results for the sample DCM, its eigenvalues and eigenvectors. Bounded influence functions as well as simulation studies suggest that the eigenvector estimates obtained from the DCM are highly robust, yet do not lose much in terms of efficiency. Thus it provides a plausible alternative to existing approaches of robust PCA that are based on estimation of covariance matrices (for example SCM, Tyler's scatter matrix, D\"{u}mbgen's symmetrized shape matrix).
@@ -509,26 +527,24 @@ For two positive definite matrices $A,B$, we denote by $A>B$ that $A-B$ is posit
 
 $$ S_n = \sqrt n \left[ \frac{1}{n} \sum_{i=1}^n \left| (\tilde D^{n} _\bfX (\bfx_i))^2  - (\tilde D_\bfX (\bfx_i))^2 \right| SS(\bfx_i; \hat\bfmu_n) \right] $$
 Now, convergence in probability of $D^n_\bfX(.)$ to $D_\bfX(.)$ (hence $(\tilde D^n_\bfX(.))^2$ to $(\tilde D_\bfX(.))^2$) implies that given $\epsilon, \delta > 0$ there exists $N \in \mathbb{N}$ so that
-
-\begin{eqnarray} \label{equation:lemma1eq}
-\notag P \left[ |(\tilde D^{n_1}_\bfX(\bfx))^2 - (\tilde D_\bfX(\bfx))^2| > \epsilon \right] &<& \delta\\
-\notag \Rightarrow \qquad |(\tilde D^{n_1}_\bfX(\bfx))^2 - (\tilde D_\bfX(\bfx))^2|
-&<& \epsilon(1-\delta) + M\delta \\
-&<& \epsilon + M\delta
-\end{eqnarray}
-for all $n_1 \geq N$, where $M$ is the largest value the square of a depth function can take. Consequently for all such $n_1$,
-
+$$ P \left[ |(\tilde D^{n_1}_\bfX(\bfx))^2 - (\tilde D_\bfX(\bfx))^2| > \epsilon \right] < \delta $$
+for all $n_1 \geq N$. Now if $M$ is the largest value the square of a depth function can take, then $|(\tilde D^{n_1}_\bfX(\bfx))^2 - (\tilde D_\bfX(\bfx))^2| < \epsilon$ with probability $1-\delta$, and $< M$ with probability $\delta$. Thus we have
+\begin{equation}
+\label{equation:lemma1eq}
+\tilde | D^{n_1}_\bfX(\bfx))^2 - (\tilde D_\bfX(\bfx))^2 | < \min \{ \epsilon, M \}
+\end{equation}
+Consequently for all such $n_1$, with probability 1 we shall have
 $$ S_{n_1} \quad < \quad
 (\epsilon + M\delta) . \sqrt n_1 \left[ \frac{1}{n_1} \sum_{i=1}^{n_1} SS(\bfx_i; \hat\bfmu_{n_1}) \right] $$
 
 We now construct a sequence of positive definite matrices $\{A_k (B_k+C_k) : k \in \mathbb N\} $ so that
 
-$$ A_k = \frac{1+M}{k}, \quad B_k = \sqrt N_k \left[ \frac{1}{N_k} \sum_{i=1}^{N_k} \left\{ SS(\bfx_i; \hat\bfmu_{N_k}) - SS(\bfx_i; \bfmu) \right\} \right] $$
+$$ A_k = \frac{M}{k}, \quad B_k = \sqrt N_k \left[ \frac{1}{N_k} \sum_{i=1}^{N_k} \left\{ SS(\bfx_i; \hat\bfmu_{N_k}) - SS(\bfx_i; \bfmu) \right\} \right] $$
 $$ \quad C_k = \sqrt N_k \left[ \frac{1}{N_k} \sum_{i=1}^{N_k} SS(\bfx_i; \bfmu) \right] $$
 where $N_k \in \mathbb N$ gives the relation (\ref{equation:lemma1eq}) in place of $N$ when we take $\epsilon = \delta  =1/k$. Under conditions $ E\|\bfx - \bfmu\|^{-3/2} < \infty $ and $\sqrt n (\hat\bfmu_n - \bfmu) = O_P(1)$, the sample sign covariance matrix with unknown location parameter $\hat\bfmu_n$ has the same asymptotic distribution as the same with known location $\bfmu$ \citep{durre14}, hence $B_k \stackrel{P}{\rightarrow} 0$. Now by Slutsky's theorem, $A_k (B_k+C_k) \stackrel{P}{\rightarrow} 0$. Finally, for any $\epsilon_1 > 0$, $ P(S_{N_k} > \epsilon_1) < P(A_k (B_k + C_k) > \epsilon_1)$, hence the subsequence $\{S_{N_k}\} \stackrel{P}{\rightarrow} 0$. Since the main sequence $\{S_k\}$ is bounded below by 0, we have the needed.
 \end{proof}
 
-\begin{proof}[\textbf{Proof of Theorem \ref{Theorem:rootn}}]
+\begin{proof}[Proof of Theorem \ref{Theorem:rootn}]
 The quantity in the statement of the theorem can be broken down as:
 \begin{eqnarray*}
 \sqrt n \left[ vec\left\{ \frac{1}{n} \sum_{i=1}^n (\tilde D^n_\bfX (\bfx_i))^2 SS(\bfx_i; \hat\bfmu_n) \right\} - vec\left\{ \frac{1}{n} \sum_{i=1}^n (\tilde D_\bfX (\bfx_i))^2 SS(\bfx_i; \bfmu) \right\} \right] +\\
@@ -538,11 +554,11 @@ The quantity in the statement of the theorem can be broken down as:
 The first part goes to 0 in probability by Lemma \ref{Lemma:lemma1}, and applying Slutsky's theorem we get the required convergence.
 \end{proof}
 
-\begin{proof}[\textbf{Proof of Theorem \ref{Theorem:decomp}}]
+\begin{proof}[Proof of Theorem \ref{Theorem:decomp}]
 See \cite{taskinen12}
 \end{proof}
 
-\begin{proof}[\textbf{Proof of Corollary \ref{Corollary:eigendist}}]
+\begin{proof}[Proof of Corollary \ref{Corollary:eigendist}]
 In spirit, this corollary is similar to Theorem 13.5.1 in \cite{anderson}, and indeed, \cite{taskinen12} used this theorem to prove Theorem \ref{Theorem:decomp}. Due to the decomposition (\ref{equation:decompEq}) we have, for the distribution $F_\Lambda$, the following relation between any off-diagonal element of $\hat S^D(F_\Lambda)$ and the corresponding element in the estimate of eigenvectors $\hat\Gamma_D (F_\Lambda)$:
 
 $$ \sqrt n \hat\gamma_{D,ij} (F_\Lambda) = \sqrt n \frac{\hat S^D_{ij} (F_\Lambda)}{\lambda_{D,S,i} - \lambda_{D,S,j}}; \quad i \neq j$$
