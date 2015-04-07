@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.20)  3 APR 2015 15:30
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.20)  6 APR 2015 20:24
 entering extended mode
 **Depth-scatter-summary.tex
 ("C:\Study\My projects\Depth-scatter\MS\Depth-scatter-summary.tex"
@@ -506,13 +506,13 @@ Overfull \hbox (34.18604pt too wide) in alignment at lines 477--481
  [][][] []
  []
 
-[24]
+[24] [25]
 Overfull \hbox (8.77065pt too wide) in paragraph at lines 515--516
 []\OT1/cmr/m/n/10.95 The proof fol-lows di-rectly from writ-ing out the ex-pres
 -sion of $\OML/cmm/m/it/10.95 Cov\OT1/cmr/m/n/10.95 ([])$: 
  []
 
-[25] [26] [27]
+[26] [27]
 Overfull \hbox (4.5438pt too wide) in paragraph at lines 587--588
  [][] \OT1/cmr/m/n/10.95 For the on-diagonal el-e-ments of $[](\OML/cmm/m/it/10
 .95 F[]\OT1/cmr/m/n/10.95 )$ The-o-rem []4.3[] gives us $[][](\OML/cmm/m/it/10.
@@ -539,7 +539,7 @@ Here is how much of TeX's memory you used:
  11032 multiletter control sequences out of 15000+200000
  20755 words of font info for 78 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 36i,14n,38p,1230b,488s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,14n,38p,1230b,486s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Stud
 y/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Study/LaTeX/Mi
 kTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/Study/LaTeX/MikTeX 2.9/fo
@@ -561,7 +561,7 @@ onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1
 fonts/cm/cmti10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/c
 mtt10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10
 .pfb>
-Output written on Depth-scatter-summary.pdf (32 pages, 465409 bytes).
+Output written on Depth-scatter-summary.pdf (32 pages, 465647 bytes).
 PDF statistics:
  528 PDF objects out of 1000 (max. 8388607)
  115 named destinations out of 1000 (max. 500000)
