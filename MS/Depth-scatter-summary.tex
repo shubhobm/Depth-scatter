@@ -438,31 +438,53 @@ Tables \ref{table:FSEtable2}, \ref{table:FSEtable3} and \ref{table:FSEtable4} gi
 \end{table}
 
 \section{Examples in real data analysis}
-\subsection{Communities and crime data}
-This data is from the UCI machine learning repository [], and consists information on 101 demographic and socio-economic variables (like population, racial percentages, percentage of people living in urbal areas etc.)  in 1994 community areas in the United States. The dataset is a combination of data from the 1990 US Census, 1990 US Law Enforcement Management and Administrative Statistics survey and 1995 FBI Uniform Crime Reporting data.
+%\subsection{Communities and crime data}
+%This data is from the UCI machine learning repository [], and consists information on 101 demographic and socio-economic variables (like population, racial percentages, percentage of people living in urbal areas etc.)  in 1994 community areas in the United States. The dataset is a combination of data from the 1990 US Census, 1990 US Law Enforcement Management and Administrative Statistics survey and 1995 FBI Uniform Crime Reporting data.
+%
+%With the goal of building a model for the total number of violent crimes per 100K population from others, we initially do normal and depth-based PCA on the other variables. While doing the depth-based PCA, we use projection depth as our chosen depth function. After obtaining the PCA models, we take the first $k$ PCs in each case and build linear models for both the methods. This is repeated for $k = 1,2,...,100$ and the $R^2$ values on principal components regression models of the two types are plotted in Figure \ref{fig:rsqplot}. For building linear regression models, we keep all the predictors unchanged, while go for an inverse cubic transformation on the response variable. We do this since boxcox transformations on all of the models we consider suggest optimal power transformations of values close to --3.
+%
+%From the screeplots in \ref{fig:screeplot} we see that both the methods explain similar amounts of variances in the leading few PCs. As for the model performances, linear regressions based on depth-PCA have slightly higher $R^2$ values when the top few (upto 10) principal components are used. At around 20 PCs the two models have same $R^2$ values and the normal PC-regression models perform slightly better after that.
+%
+%\begin{figure}[t]
+%	\captionsetup{singlelinecheck=off}
+%	\centering
+%		\includegraphics[height=5cm]{../Codes/crime_screeplots.png}
+%	\caption{(Left) Screeplots for two types of PCA on communities data}
+%	\label{fig:screeplot}
+%\end{figure}
+%
+%\begin{figure}[t]
+%	\captionsetup{singlelinecheck=off}
+%	\centering
+%		\includegraphics[height=7cm]{../Codes/crime_Rsq_plot.png}
+%	\caption{(Left) Change of $R^2$ values for normal and depth-based principal components regression models on communities data}
+%	\label{fig:rsqplot}
+%\end{figure}
 
-With the goal of building a model for the total number of violent crimes per 100K population from others, we initially do normal and depth-based PCA on the other variables. While doing the depth-based PCA, we use projection depth as our chosen depth function. After obtaining the PCA models, we take the first $k$ PCs in each case and build linear models for both the methods. This is repeated for $k = 1,2,...,100$ and the $R^2$ values on principal components regression models of the two types are plotted in Figure \ref{fig:rsqplot}. For building linear regression models, we keep all the predictors unchanged, while go for an inverse cubic transformation on the response variable. We do this since boxcox transformations on all of the models we consider suggest optimal power transformations of values close to --3.
+\subsection{Bus data}
+This dataset is available in the R package \texttt{rrcov}, and consists of data on images of 218 buses. The 18 variables in the dataset correspond to several features related to these images. Here we extend upon the analysis in \cite{maronna06}, pp. 213 to compare 3 different methods of robust PCA (including that using SCM) with our DCM-based method. Similar to the original analysis, we set aside the variable 9 and scale the other variables by dividing with their respective mean absolute deviations (MAD). This is done because all the variables had much larger standard deviations compared to their MADs, and variable 9 had MAD = 0.
 
-From the screeplots in \ref{fig:screeplot} we see that both the methods explain similar amounts of variances in the leading few PCs. As for the model performances, linear regressions based on depth-PCA have slightly higher $R^2$ values when the top few (upto 10) principal components are used. At around 20 PCs the two models have same $R^2$ values and the normal PC-regression models perform slightly better after that.
-
-\begin{figure}[t]
-	\captionsetup{singlelinecheck=off}
-	\centering
-		\includegraphics[height=5cm]{../Codes/crime_screeplots.png}
-	\caption{(Left) Screeplots for two types of PCA on communities data}
-	\label{fig:screeplot}
-\end{figure}
-
-\begin{figure}[t]
-	\captionsetup{singlelinecheck=off}
-	\centering
-		\includegraphics[height=7cm]{../Codes/crime_Rsq_plot.png}
-	\caption{(Left) Change of $R^2$ values for normal and depth-based principal components regression models on communities data}
-	\label{fig:rsqplot}
-\end{figure}
+For the sake of uniformity, we use projection depth as our fixed depth function while doing depth-based PCA in our data analysis examples. We compare the outputs of classical and depth-based PCA with the following 3 robust methods: Spherical PCA, i.e. PCA based on the SCM, PCs obtained by the ROBPCA algorithm \citep{hubert05}, and the Minimum Covariance Determinant (MCD) estimator \citep{Rousseeuw84leastmedian}. Table \ref{table:bus_table1} gives the proportions variability that are left unexplained by the top $q$ $(= 1,...,6)$ components obtained from all 5 methods.
 
 \section{Conclusion}
 In the above sections we introduce a covariance matrix based on depth-based multivariate ranks that keeps the eigenvectors of the actual population unchanged for elliptical distributions. We provide asymptotic results for the sample DCM, its eigenvalues and eigenvectors. Bounded influence functions as well as simulation studies suggest that the eigenvector estimates obtained from the DCM are highly robust, yet do not lose much in terms of efficiency. Thus it provides a plausible alternative to existing approaches of robust PCA that are based on estimation of covariance matrices (for example SCM, Tyler's scatter matrix, D\"{u}mbgen's symmetrized shape matrix).
+
+\begin{table}[t]
+\centering
+    \begin{tabular}{c|ccccc}
+    \hline
+    \begin{large} $q$ \end{large} & \multicolumn{5}{c}{Method of PCA}         \\ \cline{2-6}
+    ~                   & Classical     & SCM-based & ROBPCA & MCD-based & DCM-based \\\hline 
+    1                   & 0.188         & 0.549     & 0.410  & 0.514     & 0.411     \\
+    2                   & 0.084         & 0.272     & 0.214  & 0.337     & 0.219     \\
+    3                   & 0.044         & 0.182     & 0.121  & 0.227     & 0.117     \\
+    4                   & 0.026         & 0.135     & 0.083  & 0.154     & 0.085     \\
+    5                   & 0.018         & 0.099     & 0.054  & 0.098     & 0.060     \\
+    6                   & 0.012         & 0.069     & 0.036  & 0.070     & 0.044     \\ \hline
+    \end{tabular}
+    \caption{Unexplained proportions of variability for PCA models with $q$ components}
+    \label{table:bus_table1}
+\end{table}
 
 An immediate extension of this would be to study the depth-weighted iterated scatter matrices, i.e. matrices $\Sigma_{Dw}$ that are solution to the following type of equations:
 

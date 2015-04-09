@@ -1,118 +1,83 @@
 ## Analyze_octane: analysis of octane data
 rm(list=ls())
 setwd("C:/Study/My projects/Depth-scatter/Codes")
+source('misc_functions.R')
 
 ## Octane data
 library(ellipse)
-crime2 = read.table("../Data/spartina.txt", header=T)
+library(rrcov)
+library(fda.usc)
 
-data.X = scale(crime2[,-c(7,8)])
-n = nrow(data.X)
-p = ncol(data.X)
+## Analyze bus data
+data(bus)
+bus1 <- bus[, -9]
+madbus <- apply(bus1, 2, mad)
+bus2 <- sweep(bus1, 2, madbus, "/", check.margin = FALSE)
+# bus2 = scale(bus2)
 
+pca <- PcaClassic(bus2)
+rpca <- PcaLocantore(bus2)
+pcaHubert <- PcaHubert(bus2, k=17, kmax=17, mcd=FALSE)
+pcamcd <- PcaCov(bus2, cov.control=CovControlMcd())
+#pcaogk <- PcaCov(bus2, cov.control=CovControlOgk())
+pcarank = PcaRank(bus2)
 
-distanceplot = function(data.X, npc, ...){
-  svd.oct = svd(data.X)
-  P.oct = svd.oct$v[,1:npc]
-  scores.oct = as.matrix(data.X) %*% P.oct
-  eig.oct = svd.oct$d[1:npc]
-  
-  # calculate score distance and orthogonal distance
-  SD = sqrt(rowSums(scores.oct^2 / matrix(eig.oct, nrow=n, ncol=npc, byrow=T)))
-  OD = sqrt(rowSums((data.X - t(P.oct %*% t(scores.oct)))^2))
-  
-  # get cutoffs
-  SD.cutoff = sqrt(qchisq(0.975, 2))
-  ODt = OD^(2/3)
-  t = mean(ODt); s = sd(ODt)
-  OD.cutoff = (t+s*qnorm(.975))^(3/2)
-  
-  indices = 1:n
-  which.ind = which(SD > SD.cutoff | OD > OD.cutoff)
-  
-  ## distance-distance plots
-  par(mfrow=c(1,2))
-  
-  plot(SD, OD, ...)
-  abline(v=SD.cutoff, col="red")
-  abline(h=OD.cutoff, col="red")
-  if(length(which.ind>0)){
-    text(SD[which.ind], OD[which.ind], indices[which.ind], pos=1)
-  }
-  
-  
-  # get ranks
-  norms = sqrt(data.X^2 %*% rep(1,p))
-  signs = data.X / (norms %*% rep(1,p))
-  
-  # calculate depth
-  require(fda.usc)
-  depths = mdepth.RP(data.X, data.X, proj=2000)$dep
-  depths = max(depths) - depths
-  data.rank = scale(signs * depths)
-  
-  svd.oct.rank = svd(data.rank)
-  P.oct.rank = svd.oct.rank$v[,1:npc]
-  scores.oct.rank = as.matrix(data.rank) %*% P.oct.rank
-  eig.oct.rank = svd.oct.rank$d[1:npc]
-  
-  # calculate score distance and orthogonal distance
-  SDrank = sqrt(rowSums(scores.oct.rank^2 / matrix(eig.oct.rank, nrow=n, ncol=npc, byrow=T)))
-  ODrank = sqrt(rowSums((data.rank - t(P.oct.rank %*% t(scores.oct.rank)))^2))
-  
-  # get cutoffs
-  SDrank.cutoff = sqrt(qchisq(0.975, 2))
-  ODtrank = ODrank^(2/3)
-  trank = mean(ODtrank); srank = sd(ODtrank)
-  ODrank.cutoff = (trank+srank*qnorm(.975))^(3/2)
-  
-  indices = 1:n
-  which.ind = which(SDrank > SDrank.cutoff | ODrank > ODrank.cutoff)
-  
-  
-  plot(SDrank, ODrank, ...)
-  abline(v=SDrank.cutoff, col="red")
-  abline(h=ODrank.cutoff, col="red")
-  if(length(which.ind>0)){
-    text(SDrank[which.ind], ODrank[which.ind], indices[which.ind], pos=1)
-  }
-  
-  par(mfrow=c(1,1))
-  
+ev <- getEigenvalues(pca)
+evrob <- getEigenvalues(rpca)
+evhub <- getEigenvalues(pcaHubert)
+evmcd <- getEigenvalues(pcamcd)
+#evogk <- getEigenvalues(pcaogk)
+evrank = getEigenvalues(pcarank)
+
+uvar <- matrix(nrow=6, ncol=6)
+svar <- sum(ev)
+svarrob <- sum(evrob)
+svarhub <- sum(evhub)
+svarmcd <- sum(evmcd)
+svarogk <- sum(evogk)
+svarrank = sum(evrank)
+
+for(i in 1:6){
+  uvar[i,1] <- i
+  uvar[i,2] <- round((svar - sum(ev[1:i]))/svar, 3)
+  uvar[i,3] <- round((svarrob - sum(evrob[1:i]))/svarrob, 3)
+  uvar[i,4] <- round((svarhub - sum(evhub[1:i]))/svarhub, 3)
+  uvar[i,5] <- round((svarmcd - sum(evmcd[1:i]))/svarmcd, 3)
+#  uvar[i,6] <- round((svarogk - sum(evogk[1:i]))/svarogk, 3)
+  uvar[i,6] <- round((svarrank - sum(evrank[1:i]))/svarrank, 3)
 }
+uvar <- as.data.frame(uvar)
+names(uvar) <- c("q", "Classical","Spherical", "Hubert", "MCD", "Depth")
+cat("\nBus data: proportion of unexplained variability for q components\n")
+print(uvar)
 
-scoreplot = function(data.X, npc, ...){
-  svd.oct = svd(data.X)
-  P.oct = svd.oct$v[,1:npc]
-  scores.oct = as.matrix(data.X) %*% P.oct
-  
-  ## score plot
-  par(mfrow=c(1,2))
-  
-  plot(scores.oct, ...)
-  lines(ellipse(cov(scores.oct), level=.975), lwd=2)
-  
-  # get ranks
-  norms = sqrt(data.X^2 %*% rep(1,p))
-  signs = data.X / (norms %*% rep(1,p))
-  
-  # calculate depth
-  require(fda.usc)
-  depths = mdepth.RP(data.X, data.X)$dep
-  depths = max(depths) - depths
-  data.rank = scale(signs * depths)
-  
-  svd.oct.rank = svd(data.rank)
-  P.oct.rank = svd.oct.rank$v[,1:npc]
-  scores.oct.rank = as.matrix(data.rank) %*% P.oct.rank
-  
-  ## score plot
-  plot(scores.oct.rank, ...)
-  lines(ellipse(cov(scores.oct.rank), level=.975), lwd=2)
-  
-  par(mfrow=c(1,1))  
-}
+## Reproduce Table 6.4 from Maronna et al. (2006), page 214, adding DCM
+##
+## Compute classical and robust PCA extracting only the first 3 components
+## and take the squared orthogonal distances to the 3-dimensional hyperplane
+##
+pca3 <- PcaClassic(bus2, k=3)               # classical
+rpca3 <- PcaLocantore(bus2, k=3)            # spherical (Locantore, 1999)
+hpca3 <- PcaHubert(bus2, k=3)               # Hubert
+mpca3 = PcaCov(bus2, cov.control=CovControlMcd(), k=3) # MCD
+dpca3 = PcaRank(bus2, k=3)                  # Depth
 
+dist <- pca3@od^2
+rdist <- rpca3@od^2
+hdist <- hpca3@od^2
+mdist = mpca3@od^2
+ddist = dpca3@od^2
 
-distanceplot(data.X, 2, pch=19, col="blue")
-scoreplot(data.X, 2, xlim=c(-10,10), ylim=c(-5,5), pch=19, cex=.7, col="blue")
+## calculate the quantiles of the distances to the 3-dimensional hyperplane
+qclass  <- round(quantile(dist, probs = seq(0, 1, 0.1)[-c(1,11)]), 1)
+qspc <- round(quantile(rdist, probs = seq(0, 1, 0.1)[-c(1,11)]), 1)
+qhubert <- round(quantile(hdist, probs = seq(0, 1, 0.1)[-c(1,11)]), 1)
+qmcd <- round(quantile(mdist, probs = seq(0, 1, 0.1)[-c(1,11)]), 1)
+qdepth <- round(quantile(ddist, probs = seq(0, 1, 0.1)[-c(1,11)]), 1)
+
+qq <- cbind(rbind(qclass, qspc, qhubert, qmcd, qdepth),
+            round(c(max(dist), max(rdist), max(hdist), max(mdist), max(ddist)), 0))
+colnames(qq)[10] <- "Max"
+rownames(qq) <- c("Classical", "Spherical", "Hubert", "MCD", "Depth")
+cat("\nBus data: quantiles of distances to hyperplane\n")
+print(qq)

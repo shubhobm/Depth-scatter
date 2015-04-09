@@ -1,6 +1,17 @@
 ## Comm_analyze: analysis of communities data
 rm(list=ls())
 setwd("C:/Study/My projects/Depth-scatter/Codes")
+source('misc_functions.R')
+
+##########
+# Load packages
+##########
+library(fda.usc)
+library(rrcov)
+
+##########
+# Load data
+##########
 commdata = read.csv("../Data/communities.data.txt", header=F)
 NAcols = c(102:118, 122:125, 127) # columns with most NA entries
 commdata.X = commdata[,-c(1:5, NAcols)]
@@ -17,34 +28,30 @@ commdata.X = data.frame(scale(commdata.X[,-101]))
 Y = Y[complete.cases(commdata.X)]
 commdata.X = commdata.X[complete.cases(commdata.X),]
 
+##########
+# Implementation
+##########
+
 ## wil do vanilla and rank PCA, then
 ## principal components regression on increasing number of PCs
 
 ## vanilla PCA
-pcamod = princomp(commdata.X)
-scores = pcamod$scores
-
-## get ranks
-n = nrow(commdata.X)
-p = ncol(commdata.X)
-norms = sqrt(commdata.X^2 %*% rep(1,p))
-signs = commdata.X / (norms %*% rep(1,p))
-
-# calculate depth
-require(fda.usc)
-depths = mdepth.RP(commdata.X, commdata.X)$dep
-depths = max(depths) - depths
-commdata.rank = scale(signs * depths)
+pcamod = PcaClassic(commdata.X)
+scores = pcamod@scores
 
 # rank PCA
-pca.rank = princomp(commdata.rank)
-scores.rank = pca.rank$scores
+pca.rank = PcaRank(commdata.X)
+scores.rank = pca.rank@scores
 
 par(mfrow=c(1,2))
-plot(pcamod, ylim=c(0,30), main="Normal PCA")
-plot(pca.rank, ylim=c(0,30), main="(Projection-) Depth PCA")
+barplot(pcamod@eigenvalues[1:10]/sum(pcamod@eigenvalues),
+        ylim=c(0,.4), main="Normal PCA")
+barplot(pca.rank@eigenvalues[1:10]/sum(pca.rank@eigenvalues),
+        ylim=c(0,.4), main="(Projection-) Depth PCA")
 par(mfrow=c(1,1))
 
+n = nrow(commdata.X)
+p = ncol(commdata.X)
 rsq.mat = matrix(0, nrow=p, ncol=2)
 for(npc in 1:p){
   # PC regression on vanilla PCA scores
