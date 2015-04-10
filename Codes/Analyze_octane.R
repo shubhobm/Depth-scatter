@@ -7,6 +7,8 @@ source('misc_functions.R')
 require(ellipse)
 require(ChemoSpec)
 require(rrcov)
+require(fda.usc)
+
 Octane <- read.csv("../Data/Octane.csv")
 Octane.X = Octane[,-c(1,2)]
 n = nrow(Octane.X)
@@ -88,6 +90,18 @@ scoreplot = function(data.X, npc){
   
 }
 
-
 distanceplot(Octane.X, 2, xlim=c(0,10), ylim=c(0,1.3), pch=19, col="blue")
+
+## screeplot
+pcamod = PcaClassic(Octane.X)
+prop10 = pcamod@eigenvalues / sum(pcamod@eigenvalues)
+
+pcarank = PcaRank(Octane.X)
+prop10.r = pcarank@eigenvalues / sum(pcarank@eigenvalues)
+
+plot(prop10[1:10], type='b', col="red", lwd=2,
+     xlab="index of PC", ylab="proportion of variance explained")
+lines(prop10.r[1:10], type='b', lwd=2, col="blue", pch=0, lty=2)
+legend('topright', c("Classical PCA", "Depth PCA"), lwd=2, col=c("red","blue"), lty=c(1,2))
+
 scoreplot(Octane.X, 2)

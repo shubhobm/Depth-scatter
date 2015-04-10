@@ -1,4 +1,4 @@
-\begin{thebibliography}{36}
+\begin{thebibliography}{37}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -36,6 +36,12 @@ S.~Dutta and A.K. Ghosh.
 \newblock On robust classification using projection depth.
 \newblock \emph{Ann. Inst. Stat. Math.}, 64-3:\penalty0 657--676, 2012.
 
+\bibitem[Esbensen et~al.(1994)Esbensen, Sch\"{o}nkopf, and
+  Midtgaard]{esbensen94}
+K.~H. Esbensen, S.~Sch\"{o}nkopf, and T.~Midtgaard.
+\newblock \emph{Multivariate {A}nalysis in {P}ractice}.
+\newblock CAMO, Trondheim, Germany, 1994.
+
 \bibitem[Ghosh and Chaudhuri(2005)]{ghosh05}
 A.K. Ghosh and P.~Chaudhuri.
 \newblock On {M}aximum {D}epth and {R}elated {C}lassifiers.
@@ -59,7 +65,8 @@ P.J. Huber.
 
 \bibitem[Hubert et~al.(2005)Hubert, Rousseeuw, and Branden]{hubert05}
 M.~Hubert, P.~J. Rousseeuw, and K.~V. Branden.
-\newblock Robpca: A new approach to robust principal component analysis.
+\newblock {ROBPCA}: {A} {N}ew {A}pproach to {R}obust {P}rincipal {C}omponent
+  {A}nalysis.
 \newblock \emph{Technometrics}, 47-1:\penalty0 64--79, 2005.
 
 \bibitem[Jornsten(2004)]{jornsten04}
@@ -92,7 +99,7 @@ A.F. Magyar and D.E. Tyler.
 \newblock \emph{Biometrika}, 101:\penalty0 673--688, 2014.
 
 \bibitem[Maronna et~al.(2006)Maronna, Martin, and Yohai]{maronna06}
-R.~Maronna, D.~Martin, and V.~Yohai.
+R.~Maronna, D.~Martin, and V.~Y. Yohai.
 \newblock \emph{Robust {S}tatistics: {T}heory and {M}ethods}.
 \newblock Wiley, New York, NY, 2006.
 
@@ -132,7 +139,7 @@ P.~Rousseeuw.
 
 \bibitem[Rousseeuw(1984)]{Rousseeuw84leastmedian}
 Peter~J. Rousseeuw.
-\newblock Least median of squares regression.
+\newblock Least {M}edian of {S}quares {R}egression.
 \newblock \emph{Journal of the American Statistical Association}, pages
   871--880, 1984.
 
