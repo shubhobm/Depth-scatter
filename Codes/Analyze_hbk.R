@@ -7,6 +7,7 @@ source('misc_functions.R')
 library(ellipse)
 library(rrcov)
 library(fda.usc)
+set.seed(04112015)
 
 ## Analyze bus data
 data(bus)
@@ -34,7 +35,7 @@ svar <- sum(ev)
 svarrob <- sum(evrob)
 svarhub <- sum(evhub)
 svarmcd <- sum(evmcd)
-svarogk <- sum(evogk)
+#svarogk <- sum(evogk)
 svarrank = sum(evrank)
 
 for(i in 1:6){

@@ -75,7 +75,9 @@ TylerSig = function(X, tol=1e-5, maxit=100, weight=NULL){
   iSig
 }
 
-PcaRank <- function(x, k=0, kmax=ncol(x), delta = 0.001, na.action = na.fail, scale=FALSE, signflip=TRUE, trace=FALSE, ...)
+PcaRank <- function(x, k=0, kmax=ncol(x), delta = 0.001,na.action = na.fail,
+                    scale=FALSE, signflip=TRUE, trace=FALSE,
+                    proj=50, ...)
 {
   
   cl <- match.call()
@@ -123,7 +125,8 @@ PcaRank <- function(x, k=0, kmax=ncol(x), delta = 0.001, na.action = na.fail, sc
   ep = spa$ep
   tt = matrix(mu, n, p, byrow=TRUE)
   data = data-tt
-  depth = mdepth.RP(data, data)$dep
+  depth = mdepth.RP(data, data, proj=proj)$dep
+  depth = max(depth) - depth
   for(i in 1:n)
   {
     z = sqrt(sum((data[i,  ])^2))

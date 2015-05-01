@@ -33,11 +33,11 @@ distanceplot = function(data.X, npc, ...){
   abline(v=csd, col="red")
   abline(h=cod, col="red")
   if(length(which.ind>0)){
-    text(sd[which.ind], od[which.ind], indices[which.ind], pos=1, cex=.7)
+    text(sd[which.ind], od[which.ind], indices[which.ind], pos=4, cex=.7)
   }
   
   # rank PCA
-  pcarank = PcaRank(Octane.X, k=2)
+  pcarank = PcaRank(Octane.X, k=2, proj=2000)
   
   sdrank = pcarank@sd
   odrank = pcarank@od
@@ -52,7 +52,7 @@ distanceplot = function(data.X, npc, ...){
   abline(v=csdrank, col="red")
   abline(h=codrank, col="red")
   if(length(which.ind>0)){
-    text(sdrank[which.ind], odrank[which.ind], indices[which.ind], pos=1, cex=.7)
+    text(sdrank[which.ind], odrank[which.ind], indices[which.ind], pos=4, cex=.7)
   }  
   par(mfrow=c(1,1))  
 }
@@ -90,7 +90,8 @@ scoreplot = function(data.X, npc){
   
 }
 
-distanceplot(Octane.X, 2, xlim=c(0,10), ylim=c(0,1.3), pch=19, col="blue")
+set.seed(04112015)
+distanceplot(Octane.X, 2, xlim=c(0,20), ylim=c(0,.3), pch=19, col="blue")
 
 ## screeplot
 pcamod = PcaClassic(Octane.X)
