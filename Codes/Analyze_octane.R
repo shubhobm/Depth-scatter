@@ -91,7 +91,9 @@ scoreplot = function(data.X, npc){
 }
 
 set.seed(04112015)
+pdf("octane_distanceplot.pdf", width=7, height=4)
 distanceplot(Octane.X, 2, xlim=c(0,20), ylim=c(0,.3), pch=19, col="blue")
+dev.off()
 
 ## screeplot
 pcamod = PcaClassic(Octane.X)
@@ -100,9 +102,11 @@ prop10 = pcamod@eigenvalues / sum(pcamod@eigenvalues)
 pcarank = PcaRank(Octane.X)
 prop10.r = pcarank@eigenvalues / sum(pcarank@eigenvalues)
 
+pdf("octane_screeplot.pdf", width=5, height=5)
 plot(prop10[1:10], type='b', col="red", lwd=2,
      xlab="index of PC", ylab="proportion of variance explained")
 lines(prop10.r[1:10], type='b', lwd=2, col="blue", pch=0, lty=2)
 legend('topright', c("Classical PCA", "Depth PCA"), lwd=2, col=c("red","blue"), lty=c(1,2))
+dev.off()
 
 scoreplot(Octane.X, 2)

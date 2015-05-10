@@ -55,10 +55,19 @@ uX = X / sqrt(rowSums(X^2))
 dX = mdepth.HS(X,X)$dep
 Xrank = uX * (max(dX) - dX)
 
+pdf('signs.pdf', width=7, height=4)
+par(mfrow=c(1,2))
+plot(X, pch=19, cex=.5)
+plot(uX, pch=19, cex=.5)
+par(mfrow=c(1,1))
+dev.off()
+
+pdf('ranks.pdf', width=7, height=4)
 par(mfrow=c(1,2))
 plot(X, pch=19, cex=.5)
 plot(Xrank, pch=19, cex=.5)
 par(mfrow=c(1,1))
+dev.off()
 
 par(mfrow=c(1,3))
 plot(X, pch=19, cex=.5)
