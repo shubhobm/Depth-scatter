@@ -43,7 +43,7 @@ When principal components are of interest, one can also estimate the population 
 
 The nonparametric concept of data-depth had first been proposed by \cite{tukey75} when he introduced the halfspace depth. Given a dataset, the depth of a given point in the sample space measures how far inside the data cloud the point exists. An overview of statistical depth functions can be found in \citep{zuo00}. Depth-based methods have recently been popular for robust nonparametric classification \citep{jornsten04, ghosh05, dutta12, sguera14}. In parametric estimation, depth-weighted means \citep{ZuoCuiHe04} and covariance matrices \citep{ZuoCui05} provide high-breakdown point as well as efficient estimators, although they do involve choice of a suitable weight function and tuning parameters. In this paper we study the covariance matrix of the multivariate rank vector that is obtained from the data-depth of a point and its spatial sign, paying special attention to its eigenvectors. Specifically, we develop a robust version of principal components analysis for elliptically symmetric distributions based on the eigenvectors of this covariance matrix, and compare it with normal PCA and spherical PCA, i.e. PCA based on eigenvectors of the SCM.
 
-The paper is arranged in the following fashion. Section 2 provides preliminary theoretical concepts required for developments in the subsequent sections. Section 3 introduces the Depth Covariance Matrix (DCM) and states some basic results related to this. Section 4 provides asymptotic results regarding the sample DCM, calculated using data depths with respect to the empirical distribution function, as well as its eigenvectors and eigenvalues. Section 5 focuses solely on principal component estimation using the sample DCM. We obtain influence functions and asymptotic efficiencies for eigenvectors of the DCM. We also compare their finite sample efficiencies for several multinormal and multivariate $t$-distributions with those of the SCM, Tyler's scatter matrix and its depth-weighted version through a simulation study. Section 6 presents two applications of the methods we develop on real data. Finally, we wrap up our discussion in Section 7 by giving a summary of our findings and providing some potential future areas of research.
+The paper is arranged in the following fashion. Section 2 provides preliminary theoretical concepts required for developments in the subsequent sections. Section 3 introduces the Depth Covariance Matrix (DCM) and states some basic results related to this. Section 4 provides asymptotic results regarding the sample DCM, calculated using data depths with respect to the empirical distribution function, as well as its eigenvectors and eigenvalues. Section 5 focuses solely on principal component estimation using the sample DCM. We obtain influence functions and asymptotic efficiencies for eigenvectors of the DCM. We also compare their finite sample efficiencies for several multinormal and multivariate $t$-distributions with those of the SCM, Tyler's scatter matrix and its depth-weighted version through a simulation study. Section 6 presents two applications of the methods we develop on real data. Finally, we wrap up our discussion in Section 7 by giving a summary of our findings and providing some potential future areas of research. Proofs of all the results we derive are given in the appendix.
 
 \section{Preliminaries}
 \subsection{Spatial signs and sign covariance matrix}
@@ -106,7 +106,7 @@ Consider a vector-valued random variable $\bfX \in \mathbb{R}^p$ . Data depth is
 \begin{figure}[t]
 	\captionsetup{singlelinecheck=off}
 	\centering
-		\includegraphics[height=5cm]{../Codes/rankplot.png}
+		\includegraphics[height=6cm]{../Codes/ranks.pdf}
 	\caption{(Left) 1000 points randomly drawn from $\mathcal N_2\left((0,0)^T, \left(\protect\begin{smallmatrix} 5 & -4 \\ -4 & 5 \protect\end{smallmatrix}\right)\right) $ and (Right) their multivariate ranks based on halfspace depth}
 	\label{fig:rankplot}
 \end{figure}
@@ -154,7 +154,7 @@ $$ \Lambda^{*(k+1)} = \frac{\Lambda^{*(k+1)}}{det(\Lambda^{*(k+1)})^{1/p}} $$
 
 Unlike sign covariance matrices and symmetrized sign covariance matrices \citep{dumbgen98}, however, attempting to derive an affine equivariant counterpart (as opposed to only orthogonal equivariance) of the DCM through an iterative approach analogous to \cite{tyler87} will not result in anything new. This is because Tyler's scatter matrix $\Sigma_T$ is defined as the implicit solution to the following equation:
 \begin{equation} \label{equation:tylerEq}
-\Sigma_T = E \left[ \frac{\bfx \bfx^T}{\bfx^T \Sigma_T^{-1} \bfx} \right]
+\Sigma_T = E \left[ \frac{(\bfx - \bfmu) (\bfx - \bfmu)^T}{(\bfx - \bfmu)^T \Sigma_T^{-1} (\bfx - \bfmu)} \right]
 \end{equation}
 and simply replacing $\bfx$ by its multivariate rank counterpart $\tilde\bfx$ will not change the estimate $\Sigma_T$ as $\bfx$ and $\tilde \bfx$ have the same directions. Instead we consider a depth-weighted version of Tyler's scatter matrix (i.e. weights $(\tilde D_\bfX(\bfx))^2$ in right side of (\ref{equation:tylerEq})) in the simulations in Section \ref{section:simSection}. The simulations show that it has slightly better finite-sample efficiency than $\Sigma_T$ but has same asymptotic performance. We conjecture that its concentration properties can be obtained by taking an approach similar to \cite{soloveychik14}.
 
@@ -186,7 +186,7 @@ In case $F$ is elliptical, an elaborate form of the covariance matrix $V_{D,S}(F
 
 \subsection{Eigenvectors and eigenvalues} Since we are mainly interested in using the DCM for a robust version of principal components analysis, from now on we assume that the eigenvalues of $\Sigma$ are distinct: $\lambda_1 > \lambda_2 > ... > \lambda_p$ to obtain asymptotic distributions of principal components. In the case of eigenvalues with larger than 1 multiplicities, the limiting distributions of eigenprojection matrices can be obtained analogous to those of the sign covariance matrix \citep{magyar14}.
 
-\paragraph{}We are going to derive the asymptotic joint distributions of eigenvectors and eigenvalues of the sample DCM. The following result allows us to get these, provided we know the limiting distribution of the sample DCM itself:
+\paragraph{}We now derive the asymptotic joint distributions of eigenvectors and eigenvalues of the sample DCM. The following result allows us to get these, provided we know the limiting distribution of the sample DCM itself:
 
 \begin{Theorem} \label{Theorem:decomp} \citep{taskinen12}
 Let $F_\Lambda$ be an elliptical distribution with a diagonal covariance matrix $\Lambda$, and $\hat C$ be any positive definite symmetric $p \times p$ matrix such that at $F_\Lambda$ the limiting distribution of $\sqrt n vec(\hat C - \Lambda)$ is a $p^2$-variate (singular) normal distribution with mean zero. Write the spectral decomposition of $\hat C$ as $\hat C = \hat P \hat\Lambda \hat P^T$. Then the limiting distributions of $\sqrt n vec(\hat P - I_p)$ and $\sqrt n vec(\hat\Lambda - \Lambda)$ are multivariate (singular) normal and
@@ -198,7 +198,7 @@ Let $F_\Lambda$ be an elliptical distribution with a diagonal covariance matrix 
 The first matrix picks only off-diagonal elements of the LHS and the second one only diagonal elements. We shall now use this as well as the form of the asymptotic covariance matrix of the vec of sample DCM, i.e. $V_{D,S}(F)$ to obtain limiting variance and covariances of eigenvalues and eigenvectors.
 
 \begin{Corollary} \label{Corollary:eigendist}
-Consider the sample DCM $ \hat S^D(F) = \sum_{i=1}^n (\tilde D^n_\bfX (\bfx_i))^2 SS(\bfx_i; {\bf \hat\bfmu_n})/n $ and its spectral decomposition $\hat S^D(F) = \hat\Gamma_D \hat\Lambda_D \hat\Gamma_D^T $. Then the matrices $G = \sqrt n (\hat\Gamma_D - \Gamma) $ and $L = \sqrt n (\hat\Lambda_D - \Lambda_{D,S}) $ have independent distributions. $vec(G)$ asymptotically has a $p^2$-variate normal distribution with mean ${\bf 0}_{p^2}$, and the asymptotic variance and covariance of different columns of $G = (\bfg_1,...,\bfg_p)$ are as follows:
+Consider the sample DCM $ \hat S^D(F) = \sum_{i=1}^n (\tilde D^n_\bfX (\bfx_i))^2 SS(\bfx_i; {\bf \hat\bfmu_n})/n $ and its spectral decomposition $\hat S^D(F) = \hat\Gamma_D \hat\Lambda_D \hat\Gamma_D^T $. Then the matrices $G = \sqrt n (\hat\Gamma_D - \Gamma) $ and $L = \sqrt n (\hat\Lambda_D - \Lambda_{D,S}) $ have independent distributions. The random variable $vec(G)$ asymptotically has a $p^2$-variate normal distribution with mean ${\bf 0}_{p^2}$, and the asymptotic variance and covariance of different columns of $G = (\bfg_1,...,\bfg_p)$ are as follows:
 \begin{equation} \label{equation:DevEq}
 AVar(\bfg_i) = \sum_{k=1; k \neq i}^p \frac{1}{(\lambda_{D,s,k} - \lambda_{D,S,i})^2} E \left[ \frac{(\tilde D_\bfZ (\bfz))^4 \lambda_i \lambda_k z_i^2 z_k^2}{(\bfz^T \Lambda \bfz)^2} \right] \bfgamma_k \bfgamma_k^T
 \end{equation}
@@ -214,7 +214,7 @@ ACov(l_i, l_j) &=& E \left[ \frac{(\tilde D_\bfZ (\bfz))^4 \lambda_i \lambda_j z
 \end{Corollary}
 
 \section{Robustness and efficiency properties} \label{section:simSection}
-In this section, we first obtain the influence functions of the DCM as well as its eigenvectors and eigenvalues, which are essential to understand how much influence a sample point, especially an infinitesimal contamination, has on any functional on the distribution \citep{hampel}. We shall also derive the asymptotic efficiencies of individual principal components with respect to those of the original covariance matrix and sign covariance matrix. Unlike affine equivariant estimators of shape, the ARE of eigenvectors (with respect to any other affine equivariant estimator) can not be simplified as a ratio of two scalar quantities dependent on only the distribution of $\| \bfz \|$ (e.g. \cite{taskinen12,ollilia03}). Finite sample efficiency of the DCM estimates with respect to infinitesimal contamination and heavy-tailed distributions shall also be demonstrated by a simulation study.
+In this section, we first obtain the influence functions of the DCM as well as its eigenvectors and eigenvalues, which are essential to understand how much influence a sample point, especially an infinitesimal contamination, has on any functional on the distribution \citep{hampel}. We also derive the asymptotic efficiencies of individual principal components with respect to those of the original covariance matrix and sign covariance matrix. Unlike affine equivariant estimators of shape, the Asymptotic Relative Efficiency (ARE) of eigenvectors (with respect to any other affine equivariant estimator) can not be simplified as a ratio of two scalar quantities dependent on only the distribution of $\| \bfz \|$ (e.g. \cite{taskinen12,ollilia03}). Finite sample efficiency of the DCM estimates with respect to infinitesimal contamination and heavy-tailed distributions shall also be demonstrated by a simulation study.
 
 \subsection{Influence functions}
 Given any probability distribution $F$, the influence function of any point $\bfx_0$ in the sample space $\mathcal{X}$ for some functional $T(F)$ on the distribution is defined as
@@ -246,10 +246,12 @@ for $i = 1,2$. In Figure \ref{fig:IFnorm} we consider first eigenvectors of diff
 
 \subsection{Asymptotic and finite-sample efficiencies}
 Suppose $\hat\Sigma$ is a $\sqrt n$-consistent estimator of the population covariance matrix $\Sigma$, which permits a spectral decomposition $ \hat\Sigma = \hat\Gamma \hat\Lambda \hat\Gamma^T $, where $\hat\Gamma = (\hat\bfgamma_1,...,\hat\bfgamma_p)$. Then the asymptotic variance of the eigenvectors are (see Theorem 13.5.1 in \cite{anderson})
+
 \begin{equation} \label{equation:covevEq}
 AVar(\sqrt n\hat \bfgamma_i) = \sum_{k=1; k \neq i}^p \frac{\lambda_i \lambda_k}{(\lambda_i - \lambda_k)^2} \bfgamma_k \bfgamma_k^T
 \end{equation}
 the asymptotic relative efficiencies of eigenvectors from the sample DCM with respect to the sample covariance matrix can now be derived using (\ref{equation:covevEq}) above and (\ref{equation:DevEq}) from Corollary \ref{Corollary:eigendist}:
+
 \begin{eqnarray*}
 ARE(\hat\bfgamma^D_i, \hat\bfgamma_i; F) &=& \frac{\Tr( AVar(\sqrt n\hat \bfgamma_i))}{\Tr( AVar(\sqrt n\hat \bfgamma^D_i))}\\
 &=& \left[\sum_{k=1; k \neq i}^p \frac{\lambda_i \lambda_k}{(\lambda_i - \lambda_k)^2} \right] \left[ \sum_{k=1; k \neq i}^p \frac{\lambda_i \lambda_k }{(\lambda_{D,s,i} - \lambda_{D,S,k})^2} E \left( \frac{(\tilde D_\bfZ (\bfz))^4 z_i^2 z_k^2}{(\bfz^T \Lambda \bfz)^2} \right) \right]^{-1}
@@ -261,7 +263,7 @@ $$ \lambda_{D,S,1} = E \left( \frac{(\tilde D_\bfZ(\bfz))^2 z_1^2}{z_1^2 + \rho 
 \lambda_{D,S,2} = E \left( \frac{(\tilde D_\bfZ(\bfz))^2 \rho z_2^2}{z_1^2 + \rho z_2^2} \right) $$
 and by simple algebra we get
 
-$$ ARE(\hat\bfgamma^D_1, \hat\bfgamma_1; F) = ARE(\hat\bfgamma^D_2, \hat\bfgamma_2; F) = \frac{1}{(1-\rho)^2} \frac{E^2 \left( \frac{(\tilde D_\bfZ(\bfz))^2 (z_1^2 - \rho z_2^2)}{(z_1^2 + \rho z_2^2)} \right)}{E \left( \frac{(\tilde D_\bfZ(\bfz))^4 z_1^2z_2^2}{(z_1^2 + \rho z_2^2)^2}\right)} $$
+$$ ARE(\hat\bfgamma^D_1, \hat\bfgamma_1; F) = ARE(\hat\bfgamma^D_2, \hat\bfgamma_2; F) = \frac{1}{(1-\rho)^2} \frac{\left[ E \left( \frac{(\tilde D_\bfZ(\bfz))^2 (z_1^2 - \rho z_2^2)}{(z_1^2 + \rho z_2^2)} \right) \right]^2 }{E \left( \frac{(\tilde D_\bfZ(\bfz))^4 z_1^2z_2^2}{(z_1^2 + \rho z_2^2)^2}\right)} $$
 
 For $\rho=0.5$, Table \ref{table:AREtable} below considers 6 different elliptic distributions (namely, bivariate $t$ with df = $5,6,10,15,25$ and bivariate normal), and summarizes the ARE for first eigenvector of the SCM, Tyler's scatter matrix and DCM for 3 choices of depth function (HSD-CM, MhD-CM, PD-CM: columns 3-5), as well as their depth-weighted versions mentioned at the end of section \ref{section:dcmSection} (HSD-wCM, MhD-wCM, PD-wCM: columns 6-8). The SCM and Tyler's M-estimator perform better than the sample covariance matrix only for a bivariate $t$-distribution with df = 5. Estimates based on depth-based covariance matrices have much better performances for all distributions, and continue to be competitive of the sample covariance matrix estimates as the base distribution approaches normality, especially those based on projection depth. Interestingly, depth-weighted versions seem to have better performances than their corresponding DCMs, more so for heavy-tailed distributions.
 
@@ -510,13 +512,13 @@ where $S = (\bfs_1, \ldots ,\bfs_n)^T$ is the $n\times k$ scoring matrix, $P$ th
 
 \begin{figure}[t]
 	\centering
-		\includegraphics[height=6cm]{../Codes/octane_screeplot.png}
+		\includegraphics[height=6cm]{../Codes/octane_screeplot.pdf}
 	\caption{Explained variance proportions for two types of PCA on octane data}
 	\label{fig:screeplot}
 \end{figure}
 \begin{figure}[h]
 	\centering
-		\includegraphics[height=6.5cm]{../Codes/octane_distplot.png}
+		\includegraphics[height=6.5cm]{../Codes/octane_distanceplot.pdf}
 	\caption{Distance plots for two types of PCA on octane data}
 	\label{fig:distplot}
 \end{figure}
