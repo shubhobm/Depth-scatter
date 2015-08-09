@@ -3,8 +3,7 @@
 \beamer@slide {fig:fig3}{9}
 \beamer@slide {table:FSEtable1}{13}
 \beamer@slide {table:FSEtable2}{14}
-\beamer@slide {table:bus_table1}{16}
+\beamer@slide {fig:ScoreOrthoPlot}{16}
 \beamer@slide {table:bus_table2}{17}
-\beamer@slide {fig:screeplot}{18}
-\beamer@slide {fig:distplot}{19}
-\beamer@slide {fig:kdpca}{20}
+\beamer@slide {fig:distplot}{18}
+\beamer@slide {fig:kdpca}{19}

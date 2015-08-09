@@ -60,10 +60,13 @@
 Robust estimation of \\principal components from \\depth-based multivariate rank covariance matrix}
 
 \author[Subho Majumdar]{Subho Majumdar\\ Snigdhansu Chatterjee}
-\institute[]{University of Minnesota, School of Statistics\\July 9, 2015} 
+\institute[]{University of Minnesota, School of Statistics\\
+\vspace{.5cm}
+\includegraphics[height=.5cm]{UMNlogo}}
+
 \date {}
 
-\date [July 9, 2015]
+\date [August 9, 2015]
 
 %%%%%%%List Outline in the beginning of each section.
 %\AtBeginSection[] {
@@ -101,7 +104,7 @@ Robust estimation of \\principal components from \\depth-based multivariate rank
 \frametitle{What is depth?}
 \textbf{Example}: 500 points from $\mathcal{N}_2 ((0,0)^T, \diag (2,1))$
 \begin{figure}\begin{center}
-   \includegraphics[height=6cm]{depthplot.png}
+   \includegraphics[height=6cm]{depthplot}
    \label{fig:fig1}
 \end{center}\end{figure}
 \colbbf{A scalar measure of how much inside a point is with respect to a data cloud}
@@ -109,7 +112,7 @@ Robust estimation of \\principal components from \\depth-based multivariate rank
 
 \begin{frame}
 \frametitle{Formal definition}
-For any multivariate distribution $F = F_\bfX$, the depth of a point $\bfx \in \mathbb{R}^p$, say $D(\bfx, F_\bfX)$ is any real-valued function that provides a 'center outward ordering' of $\bfx$ with respect to $F$ \citep{zuo00}.
+For any multivariate distribution $F = F_\bfX$, the depth of a point $\bfx \in \mathbb{R}^p$, say $D(\bfx, F_\bfX)$ is any real-valued function that provides a `center outward ordering' of $\bfx$ with respect to $F$ \citep{zuo00}.
 
 \vspace{.5cm}
 \begin{block}{Desirable properties \citep{liu90}}
@@ -124,7 +127,6 @@ For any multivariate distribution $F = F_\bfX$, the depth of a point $\bfx \in \
 
 (P4) {\colbit Vanishing at infinity}: $D(\bfx; F_\bfX) \rightarrow \bf0$ as $\|\bfx\| \rightarrow \infty $.
 \end{block}
-
 \end{frame}
 
 \begin{frame}
@@ -149,7 +151,7 @@ $$ O(\bfx, F) = \sup_{\| \bfu \| = 1} \frac{| \bfu^T\bfx - m(\bfu^T\bfX)|}{s(\bf
 \item Depth-weighted means and covariance matrices
 \vspace{.2cm}
 
-\item What we're going to do:\\PCA based on covariance matrix of depth-based multivariate rank vectors
+\item What we're going to do:\\Define multivariate rank vectors based on data depth, do PCA on them
 \end{itemize}
 \end{frame}
 
@@ -165,7 +167,7 @@ $$ \bfS(\bfx) = \begin{cases} \bfx\| \bfx \|^{-1} \quad \mbox{if }\bfx \neq \bf0
 \end{itemize}
 
 \begin{figure}\begin{center}
-   \includegraphics[height=5cm]{signs.pdf}
+   \includegraphics[height=5cm]{signs}
    \label{fig:fig2}
 \end{center}\end{figure}
 \end{frame}
@@ -182,7 +184,7 @@ $$ \bfS(\bfx) = \begin{cases} \bfx\| \bfx \|^{-1} \quad \mbox{if }\bfx \neq \bf0
 \end{itemize}
 
 \begin{figure}\begin{center}
-   \includegraphics[height=5cm]{ranks.pdf}
+   \includegraphics[height=5cm]{ranks}
    \label{fig:fig3}
 \end{center}\end{figure}
 \end{frame}
@@ -198,6 +200,9 @@ Cov(\tilde \bfX) = \Gamma \Lambda_{D,S} \Gamma^T,\quad\mbox{with}\quad \Lambda_{
 where $\bfz = (z_1,...,z_p)^T \sim N({\bf 0}, I_p)$ and $\Lambda_{D,S}$ a diagonal matrix with diagonal entries
 $$ \lambda_{D,S,i} = E_\bfZ \left[ \frac{(\tilde D_\bfZ(\bfz))^2 \lambda_i z_i^2}{\sum_{j=1}^p \lambda_j z_j^2} \right] $$
 \end{theorem}
+
+\vspace{.5cm}
+{\colb \textbf{TL; DR:} Population eigenvectors are invariant under the spatial rank transformation.}
 \end{frame}
 
 \begin{frame}
@@ -241,6 +246,8 @@ $$ FSE(\hat\bfgamma^E_1, \hat\bfgamma^{Cov}_1) = \frac{MSPA(\hat\bfgamma^{Cov}_1
 
 \begin{frame}
 \frametitle{Table of FSE for $p=2$}
+
+(HSD = Halfspace depth, MhD = Mahalanobis depth, PD = Projection depth)
 \begin{table}
 \begin{footnotesize}
    \begin{tabular}{c|cccc}
@@ -271,6 +278,7 @@ $$ FSE(\hat\bfgamma^E_1, \hat\bfgamma^{Cov}_1) = \frac{MSPA(\hat\bfgamma^{Cov}_1
 
 \begin{frame}
 \frametitle{Table of FSE for $p=2$}
+(HSD = Halfspace depth, MhD = Mahalanobis depth, PD = Projection depth)
 \begin{table}
 \begin{footnotesize}
    \begin{tabular}{c|cccc}
@@ -317,32 +325,18 @@ PCA based on projection-DCM (DPCA)
 \end{frame}
 
 \begin{frame}
-\frametitle{Bus data: comparison tables}
+\frametitle{Score distance (SD) and orthogonal distance (OD)}
+$$ SD_i = \sqrt{ \sum_{j=1}^k \frac{s^2_{ij}}{\lambda_j}}; \quad OD_i = \| \bfx_i - P\bfs_i^T \| $$
 
 \begin{footnotesize}
-\begin{table}[t]
-\centering
-    \begin{tabular}{c|ccccc}
-    \hline
-    \begin{large} $q$ \end{large} & \multicolumn{5}{c}{Method of PCA}         \\ \cline{2-6}
-    ~                   & CPCA     & SPCA & ROBPCA & MPCA & DPCA \\\hline 
-    1                   & 0.188         & 0.549     & 0.410  & 0.514     & \textbf{0.662}     \\
-    2                   & 0.084         & 0.272     & 0.214  & 0.337     & \textbf{0.359}     \\
-    3                   & 0.044         & 0.182     & 0.121  & 0.227     & \textbf{0.237}     \\
-    4                   & 0.026         & 0.135     & 0.083  & 0.154     & \textbf{0.173}     \\
-    5                   & 0.018         & 0.099     & 0.054  & 0.098     & \textbf{0.115}     \\
-    6                   & 0.012         & 0.069     & 0.036  & 0.070     & \textbf{0.084}     \\ \hline
-    \end{tabular}
-    \caption{Unexplained proportions of variability by PCA models with $q$ components for bus data}
-    \label{table:bus_table1}
-\end{table}
+where $S_{n\times k} = (\bfs_1, \ldots ,\bfs_n)^T$ is the scoring matrix, $P_{p\times k}$ loading matrix, $\lambda_1,\ldots ,\lambda_k$ are eigenvalues obtained from the PCA, and $\bfx_1,\ldots,\bfx_n$ are the observation vectors.
 \end{footnotesize}
 
-\begin{itemize}
-\item Proportions of variability that are left unexplained after the top $q$ $(= 1,...,6)$ components are taken into account,
-\vspace{.2cm}
-\item First PC of CPCA seems to explain a lot of variability as classical variances are inflated due to outliers in the direction of the first principal axis. Robust methods do not suffer from this.
-\end{itemize}
+\begin{figure}[h]
+	\centering
+		\includegraphics[height=5.5cm]{ScoreOrtho}
+	\label{fig:ScoreOrthoPlot}
+\end{figure}
 \end{frame}
 
 \begin{frame}
@@ -355,24 +349,23 @@ PCA based on projection-DCM (DPCA)
     \hline
     Quantile & \multicolumn{5}{c}{Method of PCA}         \\ \cline{2-6}
     ~                   & CPCA     & SPCA & ROBPCA & MPCA & DPCA \\\hline 
-    10\%      & 1.9       & 1.2       & 1.2    & 1.0       & \textbf{1.2}       \\
-    20\%      & 2.3       & 1.6       & 1.6    & 1.3       & \textbf{1.6}       \\
-    30\%      & 2.8       & 1.8       & 1.8    & 1.7       & \textbf{1.9}       \\
-    40\%      & 3.2       & 2.2       & 2.1    & 2.1       & \textbf{2.3}       \\
-    50\%      & 3.7       & 2.6       & 2.5    & 3.1       & \textbf{2.6}       \\
-    60\%      & 4.4       & 3.1       & 3.0    & 5.9       & \textbf{3.2}       \\
-    70\%      & 5.4       & 3.8       & 3.9    & 25.1      & \textbf{3.9}       \\
-    80\%      & 6.5       & 5.2       & 4.8    & 86.1      & \textbf{4.8}       \\
-    90\%      & 8.2       & 9.0       & 10.9   & 298.2     & \textbf{6.9}      \\
-    Max       & 24        & 1037      & 1055   & 1037      & \textbf{980}      \\\hline
+    10\%      & 1.9       & {\colb 1.2}       & {\colm 1.2}    & {\colr 1.0}       & {\colubf 1.2}       \\
+    20\%      & 2.3       & {\colb 1.6}       & {\colm 1.6}    & {\colr 1.3}       & {\colubf 1.6}       \\
+    30\%      & 2.8       & {\colb 1.8}       & {\colm 1.8}    & {\colr 1.7}       & {\colubf 1.9}       \\
+    40\%      & 3.2       & {\colb 2.2}       & {\colm 2.1}    & {\colr 2.1}       & {\colubf 2.3}       \\
+    50\%      & 3.7       & {\colb 2.6}       & {\colm 2.5}    & {\colr 3.1}       & {\colubf 2.6}       \\
+    60\%      & 4.4       & {\colb 3.1}       & {\colm 3.0}    & 5.9       & {\colubf 3.2}       \\
+    70\%      & 5.4       & {\colb 3.8}       & {\colm 3.9}    & 25.1      & {\colubf 3.9}       \\
+    80\%      & 6.5       & {\colb 5.2}       & {\colm 4.8}    & 86.1      & {\colubf 4.8}       \\
+    90\%      & 8.2       & 9.0       & 10.9   & 298.2     & {\colubf 6.9}      \\
+    Max       & 24        & 1037      & 1055   & 1037      & 980      \\\hline
     \end{tabular}
-    \caption{Quantiles to squared distance from 3-principal component hyperplanes for bus data}
     \label{table:bus_table2}
 \end{table}
 \end{footnotesize}
 
 \begin{itemize}
-\item Quantiles of the squared orthogonal distance for a sample point from the hyperplane formed by top 3 PCs,
+\item Table lists quantiles of the squared orthogonal distance for a sample point from the hyperplane formed by top 3 PCs,
 \vspace{.2cm}
 \item For DPCA, more than 90\% of points have a smaller orthogonal distance than CPCA
 \end{itemize}
@@ -383,24 +376,12 @@ PCA based on projection-DCM (DPCA)
 \begin{itemize}
 \item 226 variables and 39 observations. Each observation is a gasoline sample with a certain octane number, and have their NIR absorbance spectra measured in 2 nm intervals between 1100 - 1550 nm.
 \vspace{.2cm}
-
 \item 6 outliers: compounds 25, 26 and 36-39, which contain alcohol.
-\vspace{.2cm}
-
-\begin{figure}[t]
-	\centering
-		\includegraphics[height=6cm]{octane_screeplot.pdf}
-	\label{fig:screeplot}
-\end{figure}
 \end{itemize}
-\end{frame}
 
-\begin{frame}
-\frametitle{Octane data: detecting outliers}
 \begin{figure}[h]
 	\centering
 		\includegraphics[height=6cm]{octane_distanceplot.pdf}
-	\caption{Distance plots for two types of PCA on octane data}
 	\label{fig:distplot}
 \end{figure}
 \end{frame}
@@ -442,6 +423,21 @@ $$ \Sigma_{Dw} = E \left[ \frac{(\tilde D_\bfX(\bfx))^2 (\bfx - \bfmu) (\bfx - \
 \end{frame}
 
 \begin{frame}
+\frametitle{Acknowledgements}
+\begin{itemize}
+\item NSF grants \# IIS-1029711, \# SES-0851705;
+\vspace{.2cm}
+\item NASA grant \#-1502546;
+\vspace{.2cm}
+\item The Institute on the Environment (IonE), and College of Liberal Arts (CLA) - University of Minnesota;
+\vspace{.2cm}
+\item Abhirup Mallik;
+\vspace{.2cm}
+\item My team in Santander Consumer USA;
+\end{itemize}
+\end{frame}
+
+\begin{frame}
 \frametitle{References}
 \bibliographystyle{plainnat}
 \bibliography{scatterbib}
@@ -453,5 +449,4 @@ $$ \Sigma_{Dw} = E \left[ \frac{(\tilde D_\bfX(\bfx))^2 (\bfx - \bfmu) (\bfx - \
 \textcolor{UniBlue}{\textbf{THANK YOU!}}
 \end{frame}
 
-\end{document} 
-
+\end{document}
