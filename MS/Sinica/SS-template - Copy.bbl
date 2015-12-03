@@ -1,90 +1,29 @@
-\begin{thebibliography}{42}
+\begin{thebibliography}{24}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Anderson(3rd ed. 2003)]{anderson}
-T.W. Anderson.
-\newblock \emph{An {I}ntroduction to {M}ultivariate {S}tatistical {A}nalysis}.
-\newblock Wiley, Hoboken, NJ, 3rd ed. 2003.
-
-\bibitem[Brown(1983)]{brown83}
-B.M. Brown.
-\newblock Statistical {U}se of the {S}patial {M}edian.
-\newblock \emph{J. Royal Stat. Soc. Ser. B}, 45:\penalty0 25--30, 1983.
-
-\bibitem[Chernozhukov et~al.(2014)Chernozhukov, Galichon, Hallin, and
-  Henry]{Chernozhukov14}
-V.~Chernozhukov, A.~Galichon, M.~Hallin, and M.~Henry.
-\newblock {Monge-Kantorovich Depths, Quantiles, Ranks and Signs}.
-\newblock \url{http://arxiv.org/abs/1412.8434}, 2014.
-
-\bibitem[Croux and Haesbroeck(2000)]{croux00}
-C.~Croux and G.~Haesbroeck.
-\newblock Principal component analysis based on robust estimators of the
-  covariance or correlation matrix: influence functions and efficiencies.
-\newblock \emph{Biometrika}, 87:\penalty0 603--618, 2000.
-
-\bibitem[D\"{u}mbgen(1992)]{Dumbgen92}
-L.~D\"{u}mbgen.
-\newblock Limit theorems for the simplicial depth.
-\newblock \emph{Statist. Probab. Lett.}, 14:\penalty0 119--128, 1992.
-
 \bibitem[D\"{u}mbgen(1998)]{dumbgen98}
 L.~D\"{u}mbgen.
 \newblock On {T}yler's {M}-functional of scatter in high dimension.
 \newblock \emph{Ann. Inst. Statist. Math.}, 50:\penalty0 471--491, 1998.
-
-\bibitem[D\"{u}rre et~al.(2014)D\"{u}rre, Vogel, and Tyler]{durre14}
-A.~D\"{u}rre, D.~Vogel, and D.E. Tyler.
-\newblock The spatial sign covariance matrix with unknown location.
-\newblock \emph{J. Mult. Anal.}, 130:\penalty0 107--117, 2014.
 
 \bibitem[Dutta and Ghosh(2012)]{dutta12}
 S.~Dutta and A.K. Ghosh.
 \newblock On robust classification using projection depth.
 \newblock \emph{Ann. Inst. Stat. Math.}, 64-3:\penalty0 657--676, 2012.
 
-\bibitem[Esbensen et~al.(1994)Esbensen, Sch\"{o}nkopf, and
-  Midtgaard]{esbensen94}
-K.~H. Esbensen, S.~Sch\"{o}nkopf, and T.~Midtgaard.
-\newblock \emph{Multivariate {A}nalysis in {P}ractice}.
-\newblock CAMO, Trondheim, Germany, 1994.
-
 \bibitem[Ghosh and Chaudhuri(2005)]{ghosh05}
 A.K. Ghosh and P.~Chaudhuri.
 \newblock On {M}aximum {D}epth and {R}elated {C}lassifiers.
 \newblock \emph{Scand. J. Statist.}, 32:\penalty0 327--350, 2005.
 
-\bibitem[Haldane(1948)]{haldane48}
-J.B.S. Haldane.
-\newblock Note on the {M}edian of a {M}ultivariate {D}istribution.
-\newblock \emph{Biometrika}, 35:\penalty0 414--415, 1948.
-
-\bibitem[Hallin and Paindaveine(2002)]{HallinPaindaveine02}
-M.~Hallin and D.~Paindaveine.
-\newblock {Optimal tests for multivariate loca-tion based on interdirections
-  and pseudo-Mahalanobis ranks}.
-\newblock \emph{Ann. Statist.}, 30:\penalty0 1103--1133, 2002.
-
-\bibitem[Hampel et~al.(1986)Hampel, Ronchetti, Rousseeuw, and Staehl]{hampel}
-F.R. Hampel, E.M. Ronchetti, P.J. Rousseeuw, and W.A. Staehl.
-\newblock \emph{Robust {S}tatistics: {T}he {A}pproach {B}ased on {I}nfluence
-  {F}unctions}.
-\newblock Wiley, New York, NY, 1986.
-
 \bibitem[Huber(1977)]{huber77}
 P.J. Huber.
 \newblock \emph{Robust {S}tatistical {P}rcedures}.
 \newblock Society for Industrial and Applied Mathematics, Philadelphia, 1977.
-
-\bibitem[Hubert et~al.(2005)Hubert, Rousseeuw, and Branden]{hubert05}
-M.~Hubert, P.~J. Rousseeuw, and K.~V. Branden.
-\newblock {ROBPCA}: {A} {N}ew {A}pproach to {R}obust {P}rincipal {C}omponent
-  {A}nalysis.
-\newblock \emph{Technometrics}, 47-1:\penalty0 64--79, 2005.
 
 \bibitem[Jornsten(2004)]{jornsten04}
 R.~Jornsten.
@@ -115,42 +54,11 @@ A.F. Magyar and D.E. Tyler.
   for elliptically symmetric distributions.
 \newblock \emph{Biometrika}, 101:\penalty0 673--688, 2014.
 
-\bibitem[Maronna et~al.(2006)Maronna, Martin, and Yohai]{maronna06}
-R.~Maronna, D.~Martin, and V.~Y. Yohai.
-\newblock \emph{Robust {S}tatistics: {T}heory and {M}ethods}.
-\newblock Wiley, New York, NY, 2006.
-
 \bibitem[Maronna et~al.(1976)Maronna, Staehl, and Yohai]{maronna76}
 R.A. Maronna, W.A. Staehl, and V.Y. Yohai.
 \newblock Bias-{R}obust {E}stimators of {M}ultivariate {S}catter {B}ased on
   {P}rojections.
 \newblock \emph{J. Mult. Anal.}, 42:\penalty0 141--161, 1976.
-
-\bibitem[Miao and Ben-Israel(1992)]{miao92}
-J.M. Miao and A.~Ben-Israel.
-\newblock On principal angles between subspaces in $\mathbb{R}^n$.
-\newblock \emph{Lin. Algeb. Applic.}, 171:\penalty0 81--98, 1992.
-
-\bibitem[M\"{o}tt\"{o}nen and Oja(1995)]{MottonenOja95}
-J.~M\"{o}tt\"{o}nen and H.~Oja.
-\newblock Multivariate spatial sign and rank methods.
-\newblock \emph{J. Nonparametric Stat.}, 1995.
-
-\bibitem[Oja(1983)]{oja83}
-H.~Oja.
-\newblock Descriptive {S}tatistics for {M}ultivariate {D}istributions.
-\newblock \emph{Statist. and Prob. Lett.}, 1:\penalty0 327--332, 1983.
-
-\bibitem[Ollilia et~al.(2003)Ollilia, Oja, and Croux]{ollilia03}
-E.~Ollilia, H.~Oja, and C.~Croux.
-\newblock The affine equivariant sign covariance matrix: asymptotic behavior
-  and efficiencies.
-\newblock \emph{J. Mult. Anal.}, 87:\penalty0 328--355, 2003.
-
-\bibitem[Puri and Sen(1971)]{PuriSenBook}
-M.~L. Puri and P.~K. Sen.
-\newblock \emph{{Nonparametric Methods in Multivariate Analysis}}.
-\newblock Wiley, New York, NY, 1971.
 
 \bibitem[Rainer and Mozharovskyi(2014)]{rainerArxiv}
 D.~Rainer and P.~Mozharovskyi.
@@ -163,12 +71,6 @@ P.~Rousseeuw.
 \newblock In \emph{Mathematical Statistics and Applications, Volume B (Proc.
   4th Pannonian Symp. Math. Statist., Bad Tatzmannsdorf, 1983)}, pages 283--97,
   Dordrecht, 1985. D. Reidel.
-
-\bibitem[Rousseeuw(1984)]{Rousseeuw84leastmedian}
-Peter~J. Rousseeuw.
-\newblock Least {M}edian of {S}quares {R}egression.
-\newblock \emph{Journal of the American Statistical Association}, 79:\penalty0
-  871--880, 1984.
 
 \bibitem[Serfling(2006)]{serfling2006}
 R.~Serfling.
